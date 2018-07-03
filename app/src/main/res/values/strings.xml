@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">My NawDraw</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--Заповнення меню NavigationDrawer-->
+    <string name="drawer_item_home">Головна</string>
+    <string name="drawer_item_wine_tour">Винний тур</string>
+    <string name="drawer_item_academy">Академія вина</string>
+    <string name="drawer_item_alco_kitchen">АлкоКухня</string>
+    <string name="drawer_item_library">Бібліотека</string>
+    <string name="drawer_item_favorite_varieties">Улюблені сорти</string>
+    <string name="drawer_item_speсifications">Характеристики</string>
+    <string name="drawer_item_care_protection">Догляд та захист</string>
+    <string name="drawer_item_structure_formation">Будова і формування</string>
+    <string name="drawer_item_reproduction">Розмноження</string>
+    <string name="drawer_item_diseases_pests">Хвороби і шкідники</string>
+    <string name="drawer_item_calendar">Календар робіт і подій</string>
+    <string name="drawer_item_temperature">Термін дозрівання</string>
+    <string name="drawer_item_summ_temperature">Сума активних температур</string>
+    <string name="drawer_item_preparaty">Засоби захисту</string>
+    <string name="drawer_item_miscellaneous">Різне</string>
+    <string name="drawer_item_change_theme">Змінити тему</string>
+    <string name="drawer_item_rating">Оцінити в Google Play</string>
+    <string name="drawer_item_share">Поширити застосунок</string>
+    <string name="drawer_item_communication">Написати листа</string>
+    <string name="drawer_item_gallery">Галерея</string>
+    <string name="drawer_item_settings">Налаштування</string>
+    <string name="drawer_item_about">Про застосунок</string>
+    <string name="drawer_item_section_header_security">Догляд і захист</string>
+    <string name="drawer_item_section_header_about">Про застосунок</string>
+    <string name="drawer_item_licence">Ліцензії відкритого коду</string>
+
+
+    <!--Найменування табів-->
+    <string name="tab_item_home">Усі сорти</string>
+    <string name="tab_item_stolovi">Столові</string>
+    <string name="tab_item_kish_mish">Киш миш</string>
+    <string name="tab_item_tehnichni">Технічні</string>
+
+
+
+    <string name="shortcut_long_label_hvoroby">Хвороби і шкідники</string>
+    <string name="shortcut_short_label_hvoroby">Хвороби</string>
+    <string name="shortcut_long_label_formuvannya">Будова і формування</string>
+    <string name="shortcut_short_label_formuvannya">Формування</string>
+    <string name="shortcut_long_label_calendar">Календар робіт і подій</string>
+    <string name="shortcut_short_label_calendar">Календар</string>
+    <string name="shortcut_long_label_maps">Винний тур</string>
+    <string name="shortcut_short_label_maps">Винний тур</string>
+
+
+</resources>

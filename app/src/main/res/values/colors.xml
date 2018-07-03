@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#37474f</color>
+    <color name="colorPrimary">#455a63</color>
+    <color name="colorAccent">#009688</color>
+    <color name="colorApp">#b31ac7</color>
+
+    <color name="windowBackground">#FFE2E2E2</color>
+    <color name="rowBackground">#F2F2F2</color>
+
+    <color name="textColorPrimary">#000000</color>
+    <color name="textColorSecondary">#727272</color>
+
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="accent">#ffffff</color>
+    <color name="fragment_bg">#e5e5e5</color>
+
+    <color name="desired_color">#ff0000</color>
+
+
+    <color name="tab_icon_and_text_selector_color">@android:color/white</color><!--default - ?android:textColorSecondary-->
+
+</resources>

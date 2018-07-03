@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/nav_group_header"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/drawer_icon_home"
+            android:title="@string/drawer_item_home"/>
+        <item
+            android:id="@+id/nav_marker"
+            android:icon="@drawable/drawer_icon_marker"
+            android:title="@string/drawer_item_wine_tour" />
+        <item
+            android:id="@+id/nav_alkcokitchen"
+            android:icon="@drawable/drawer_icon_alkcokitchen"
+            android:title="@string/drawer_item_alco_kitchen" />
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/drawer_icon_favorite"
+            android:title="@string/drawer_item_favorite_varieties" />
+    </group>
+
+    <item android:title="@string/drawer_item_section_header_security">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_formuvannya"
+                    android:icon="@drawable/drawer_icon_structure"
+                    android:title="@string/drawer_item_structure_formation" />
+                <item
+                    android:id="@+id/nav_rozmnogennya"
+                    android:icon="@drawable/drawer_icon_rozmnogennya"
+                    android:title="@string/drawer_item_reproduction" />
+                <item
+                    android:id="@+id/nav_bug"
+                    android:icon="@drawable/drawer_icon_bug"
+                    android:title="@string/drawer_item_diseases_pests" />
+                <item
+                    android:id="@+id/nav_filter"
+                    android:icon="@drawable/drawer_icon_filter"
+                    android:title="@string/drawer_item_speсifications" />
+                <item
+                    android:id="@+id/nav_sun"
+                    android:icon="@drawable/drawer_icon_sun"
+                    android:title="@string/drawer_item_temperature" />
+                <item
+                    android:id="@+id/nav_thermometer"
+                    android:icon="@drawable/drawer_icon_thermometer"
+                    android:title="@string/drawer_item_summ_temperature" />
+                <item
+                    android:id="@+id/nav_security"
+                    android:icon="@drawable/drawer_icon_security"
+                    android:title="@string/drawer_item_preparaty" />
+                <item
+                    android:id="@+id/nav_calendar"
+                    android:icon="@drawable/drawer_icon_calendar"
+                    android:title="@string/drawer_item_calendar" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/drawer_item_section_header_about">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_star"
+                    android:icon="@drawable/drawer_icon_star"
+                    android:title="@string/drawer_item_rating" />
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/drawer_icon_share"
+                    android:title="@string/drawer_item_share" />
+                <item
+                    android:id="@+id/nav_email"
+                    android:icon="@drawable/drawer_icon_email"
+                    android:title="@string/drawer_item_communication" />
+                <item
+                    android:id="@+id/nav_copyright"
+                    android:icon="@drawable/drawer_icon_copyright"
+                    android:title="@string/drawer_item_licence" />
+            </group>
+        </menu>
+    </item>
+
+    <group
+        android:id="@+id/nav_group_theme"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_theme"
+            android:icon="@drawable/drawer_icon_theme"
+            android:title="@string/drawer_item_change_theme"/>
+    </group>
+
+</menu>

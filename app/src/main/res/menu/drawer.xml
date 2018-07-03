@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/material_tabs"
+        android:title="Material"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/living_tabs"
+        android:title="Living"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/theme"
+        android:title="Toggle night/day"
+        app:showAsAction="always"
+        android:icon="@drawable/theme_light_dark"/>
+</menu>

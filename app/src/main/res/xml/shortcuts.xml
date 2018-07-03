@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/shortcut_icon_hvoroby"
+        android:shortcutId="hvoroby"
+        android:shortcutLongLabel="@string/shortcut_long_label_hvoroby"
+        android:shortcutShortLabel="@string/shortcut_short_label_hvoroby">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.LivingActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/shortcut_icon_formuvannya"
+        android:shortcutId="formuvannya"
+        android:shortcutLongLabel="@string/shortcut_long_label_formuvannya"
+        android:shortcutShortLabel="@string/shortcut_short_label_formuvannya">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.LivingActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/shortcut_icon_calendar"
+        android:shortcutId="calendar"
+        android:shortcutLongLabel="@string/shortcut_long_label_calendar"
+        android:shortcutShortLabel="@string/shortcut_short_label_calendar">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.LivingActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/shortcut_icon_maps"
+        android:shortcutId="maps"
+        android:shortcutLongLabel="@string/shortcut_long_label_maps"
+        android:shortcutShortLabel="@string/shortcut_short_label_maps">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.LivingActivity"
+            android:targetPackage="com.andrukhiv.mynavigationdrawer" />
+    </shortcut>
+
+</shortcuts>
