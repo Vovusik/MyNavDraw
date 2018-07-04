@@ -17,14 +17,14 @@ import java.util.List;
 
 public class AllGrapesFragment extends Fragment {
 
-public AllGrapesFragment() {
+    public AllGrapesFragment() {
         // Required empty public constructor
-        }
+    }
 
-@Override
-public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,11 +35,10 @@ public void onCreate(Bundle savedInstanceState) {
         imageView.setImageResource(R.drawable.tab_icon_home_true);
 
 
-
         TextView textView = (TextView) rootView.findViewById(R.id.tab);
         textView.setText("перелік усіх сортів винограду");
 
         return rootView;
     }
 
-        }
+}

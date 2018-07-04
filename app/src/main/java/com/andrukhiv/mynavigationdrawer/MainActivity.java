@@ -41,31 +41,18 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout mDrawer;
     private FloatingActionButton mFab;
     private Toolbar mToolbar;
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
-
-    private int[] mTabIcons = {
-            R.drawable.tab_selector_home,
-            R.drawable.tab_selector_table,
-            R.drawable.tab_selector_seedless,
-            R.drawable.tab_selector_wine
-    };
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Запуск SplashScreen
+        setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-
-        mViewPager = findViewById(R.id.viewpager);
-        setupViewPager(mViewPager);
-
-        mTabLayout = findViewById(R.id.tablayout);
-        mTabLayout.setupWithViewPager(mViewPager);
-        setupTabIcons();
 
 
         mDrawer = findViewById(R.id.drawer_layout);
@@ -77,6 +64,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        setUi();
 
         mFab = findViewById(R.id.fab);
         mFab.setOnClickListener(new View.OnClickListener() {
@@ -103,21 +91,37 @@ public class MainActivity extends AppCompatActivity
         RateThisApp.showRateDialogIfNeeded(this, R.style.MyAlertDialogStyle);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AllGrapesFragment(), "Усі сорти"); // todo *** не знаю як забити у стрінги
-        adapter.addFragment(new TableGrapesFragment(), "Столові");
-        adapter.addFragment(new SeedlessGrapesFragment(), "Киш миш");
-        adapter.addFragment(new WineGrapesFragment(), "Технічні");
-        viewPager.setAdapter(adapter);
-    }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void setupTabIcons() {
-        Objects.requireNonNull(mTabLayout.getTabAt(0)).setIcon(mTabIcons[0]);
-        mTabLayout.getTabAt(1).setIcon(mTabIcons[1]);
-        mTabLayout.getTabAt(2).setIcon(mTabIcons[2]);
-        mTabLayout.getTabAt(3).setIcon(mTabIcons[3]);
+    public void setUi() {
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_item_home).setIcon(R.drawable.tab_selector_home));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_item_table).setIcon(R.drawable.tab_selector_table));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_item_seedless).setIcon(R.drawable.tab_selector_seedless));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_item_wine).setIcon(R.drawable.tab_selector_wine));
+
+        final ViewPager viewPager = findViewById(R.id.tabViewpager);
+        MainPagerAdapter tabAdapter = new MainPagerAdapter(getSupportFragmentManager(), 4);
+
+        viewPager.setAdapter(tabAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -128,31 +132,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent();
-
-        if (item.getItemId() == R.id.material_tabs) {
-            intent.setClass(this, MainActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.living_tabs) {
-            intent.setClass(this, LivingActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.theme) {
-            int uiMode = getResources().getConfiguration().uiMode;
-            int dayNightUiMode = uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
-            switch (dayNightUiMode) {
-                case Configuration.UI_MODE_NIGHT_NO: {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    recreate();
-                    return true;
-                }
-                case Configuration.UI_MODE_NIGHT_YES: {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    recreate();
-                    return true;
-                }
-            }
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -182,7 +161,7 @@ public class MainActivity extends AppCompatActivity
 //                startActivity(intent);
                 break;
 
-            case R.id.nav_star:
+            case R.id.nav_theme:
 
                 break;
         }

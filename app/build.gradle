@@ -33,11 +33,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // Бібіліотека підтримки "живих іконок" в TabLayout
-    implementation ('com.github.saiff35:livingtabs:0.1.0') {
-        exclude module: 'design'
-    }
-
     // Бібліотека підтримки появи діалогового вікна «Оцінити цей додаток» - RateThisApp - 3
     implementation 'io.github.kobakei:ratethisapp:1.2.0'
 

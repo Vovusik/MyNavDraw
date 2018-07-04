@@ -34,9 +34,9 @@
 
     <!--Найменування табів-->
     <string name="tab_item_home">Усі сорти</string>
-    <string name="tab_item_stolovi">Столові</string>
-    <string name="tab_item_kish_mish">Киш миш</string>
-    <string name="tab_item_tehnichni">Технічні</string>
+    <string name="tab_item_table">Столові</string>
+    <string name="tab_item_seedless">Киш миш</string>
+    <string name="tab_item_wine">Технічні</string>
 
 
 
