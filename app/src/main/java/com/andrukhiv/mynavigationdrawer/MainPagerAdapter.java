@@ -3,15 +3,11 @@ package com.andrukhiv.mynavigationdrawer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.andrukhiv.mynavigationdrawer.TabFragments.AllGrapesFragment;
 import com.andrukhiv.mynavigationdrawer.TabFragments.SeedlessGrapesFragment;
 import com.andrukhiv.mynavigationdrawer.TabFragments.TableGrapesFragment;
 import com.andrukhiv.mynavigationdrawer.TabFragments.WineGrapesFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
@@ -35,7 +31,6 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
                 return new WineGrapesFragment();
             default:
                 return null;
-
         }
     }
 

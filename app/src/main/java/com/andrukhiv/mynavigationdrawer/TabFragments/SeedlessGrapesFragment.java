@@ -27,10 +27,10 @@ public class SeedlessGrapesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
 
-        ImageView imageView = (ImageView) rootView.findViewById(R.id.image);
+        ImageView imageView = rootView.findViewById(R.id.image);
         imageView.setImageResource(R.drawable.tab_icon_seedless_true);
 
-        TextView textView = (TextView) rootView.findViewById(R.id.tab);
+        TextView textView = rootView.findViewById(R.id.tab);
         textView.setText("перелік киш-мишних сортів винограду");
 
         return rootView;

@@ -28,5 +28,9 @@
     <color name="tab_not_pressed">#00ffffff</color>
 
 
+    <!--Колір прозорості заднього фону в DetailActivity при застосуванні ElasticDragDismissLayout -  -->
+    <color name="scrim">#66323232</color>
+
+
 
 </resources>

@@ -1,9 +1,8 @@
 package com.andrukhiv.mynavigationdrawer;
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -12,7 +11,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,28 +21,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.andrukhiv.mynavigationdrawer.TabFragments.AllGrapesFragment;
-import com.andrukhiv.mynavigationdrawer.TabFragments.SeedlessGrapesFragment;
-import com.andrukhiv.mynavigationdrawer.TabFragments.TableGrapesFragment;
-import com.andrukhiv.mynavigationdrawer.TabFragments.WineGrapesFragment;
-
 import com.kobakei.ratethisapp.RateThisApp;
 
-import java.util.Objects;
+import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private final static String APP_PACKAGE_NAME = "com.eajy.materialdesigndemo";
-
     private DrawerLayout mDrawer;
     private FloatingActionButton mFab;
     private Toolbar mToolbar;
+    private Intent intent;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         // Запуск SplashScreen
         setTheme(R.style.AppTheme);
 
@@ -64,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        setUi();
+        setTab();
 
         mFab = findViewById(R.id.fab);
         mFab.setOnClickListener(new View.OnClickListener() {
@@ -76,23 +69,23 @@ public class MainActivity extends AppCompatActivity
         });
 
         // todo - діалогове вікно «Оцінити цей додаток» - не слухається
-        //AppRating.app_launched(this);
+        AppRating.app_launched(this);
 
 
         // Підключення бібліотеки появи діалогового вікна «Оцінити цей додаток» - RateThisApp
 
         // Отслеживать время запуска и интервал от установки
-        RateThisApp.onCreate(this);
-        RateThisApp.Config config = new RateThisApp.Config();
-        // Вказання  URL на сторінку програми в Google Play
-        config.setUrl("market://details?id=" + APP_PACKAGE_NAME);
-        RateThisApp.init(config);
-        // Если условие выполнено, будет показано диалоговое окно «Оценить это приложение»
-        RateThisApp.showRateDialogIfNeeded(this, R.style.MyAlertDialogStyle);
+//        RateThisApp.onCreate(this);
+//        RateThisApp.Config config = new RateThisApp.Config();
+//        // Вказання  URL на сторінку програми в Google Play
+//        config.setUrl("market://details?id=" + APP_PACKAGE_NAME);
+//        RateThisApp.init(config);
+//        // Если условие выполнено, будет показано диалоговое окно «Оценить это приложение»
+//        RateThisApp.showRateDialogIfNeeded(this, R.style.MyAlertDialogStyle);
     }
 
 
-    public void setUi() {
+    public void setTab() {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_item_home).setIcon(R.drawable.tab_selector_home));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_item_table).setIcon(R.drawable.tab_selector_table));
@@ -112,16 +105,12 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
-
-
     }
 
     @Override
@@ -138,30 +127,24 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Intent intent = new Intent();
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-//                intent.setClass(this, LivingActivity.class);
-//                startActivity(intent);
+                break;
+
+            case R.id.nav_star:
+                rate();
+                break;
+
+            case R.id.nav_share:
+                share();
                 break;
 
             case R.id.nav_email:
-//                intent.setClass(this, ScrollingActivity.class);
-//                startActivity(intent);
+                email();
                 break;
 
-            case R.id.nav_sun:
-//                intent.setClass(this, BottomNavigationActivity.class);
-//                startActivity(intent);
-                break;
-
-            case R.id.nav_rozmnogennya:
-//                intent.setClass(this, SettingsActivity.class);
-//                startActivity(intent);
-                break;
-
-            case R.id.nav_theme:
+            case R.id.nav_settings:
 
                 break;
         }
@@ -170,11 +153,42 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void rate() {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=" + APP_PACKAGE_NAME)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=" + "com.eajy.materialdesigndemo" + "&hl")));
+        }
+    }
+
+    public void share() {
+        intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, Constant.SHARE_CONTENT);
+        intent.setType("text/plain");
+        startActivity(intent);
+    }
+
+    public void email() {
+        String to = Constant.EMAIL;// Адресат повідомлення
+        String subject = getString(R.string.message_subject); // Тема повідомлення
+        String body = getString(R.string.message_text); // Текст повідомлення
+
+        intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+        String[] toArr = new String[]{to};
+        intent.putExtra(Intent.EXTRA_EMAIL, toArr);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed() {
         // Поява діалогового вікна для підтвердження виходу з додатку
         new AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
-                .setIcon(R.drawable.dialog_icon_logo)
+                //.setIcon(R.drawable.dialog_icon_logo)
                 //.setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Ви хочете вийти ?")
                 .setMessage("Ви впевнені, що хочете вийти з цього додатку ?")
@@ -186,12 +200,5 @@ public class MainActivity extends AppCompatActivity
                 })
                 .setNegativeButton("Ні", null)
                 .show();
-
-//        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-//            mDrawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-
     }
 }

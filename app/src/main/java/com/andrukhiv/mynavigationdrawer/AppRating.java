@@ -17,8 +17,8 @@ public class AppRating {
 
     //	Инициализировано до 0 и 3 только для целей тестирования.
     //  В реальном приложении это изменение
-    private final static int DAYS_UNTIL_PROMPT = 7;
-    private final static int LAUNCH_UNTIL_PROMPT = 10;
+    private final static int DAYS_UNTIL_PROMPT = 3;
+    private final static int LAUNCH_UNTIL_PROMPT = 3;
 
     public static void app_launched(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("rate_app", 0);
@@ -59,7 +59,7 @@ public class AppRating {
 
         builder.setMessage(message)
                 .setTitle("Оцінити додаток " + APP_TITLE)
-                 .setIcon(R.drawable.dialog_icon_logo)
+                 //.setIcon(R.drawable.dialog_icon_logo)
                 //.setIcon(context.getApplicationInfo().icon)
                 .setCancelable(false)
                 .setPositiveButton("Оцінити зараз", new DialogInterface.OnClickListener() {

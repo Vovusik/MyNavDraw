@@ -9,7 +9,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/drawer_icon_home"
-            android:title="@string/drawer_item_home"/>
+            android:title="@string/drawer_item_home" />
         <item
             android:id="@+id/nav_marker"
             android:icon="@drawable/drawer_icon_marker"
@@ -18,6 +18,14 @@
             android:id="@+id/nav_alkcokitchen"
             android:icon="@drawable/drawer_icon_alkcokitchen"
             android:title="@string/drawer_item_alco_kitchen" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/drawer_icon_gallery"
+            android:title="@string/drawer_item_gallery" />
+        <item
+            android:id="@+id/nav_library"
+            android:icon="@drawable/drawer_icon_library"
+            android:title="@string/drawer_item_library" />
         <item
             android:id="@+id/nav_favorite"
             android:icon="@drawable/drawer_icon_favorite"
@@ -63,7 +71,7 @@
         </menu>
     </item>
 
-    <item android:title="@string/drawer_item_section_header_about">
+    <item android:title="@string/drawer_item_call_in_call">
         <menu>
             <group android:checkableBehavior="none">
                 <item
@@ -78,10 +86,6 @@
                     android:id="@+id/nav_email"
                     android:icon="@drawable/drawer_icon_email"
                     android:title="@string/drawer_item_communication" />
-                <item
-                    android:id="@+id/nav_copyright"
-                    android:icon="@drawable/drawer_icon_copyright"
-                    android:title="@string/drawer_item_licence" />
             </group>
         </menu>
     </item>
@@ -90,9 +94,9 @@
         android:id="@+id/nav_group_theme"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/nav_theme"
-            android:icon="@drawable/drawer_icon_theme"
-            android:title="@string/drawer_item_change_theme"/>
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/drawer_icon_settings"
+            android:title="@string/drawer_item_settings" />
     </group>
 
 </menu>

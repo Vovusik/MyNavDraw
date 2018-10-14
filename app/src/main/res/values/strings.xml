@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My NawDraw</string>
+    <string name="app_name">Sommelier</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -20,7 +20,6 @@
     <string name="drawer_item_summ_temperature">Сума активних температур</string>
     <string name="drawer_item_preparaty">Засоби захисту</string>
     <string name="drawer_item_miscellaneous">Різне</string>
-    <string name="drawer_item_change_theme">Змінити тему</string>
     <string name="drawer_item_rating">Оцінити в Google Play</string>
     <string name="drawer_item_share">Поширити застосунок</string>
     <string name="drawer_item_communication">Написати листа</string>
@@ -28,8 +27,13 @@
     <string name="drawer_item_settings">Налаштування</string>
     <string name="drawer_item_about">Про застосунок</string>
     <string name="drawer_item_section_header_security">Догляд і захист</string>
+    <string name="drawer_item_call_in_call">Зворотній зв’язок</string>
+
+
+
     <string name="drawer_item_section_header_about">Про застосунок</string>
     <string name="drawer_item_licence">Ліцензії відкритого коду</string>
+    <string name="drawer_item_change_theme">Змінити тему</string>
 
 
     <!--Найменування табів-->
@@ -48,6 +52,12 @@
     <string name="shortcut_short_label_calendar">Календар</string>
     <string name="shortcut_long_label_maps">Винний тур</string>
     <string name="shortcut_short_label_maps">Винний тур</string>
+
+
+    <string name="message_subject">Стосовно додатку GRAPES.</string>
+    <string name="message_text">Привіт,</string>
+
+
 
 
 </resources>
