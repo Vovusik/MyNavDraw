@@ -21,11 +21,10 @@
         android:background="@color/rowBackground">
 
         <ImageView
-            android:id="@+id/info_image"
+            android:id="@+id/photo_small"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/agat_donskoy" />
+            android:scaleType="centerCrop"/>
 
         <View
             android:layout_width="match_parent"
@@ -35,17 +34,33 @@
             android:layout_gravity="bottom"
             android:background="@drawable/scrim_bottom" />
 
-        <TextView
-            android:id="@+id/info_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:padding="16dp"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            tools:text="Агат донской" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:padding="16dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                tools:text="Агат донской" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/textView"-->
+            <!--android:layout_marginTop="10dp" />-->
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
+
+

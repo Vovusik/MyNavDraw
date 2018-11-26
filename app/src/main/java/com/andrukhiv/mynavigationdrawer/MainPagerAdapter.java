@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.andrukhiv.mynavigationdrawer.TabFragments.AllGrapesFragment;
-import com.andrukhiv.mynavigationdrawer.TabFragments.SeedlessGrapesFragment;
-import com.andrukhiv.mynavigationdrawer.TabFragments.TableGrapesFragment;
-import com.andrukhiv.mynavigationdrawer.TabFragments.WineGrapesFragment;
+import com.andrukhiv.mynavigationdrawer.tabs.AllGrapesFragment;
+import com.andrukhiv.mynavigationdrawer.tabs.SeedlessGrapesFragment;
+import com.andrukhiv.mynavigationdrawer.tabs.TableGrapesFragment;
+import com.andrukhiv.mynavigationdrawer.tabs.WineGrapesFragment;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
 

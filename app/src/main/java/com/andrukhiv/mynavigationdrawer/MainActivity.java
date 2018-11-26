@@ -1,8 +1,11 @@
 package com.andrukhiv.mynavigationdrawer;
 
+import android.annotation.SuppressLint;
+import android.app.MediaRouteButton;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -20,10 +23,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
-import com.kobakei.ratethisapp.RateThisApp;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
+import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_ANDROID;
+import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_WEB;
 
 
 public class MainActivity extends AppCompatActivity
@@ -33,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     private FloatingActionButton mFab;
     private Toolbar mToolbar;
     private Intent intent;
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -46,7 +55,6 @@ public class MainActivity extends AppCompatActivity
 
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-
 
         mDrawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,7 +78,6 @@ public class MainActivity extends AppCompatActivity
 
         // todo - діалогове вікно «Оцінити цей додаток» - не слухається
         AppRating.app_launched(this);
-
 
         // Підключення бібліотеки появи діалогового вікна «Оцінити цей додаток» - RateThisApp
 
@@ -113,16 +120,19 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.drawer, menu);
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -153,15 +163,17 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
     public void rate() {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=" + APP_PACKAGE_NAME)));
+                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
         } catch (android.content.ActivityNotFoundException anfe) {
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=" + "com.eajy.materialdesigndemo" + "&hl")));
+                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
         }
     }
+
 
     public void share() {
         intent = new Intent(Intent.ACTION_SEND);
@@ -169,6 +181,7 @@ public class MainActivity extends AppCompatActivity
         intent.setType("text/plain");
         startActivity(intent);
     }
+
 
     public void email() {
         String to = Constant.EMAIL;// Адресат повідомлення
@@ -183,6 +196,7 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra(Intent.EXTRA_TEXT, body);
         startActivity(intent);
     }
+
 
     @Override
     public void onBackPressed() {

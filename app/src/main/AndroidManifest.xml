@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.andrukhiv.mynavigationdrawer">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -27,13 +29,12 @@
 
         </activity>
 
-        <activity android:name=".DetailActivity"
+        <activity android:name=".VarietiesDetailsActivity"
             android:theme="@style/DetailTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-
 
     </application>
 

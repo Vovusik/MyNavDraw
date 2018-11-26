@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer.TabFragments;
+package com.andrukhiv.mynavigationdrawer.tabs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
