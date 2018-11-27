@@ -61,7 +61,7 @@ public class TableGrapesFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), numColumns);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        grapes = mDbHelper.getTableGrapes();
+        grapes = mDbHelper.getGrapes();
 
         // Передати масиви адаптера.
         mAdapter = new RecyclerViewAdapter(grapes);

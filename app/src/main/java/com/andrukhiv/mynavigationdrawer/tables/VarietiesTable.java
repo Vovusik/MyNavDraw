@@ -10,5 +10,6 @@ public class VarietiesTable {
     public static final String VARIETIES_COLUMN_PHOTO_LARGE = "photo_large";
     public static final String VARIETIES_COLUMN_LINK = "link";
     public static final String VARIETIES_COLUMN_FAVORITE = "favorite";
+    // todo Не розумію чому воно працює ??????
     public static final String VARIETIES_COLUMN_SORTY = "favorite";
 }

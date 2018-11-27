@@ -24,7 +24,7 @@ public class VarietiesModel implements Serializable {
         this.photoLarge = photoLarge;
         this.link = link;
         this.favorite = favorite;
-        this.favorite = sorty;
+        this.sorty = sorty;
     }
 
     private long id;
