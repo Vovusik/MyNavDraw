@@ -47,15 +47,4 @@
 
     </FrameLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:tint="@android:color/white"
-        app:srcCompat="@drawable/drawer_icon_share"
-        app:layout_scrollFlags="scroll|enterAlways"
-        tools:ignore="VectorDrawableCompat" />
-
 </android.support.design.widget.CoordinatorLayout>

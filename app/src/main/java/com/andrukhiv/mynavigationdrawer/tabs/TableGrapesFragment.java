@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.andrukhiv.mynavigationdrawer.R;
@@ -51,7 +52,6 @@ public class TableGrapesFragment extends Fragment {
         View view;
         view = inflater.inflate(R.layout.fragment_tabs, container, false);
 
-
         mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
 
         // Щоб картки відображалися в табличному виді, використовуємо об'єкт GridLayoutManager.
@@ -73,8 +73,7 @@ public class TableGrapesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((RecyclerViewAdapter) mAdapter).setOnItemClickListener(new RecyclerViewAdapter
-                .MyClickListener() {
+        ((RecyclerViewAdapter) mAdapter).setOnItemClickListener(new RecyclerViewAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(TAG, " Clicked on Item " + grapes.get(position));
@@ -84,6 +83,8 @@ public class TableGrapesFragment extends Fragment {
             }
         });
     }
+
+    
 }
 //
 //

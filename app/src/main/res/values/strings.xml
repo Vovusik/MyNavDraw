@@ -58,6 +58,32 @@
     <string name="message_text">Привіт,</string>
 
 
-
+    <!--Найменування табів AlcoKitchen-->
+    <string name="tab_kitchen_vermut">Вермут</string>
+    <string name="tab_kitchen_wine">Вино</string>
+    <string name="tab_kitchen_wine_white">Вино Біле</string>
+    <string name="tab_kitchen_kagor">Вино Кагор</string>
+    <string name="tab_kitchen_wine_suhe">Вино Сухе</string>
+    <string name="tab_kitchen_izabella">Вино Ізабелла</string>
+    <string name="tab_kitchen_glintvein">Глінтвейн</string>
+    <string name="tab_kitchen_grappa">Граппа</string>
+    <string name="tab_kitchen_kizlyarka">Кізлярка</string>
+    <string name="tab_kitchen_konyak">Коньяк</string>
+    <string name="tab_kitchen_liker">Лікер</string>
+    <string name="tab_kitchen_martini">Мартіні</string>
+    <string name="tab_kitchen_oruho">Орухо</string>
+    <string name="tab_kitchen_pisko">Піско</string>
+    <string name="tab_kitchen_portvein">Портвейн</string>
+    <string name="tab_kitchen_sangriya">Сангрія</string>
+    <string name="tab_kitchen_juice">Сік</string>
+    <string name="tab_kitchen_chacha">Чача</string>
+    <string name="tab_kitchen_shampanske">Шампанське</string>
+    <string name="tab_kitchen_izum">Ізюм</string>
+    <string name="tab_kitchen_churchhela">Чурчхела</string>
+    <string name="tab_kitchen_otset">Оцет</string>
+    <string name="tab_kitchen_bochka">Бочка</string>
+    <string name="tab_kitchen_kislotnist">Кислотність</string>
+    <string name="tab_kitchen_osvitlennya">Освітлення</string>
+    <string name="tab_kitchen_girkota">Гіркота</string>
 
 </resources>

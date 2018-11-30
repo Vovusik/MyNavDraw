@@ -67,15 +67,6 @@ public class MainActivity extends AppCompatActivity
 
         setTab();
 
-        mFab = findViewById(R.id.fab);
-        mFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         // todo - діалогове вікно «Оцінити цей додаток» - не слухається
         AppRating.app_launched(this);
 
@@ -122,13 +113,6 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.drawer, menu);
-        return true;
-    }
-
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
@@ -140,6 +124,12 @@ public class MainActivity extends AppCompatActivity
 
         switch (item.getItemId()) {
             case R.id.nav_home:
+                break;
+
+            case R.id.nav_alkcokitchen:
+//                Intent intent;
+//                intent = new Intent(MainActivity.this, KitchenActivity.class);
+//                startActivity(intent);
                 break;
 
             case R.id.nav_star:

@@ -1,12 +1,9 @@
 package com.andrukhiv.mynavigationdrawer.database;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.File;
@@ -19,7 +16,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static String TAG = "DbHelper"; // Тег только для окна LogCat
     private static String DB_PATH = ""; //путь назначения (местоположения) нашей базы данных на устройстве
-    private static String DB_NAME = "data.db";// Название базы данных
+    private static String DB_NAME = "grapes.db";// Название базы данных
     private static final int DB_VERSION = 1;// Версия базы данных
     private SQLiteDatabase mDataBase;
     private final Context mContext;

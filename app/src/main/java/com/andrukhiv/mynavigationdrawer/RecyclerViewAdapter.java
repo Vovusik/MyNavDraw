@@ -7,6 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,25 +23,35 @@ import com.bumptech.glide.request.transition.ViewPropertyTransition;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter
-        extends RecyclerView.Adapter<RecyclerViewAdapter.DataObjectHolder> {
+        extends RecyclerView.Adapter<RecyclerViewAdapter.DataObjectHolder> implements Filterable {
 
     private static String LOG_TAG = "RecyclerViewAdapter";
-    private ArrayList<VarietiesModel> mDataset;
     private static MyClickListener myClickListener;
     private Context context;
+    private CustomFilter filter;
+    protected ArrayList<VarietiesModel> mDataset, filterList;
 
 
     public RecyclerViewAdapter(ArrayList<VarietiesModel> myDataset) {
         mDataset = myDataset;
+        filterList = myDataset;
+    }
+
+    // Повернення відфільтрованих об.
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new CustomFilter(filterList, this);
+        }
+        return filter;
     }
 
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View
-            .OnClickListener {
+            implements View.OnClickListener {
+
         TextView textName;
         ImageView photoSmall;
-
 
         public DataObjectHolder(View itemView) {
             super(itemView);
@@ -46,7 +60,6 @@ public class RecyclerViewAdapter
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
-
 
         @Override
         public void onClick(View v) {
@@ -74,12 +87,16 @@ public class RecyclerViewAdapter
                 .thumbnail(0.5f)// зменшив розмір попередного перегляду фото у 2 рази
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(holder.photoSmall);
+
+        // Анімація при завантаженні CardView
+        Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+        holder.itemView.startAnimation(animation);
     }
 
 
     @Override
-    public DataObjectHolder onCreateViewHolder(ViewGroup parent,
-                                               int viewType) {
+    public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_card, parent, false);
 
@@ -113,7 +130,7 @@ public class RecyclerViewAdapter
     }
 
 
-    // Анімація завантаження картинки
+    // Анімація завантаження картинки Glide
     public ViewPropertyTransition.Animator animationObject = new ViewPropertyTransition.Animator() {
         @Override
         public void animate(View view) {

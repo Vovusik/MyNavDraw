@@ -1,13 +1,32 @@
 package com.andrukhiv.mynavigationdrawer.tabs;
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import java.util.ArrayList;
+import android.support.v7.widget.SearchView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +39,20 @@ import com.andrukhiv.mynavigationdrawer.R;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import java.util.ArrayList;
+import android.support.v7.widget.SearchView;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 public class AllGrapesFragment extends Fragment {
 
     // Требуемый пустой публичный конструктор
@@ -29,9 +62,9 @@ public class AllGrapesFragment extends Fragment {
     DbAdapter mDbHelper;
 
     protected static final String TAG = "AllGrapesFragment";
-
+    // FIXME:
     RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerViewAdapter mAdapter;
     private ArrayList<VarietiesModel> grapes;
 
 
@@ -47,7 +80,7 @@ public class AllGrapesFragment extends Fragment {
 
         View view;
         view = inflater.inflate(R.layout.fragment_tabs, container, false);
-
+        setHasOptionsMenu(true);
         mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
 
         // Щоб картки відображалися в табличному виді, використовуємо об'єкт GridLayoutManager.
@@ -57,6 +90,7 @@ public class AllGrapesFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), numColumns);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         grapes = mDbHelper.getGrapes();
 
         // Передати масиви адаптера.
@@ -79,5 +113,40 @@ public class AllGrapesFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu, menu);
+
+        final MenuItem item = menu.findItem(R.id.action_search);
+
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String query) {
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+        });
+
+
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchViewAction = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+
+//        ImageView searchCloseIcon = searchViewAction.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+//        searchCloseIcon.setImageResource(R.drawable.drawer_icon_bug);
+
+        super.onPrepareOptionsMenu(menu);
     }
 }

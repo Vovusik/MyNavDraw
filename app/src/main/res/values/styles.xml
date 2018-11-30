@@ -77,4 +77,15 @@
         <item name="android:background">@color/windowBackground</item>
     </style>
 
+    <!--Стиль для тексту TextView-->
+    <style name="TextViewScroll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
 </resources>

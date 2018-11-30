@@ -7,7 +7,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+import com.andrukhiv.mynavigationdrawer.tables.KitchenTable;
 import com.andrukhiv.mynavigationdrawer.tables.VarietiesTable;
 
 import java.io.IOException;
@@ -19,6 +21,11 @@ public class DbAdapter {
 
     private SQLiteDatabase mDb;
     private DbHelper mDbHelper;
+
+    public static final int MODE_ALL = 0;
+    public static final int MODE_TABLE = 1;
+    public static final int MODE_WINE = 2;
+    public static final int MIN_SEEDLESS = 3;
 
     @SuppressLint("StaticFieldLeak")
     private static DbAdapter sInstance;
@@ -37,7 +44,7 @@ public class DbAdapter {
     }
 
 
-    private DbAdapter(Context context) {
+    public DbAdapter(Context context) {
         Context mContext = context;
         mDbHelper = new DbHelper(mContext);
     }
@@ -75,7 +82,7 @@ public class DbAdapter {
     public ArrayList<VarietiesModel> getGrapes() {
 
         ArrayList<VarietiesModel> result = new ArrayList<>();
-        String sql = "SELECT * FROM \"varieties\"";
+        String sql = "SELECT * FROM " + VarietiesTable.VARIETIES_TABLE;
         Cursor cursor = mDb.rawQuery(sql, null);
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
@@ -95,42 +102,55 @@ public class DbAdapter {
         return result;
     }
 
-//    //todo Як передати колонку "sorty" зі значенням "1" у TableGrapesFragment ????
-//    public ArrayList<VarietiesModel> getTableGrapes() {
-//
-//        ArrayList<VarietiesModel> result = new ArrayList<>();
-//        String sql2 = "SELECT * FROM \"varieties\"";
-//        Cursor cursor = mDb.query(sql2, new String[]{
-//                        "_ID",
-//                        "NAME",
-//                        "DESCRIPTION",
-//                        "PHOTO_SMALL",
-//                        "PHOTO_LARGE",
-//                        "COLUMN_LINK",
-//                        "COLUMN_FAVORITE",
-//                        "COLUMN_SORTY"},
-//                "sorty = ?", // повертаю колонку "sorty" зі значенням "1"
-//                new String[]{Integer.toString(1)},
-//                null,
-//                null,
-//                null);
-//        if (cursor != null && cursor.getCount() > 0) {
-//            while (cursor.moveToNext()) {
-//                result.add(new VarietiesModel(
-//                        cursor.getLong(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_ID)),
-//                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_NAME)),
-//                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_DESCRIPTION)),
-//                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_PHOTO_SMALL)),
-//                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_PHOTO_LARGE)),
-//                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_LINK)),
-//                        cursor.getInt(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_FAVORITE)),
-//                        cursor.getInt(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_SORTY))
-//                ));
-//            }
-//            cursor.close();
-//        }
-//        return result;
-//    }
+
+    public ArrayList<KitchenModel> getKitchen() {
+
+        ArrayList<KitchenModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM \"kitchen\"";
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new KitchenModel(
+                        cursor.getLong(cursor.getColumnIndex(KitchenTable.COLUMN_KITCHEN_ID)),
+                        cursor.getString(cursor.getColumnIndex(KitchenTable.COLUMN_KITCHEN_DESCRIPTION))
+                ));
+            }
+        }
+        cursor.close();
+        return result;
+    }
 
 
+    //todo TableGrapesFragment
+    public ArrayList<VarietiesModel> getTableGrapes() {
+        ArrayList<VarietiesModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM \"varieties\"";
+        Cursor cursor = mDb.query(sql, new String[]{"_id",
+                        "NAME",
+                        "DESCRIPTION",
+                        "PHOTO_SMALL",
+                        "PHOTO_LARGE",
+                        "LINK",
+                        "FAVORITE",
+                        "SORTY"},
+                "SORTY = ?", // повертаю колонку "sorty" зі значенням "1"
+                new String[]{Integer.toString(1)},
+                null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new VarietiesModel(
+                        cursor.getLong(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_PHOTO_SMALL)),
+                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_PHOTO_LARGE)),
+                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_LINK)),
+                        cursor.getInt(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_FAVORITE)),
+                        cursor.getInt(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_SORTY))
+                ));
+            }
+            cursor.close();
+        }
+        return result;
+    }
 }
