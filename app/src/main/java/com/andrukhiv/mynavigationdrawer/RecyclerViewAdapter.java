@@ -13,6 +13,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
 import com.bumptech.glide.GenericTransitionOptions;

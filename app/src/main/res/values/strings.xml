@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Sommelier</string>
+    <string name="name_kitchen">Алкокухня</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -30,7 +31,6 @@
     <string name="drawer_item_call_in_call">Зворотній зв’язок</string>
 
 
-
     <string name="drawer_item_section_header_about">Про застосунок</string>
     <string name="drawer_item_licence">Ліцензії відкритого коду</string>
     <string name="drawer_item_change_theme">Змінити тему</string>
@@ -41,7 +41,6 @@
     <string name="tab_item_table">Столові</string>
     <string name="tab_item_seedless">Киш миш</string>
     <string name="tab_item_wine">Технічні</string>
-
 
 
     <string name="shortcut_long_label_hvoroby">Хвороби і шкідники</string>

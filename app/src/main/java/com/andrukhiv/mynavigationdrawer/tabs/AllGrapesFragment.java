@@ -35,6 +35,7 @@ import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
 import com.andrukhiv.mynavigationdrawer.VarietiesDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.R;
+import com.andrukhiv.mynavigationdrawer.tables.VarietiesTable;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -52,6 +53,7 @@ import java.util.ArrayList;
 import android.support.v7.widget.SearchView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class AllGrapesFragment extends Fragment {
 
@@ -62,7 +64,7 @@ public class AllGrapesFragment extends Fragment {
     DbAdapter mDbHelper;
 
     protected static final String TAG = "AllGrapesFragment";
-    // FIXME:
+
     RecyclerView mRecyclerView;
     private RecyclerViewAdapter mAdapter;
     private ArrayList<VarietiesModel> grapes;
@@ -134,7 +136,6 @@ public class AllGrapesFragment extends Fragment {
             }
         });
 
-
         super.onCreateOptionsMenu(menu,inflater);
     }
 
@@ -143,9 +144,6 @@ public class AllGrapesFragment extends Fragment {
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchViewAction = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
-
-//        ImageView searchCloseIcon = searchViewAction.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
-//        searchCloseIcon.setImageResource(R.drawable.drawer_icon_bug);
 
         super.onPrepareOptionsMenu(menu);
     }

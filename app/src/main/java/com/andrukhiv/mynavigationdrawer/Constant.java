@@ -21,6 +21,4 @@ public class Constant {
 //    Ссылка на страницу приложения
 //    http://play.google.com/store/apps/details?id=<package_name>
 
-    // Добавляємо константу EXTRA_GRAPES_ID
-    public static final String EXTRA_GRAPES_ID = "grapesId";
 }

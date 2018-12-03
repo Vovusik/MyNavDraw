@@ -127,9 +127,9 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_alkcokitchen:
-//                Intent intent;
-//                intent = new Intent(MainActivity.this, KitchenActivity.class);
-//                startActivity(intent);
+                Intent intent;
+                intent = new Intent(MainActivity.this, KitchenActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.nav_star:
