@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.database.DbHelper;
 import com.andrukhiv.mynavigationdrawer.tables.KitchenTable;
-import com.andrukhiv.mynavigationdrawer.tables.VarietiesTable;
 
 
 public class FragmentWineWhite extends Fragment {
@@ -30,14 +29,13 @@ public class FragmentWineWhite extends Fragment {
 
         try {
             SQLiteDatabase db = kitchenDatabaseHelper.getReadableDatabase();
-            Cursor cursor = db.query(VarietiesTable.VARIETIES_TABLE,
-                    new String[]{VarietiesTable.VARIETIES_COLUMN_NAME, VarietiesTable.VARIETIES_COLUMN_DESCRIPTION},
-                    "id = ?",
-                    new String[]{Integer.toString(1)},
+            Cursor cursor = db.query(KitchenTable.KITCHEN_TABLE,
+                    new String[]{KitchenTable.KITCHEN_COLUMN_NAME, KitchenTable.KITCHEN_COLUMN_DESCRIPTION},
+                    KitchenTable.KITCHEN_COLUMN_NAME + "= ?",
+                    new String[]{"Вино біле"},
                     null, null, null);
 
             if (cursor.moveToFirst()) {
-
                 String descriptionText = cursor.getString(1);
                 TextView description = rootView.findViewById(R.id.description);
                 description.setText(descriptionText);

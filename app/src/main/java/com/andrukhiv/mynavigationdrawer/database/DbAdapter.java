@@ -112,8 +112,8 @@ public class DbAdapter {
             while (cursor.moveToNext()) {
                 result.add(new KitchenModel(
                         cursor.getLong(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_ID)),
-                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_NAME)),
-                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_DESCRIPTION))
+                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_NAME))
                 ));
             }
         }

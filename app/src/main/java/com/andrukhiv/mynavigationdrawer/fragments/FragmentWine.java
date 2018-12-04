@@ -31,8 +31,8 @@ public class FragmentWine extends Fragment {
             SQLiteDatabase db = kitchenDatabaseHelper.getReadableDatabase();
             Cursor cursor = db.query(KitchenTable.KITCHEN_TABLE,
                     new String[]{KitchenTable.KITCHEN_COLUMN_NAME, KitchenTable.KITCHEN_COLUMN_DESCRIPTION},
-                    "id = ?",
-                    new String[]{Integer.toString(2)},
+                    KitchenTable.KITCHEN_COLUMN_NAME + "= ?",
+                    new String[]{"Вино"},
                     null, null, null);
 
             if (cursor.moveToFirst()) {

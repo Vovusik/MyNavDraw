@@ -30,8 +30,8 @@ task clean(type: Delete) {
 
 
 ext {
-    support_library_version = '27.1.1'
+    support_library_version = '28.0.0'
 
-    compileSdk = 27
-    targetSdk = 27
+    compileSdk = 28
+    targetSdk = 28
 }
