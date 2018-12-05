@@ -8,8 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
+import com.andrukhiv.mynavigationdrawer.models.ReproductionModel;
 import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
 import com.andrukhiv.mynavigationdrawer.tables.KitchenTable;
+import com.andrukhiv.mynavigationdrawer.tables.ReproductionTable;
 import com.andrukhiv.mynavigationdrawer.tables.VarietiesTable;
 
 import java.io.IOException;
@@ -120,4 +122,25 @@ public class DbAdapter {
         cursor.close();
         return result;
     }
+
+    public ArrayList<ReproductionModel> getReproduction() {
+
+        ArrayList<ReproductionModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " + ReproductionTable.REPRODUCTION_TABLE;
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new ReproductionModel(
+                        cursor.getLong(cursor.getColumnIndex(ReproductionTable.REPRODUCTION_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(ReproductionTable.REPRODUCTION_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(ReproductionTable.REPRODUCTION_COLUMN_DESCRIPTION))
+                ));
+            }
+        }
+        cursor.close();
+        return result;
+    }
+
+
+
 }

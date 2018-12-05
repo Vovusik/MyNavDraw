@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Sommelier</string>
     <string name="name_kitchen">Алкокухня</string>
+    <string name="name_reproduction">Розмноження</string>
+
+
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -84,5 +88,12 @@
     <string name="tab_kitchen_kislotnist">Кислотність</string>
     <string name="tab_kitchen_osvitlennya">Освітлення</string>
     <string name="tab_kitchen_girkota">Гіркота</string>
+
+
+    <!--Найменування табів AlcoKitchen-->
+    <string name="tab_reproduction_chubuk">Чубук</string>
+    <string name="tab_reproduction_desktop_vaccine">Настільне щеплення</string>
+
+
 
 </resources>

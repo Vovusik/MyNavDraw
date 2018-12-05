@@ -40,7 +40,7 @@
                     android:icon="@drawable/drawer_icon_structure"
                     android:title="@string/drawer_item_structure_formation" />
                 <item
-                    android:id="@+id/nav_rozmnogennya"
+                    android:id="@+id/nav_reproduction"
                     android:icon="@drawable/drawer_icon_rozmnogennya"
                     android:title="@string/drawer_item_reproduction" />
                 <item

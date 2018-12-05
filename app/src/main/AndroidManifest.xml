@@ -37,6 +37,12 @@
 
         <activity android:name=".KitchenActivity"
             android:label="@string/name_kitchen"></activity>
+
+        <activity android:name=".ReproductionActivity"
+            android:label="@string/name_reproduction"></activity>
+
+
+
     </application>
 
 </manifest>
