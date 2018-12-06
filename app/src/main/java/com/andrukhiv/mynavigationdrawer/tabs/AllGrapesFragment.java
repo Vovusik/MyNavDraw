@@ -1,4 +1,6 @@
 package com.andrukhiv.mynavigationdrawer.tabs;
+
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+
 import android.support.v7.widget.SearchView;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -17,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.andrukhiv.mynavigationdrawer.RecyclerViewAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
@@ -100,6 +104,7 @@ public class AllGrapesFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String query) {
                 mAdapter.getFilter().filter(query);
@@ -107,15 +112,16 @@ public class AllGrapesFragment extends Fragment {
             }
         });
 
-        super.onCreateOptionsMenu(menu,inflater);
-    }
 
+        ImageView searchIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_button);
+        searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-        SearchView searchViewAction = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+        ImageView closeIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
 
-        super.onPrepareOptionsMenu(menu);
+        // встановлюю ширину вікна пошуку на весь екран
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

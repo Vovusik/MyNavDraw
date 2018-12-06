@@ -65,6 +65,7 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);// замените своим пользовательским значком
         }
 
         CollapsingToolbarLayout mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
@@ -220,7 +221,7 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
         builder.setShowTitle(true);
         // змінюю хрестик на стрілочку повернення додому
         builder.setCloseButtonIcon(BitmapFactory.decodeResource(
-                getResources(), R.drawable.ic_arrow_back));
+                getResources(), R.drawable.ic_up_arrow_icon));
 
         // настроить анимацию начала и выхода
         builder.setStartAnimations(this, R.anim.slide_in_right, R.anim.slide_out_left);
