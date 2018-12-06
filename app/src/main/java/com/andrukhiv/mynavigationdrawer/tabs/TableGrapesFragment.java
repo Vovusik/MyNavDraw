@@ -14,16 +14,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.RecyclerViewAdapter;
 import com.andrukhiv.mynavigationdrawer.RecyclerViewAdapter2;
 import com.andrukhiv.mynavigationdrawer.VarietiesDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
-import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +38,7 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
 
     RecyclerView mRecyclerView;
     private RecyclerViewAdapter2 mAdapter;
-    private ArrayList<VarietiesModel> grapes;
+    private ArrayList<SpecificationsModel> grapes;
 
 
     @Override
@@ -56,7 +52,7 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
                              Bundle savedInstanceState) {
 
         View view;
-        view = inflater.inflate(R.layout.fragment_tabs, container, false);
+        view = inflater.inflate(R.layout.fragment_recycler_tabs, container, false);
         setHasOptionsMenu(true);
         mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
 
@@ -64,7 +60,7 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        grapes = mDbHelper.getGrapes();
+        grapes = mDbHelper.getTableGrapes();
         mAdapter = new RecyclerViewAdapter2(grapes);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -96,7 +92,7 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
 
     @Override
     public boolean onQueryTextChange(String query) {
-        final List<VarietiesModel> filteredModelList = filter(grapes, query);
+        final List<SpecificationsModel> filteredModelList = filter(grapes, query);
         mAdapter.animateTo(filteredModelList);
         mRecyclerView.scrollToPosition(0);
         return true;
@@ -108,11 +104,11 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
     }
 
 
-    private List<VarietiesModel> filter(List<VarietiesModel> models, String query) {
+    private List<SpecificationsModel> filter(List<SpecificationsModel> models, String query) {
         query = query.toLowerCase();
 
-        final List<VarietiesModel> filteredModelList = new ArrayList<>();
-        for (VarietiesModel model : models) {
+        final List<SpecificationsModel> filteredModelList = new ArrayList<>();
+        for (SpecificationsModel model : models) {
             final String text = model.getName().toLowerCase();
             if (text.contains(query)) {
                 filteredModelList.add(model);

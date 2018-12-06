@@ -2,7 +2,7 @@
     <string name="app_name">Sommelier</string>
     <string name="name_kitchen">Алкокухня</string>
     <string name="name_reproduction">Розмноження</string>
-
+    <string name="name_formation">Будова і формування</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -94,6 +94,11 @@
     <string name="tab_reproduction_chubuk">Чубук</string>
     <string name="tab_reproduction_desktop_vaccine">Настільне щеплення</string>
 
-
+    <string name="tab_formuvannya_budova">Будова</string>
+    <string name="tab_formuvannya_posadka">Посадка</string>
+    <string name="tab_formuvannya_guyot">Гюйо</string>
+    <string name="tab_formuvannya_stelag">Стелаж</string>
+    <string name="tab_formuvannya_viyalo">Віяло</string>
+    <string name="tab_formuvannya_cordon">Кордон</string>
 
 </resources>

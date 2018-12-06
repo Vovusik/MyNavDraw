@@ -1,16 +1,18 @@
 package com.andrukhiv.mynavigationdrawer;
 
 import android.widget.Filter;
-import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
+
 import java.util.ArrayList;
 
 public class CustomFilter extends Filter {
 
     private RecyclerViewAdapter mAdapter;
-    private ArrayList<VarietiesModel> mFilterList;
+    private ArrayList<SpecificationsModel> mFilterList;
 
 
-    CustomFilter(ArrayList<VarietiesModel> filterList, RecyclerViewAdapter adapter) {
+    CustomFilter(ArrayList<SpecificationsModel> filterList, RecyclerViewAdapter adapter) {
         this.mAdapter = adapter;
         this.mFilterList = filterList;
     }
@@ -21,7 +23,7 @@ public class CustomFilter extends Filter {
         FilterResults results = new FilterResults();
         if (constraint != null && constraint.length() > 0) {
             constraint = constraint.toString().toUpperCase();
-            ArrayList<VarietiesModel> filteredPlayers = new ArrayList<>();
+            ArrayList<SpecificationsModel> filteredPlayers = new ArrayList<>();
             for (int i = 0; i < mFilterList.size(); i++) {
                 if (mFilterList.get(i).getName().toUpperCase().contains(constraint)) {
                     filteredPlayers.add(mFilterList.get(i));
@@ -38,7 +40,7 @@ public class CustomFilter extends Filter {
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        mAdapter.mDataset = (ArrayList<VarietiesModel>) results.values;
+        mAdapter.mDataset = (ArrayList<SpecificationsModel>) results.values;
         //REFRESH
         mAdapter.notifyDataSetChanged();
     }

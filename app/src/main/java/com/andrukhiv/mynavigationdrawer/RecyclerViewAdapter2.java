@@ -8,12 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
@@ -27,10 +25,10 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     private static MyClickListener myClickListener;
     private Context context;
 
-    protected ArrayList<VarietiesModel> mVarietiesModels;
+    protected ArrayList<SpecificationsModel> mVarietiesModels;
 
 
-    public RecyclerViewAdapter2(ArrayList<VarietiesModel> myDataset) {
+    public RecyclerViewAdapter2(ArrayList<SpecificationsModel> myDataset) {
         mVarietiesModels = new ArrayList<>(myDataset);
     }
 
@@ -116,50 +114,50 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     };
 
 
-    public VarietiesModel removeItem(int position) {
-        final VarietiesModel model = mVarietiesModels.remove(position);
+    public SpecificationsModel removeItem(int position) {
+        final SpecificationsModel model = mVarietiesModels.remove(position);
         notifyItemRemoved(position);
         return model;
     }
 
-    public void addItem(int position, VarietiesModel model) {
+    public void addItem(int position, SpecificationsModel model) {
         mVarietiesModels.add(position, model);
         notifyItemInserted(position);
     }
 
     public void moveItem(int fromPosition, int toPosition) {
-        final VarietiesModel model = mVarietiesModels.remove(fromPosition);
+        final SpecificationsModel model = mVarietiesModels.remove(fromPosition);
         mVarietiesModels.add(toPosition, model);
         notifyItemMoved(fromPosition, toPosition);
     }
 
-    public void animateTo(List<VarietiesModel> models) {
+    public void animateTo(List<SpecificationsModel> models) {
         applyAndAnimateRemovals(models);
         applyAndAnimateAdditions(models);
         applyAndAnimateMovedItems(models);
     }
 
-    private void applyAndAnimateRemovals(List<VarietiesModel> newModels) {
+    private void applyAndAnimateRemovals(List<SpecificationsModel> newModels) {
         for (int i = mVarietiesModels.size() - 1; i >= 0; i--) {
-            final VarietiesModel model = mVarietiesModels.get(i);
+            final SpecificationsModel model = mVarietiesModels.get(i);
             if (!newModels.contains(model)) {
                 removeItem(i);
             }
         }
     }
 
-    private void applyAndAnimateAdditions(List<VarietiesModel> newModels) {
+    private void applyAndAnimateAdditions(List<SpecificationsModel> newModels) {
         for (int i = 0, count = newModels.size(); i < count; i++) {
-            final VarietiesModel model = newModels.get(i);
+            final SpecificationsModel model = newModels.get(i);
             if (!mVarietiesModels.contains(model)) {
                 addItem(i, model);
             }
         }
     }
 
-    private void applyAndAnimateMovedItems(List<VarietiesModel> newModels) {
+    private void applyAndAnimateMovedItems(List<SpecificationsModel> newModels) {
         for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
-            final VarietiesModel model = newModels.get(toPosition);
+            final SpecificationsModel model = newModels.get(toPosition);
             final int fromPosition = mVarietiesModels.indexOf(model);
             if (fromPosition >= 0 && fromPosition != toPosition) {
                 moveItem(fromPosition, toPosition);

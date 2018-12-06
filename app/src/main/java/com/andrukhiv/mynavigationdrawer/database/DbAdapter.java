@@ -7,12 +7,14 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.andrukhiv.mynavigationdrawer.models.FormationModel;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.andrukhiv.mynavigationdrawer.models.ReproductionModel;
-import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.andrukhiv.mynavigationdrawer.tables.KitchenTable;
 import com.andrukhiv.mynavigationdrawer.tables.ReproductionTable;
-import com.andrukhiv.mynavigationdrawer.tables.VarietiesTable;
+import com.andrukhiv.mynavigationdrawer.tables.SpecificationsTable;
+import com.andrukhiv.mynavigationdrawer.tables.FormationTable;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,22 +83,24 @@ public class DbAdapter {
     }
 
 
-    public ArrayList<VarietiesModel> getGrapes() {
+    public ArrayList<SpecificationsModel> getAllGrapes() {
 
-        ArrayList<VarietiesModel> result = new ArrayList<>();
-        String sql = "SELECT * FROM " + VarietiesTable.VARIETIES_TABLE;
+        ArrayList<SpecificationsModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " +
+                SpecificationsTable.SPECIFICATIONS_TABLE;
         Cursor cursor = mDb.rawQuery(sql, null);
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
-                result.add(new VarietiesModel(
-                        cursor.getLong(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_ID)),
-                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_NAME)),
-                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_DESCRIPTION)),
-                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_PHOTO_SMALL)),
-                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_PHOTO_LARGE)),
-                        cursor.getString(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_LINK)),
-                        cursor.getInt(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_FAVORITE)),
-                        cursor.getInt(cursor.getColumnIndex(VarietiesTable.VARIETIES_COLUMN_SORTY))
+                result.add(new SpecificationsModel(
+                        cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_VARIETIES_ID)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_SMALL)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_LARGE)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_LINK)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FAVORITE)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT))
                 ));
             }
         }
@@ -104,6 +108,33 @@ public class DbAdapter {
         return result;
     }
 
+    public ArrayList<SpecificationsModel> getTableGrapes() {
+
+        ArrayList<SpecificationsModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " +
+                SpecificationsTable.SPECIFICATIONS_TABLE +
+                " WHERE " +
+                SpecificationsTable.SPECIFICATIONS_COLUMN_SORT + " =2";// столові сорти
+
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new SpecificationsModel(
+                        cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_VARIETIES_ID)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_SMALL)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_LARGE)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_LINK)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FAVORITE)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT))
+                ));
+            }
+        }
+        cursor.close();
+        return result;
+    }
 
     public ArrayList<KitchenModel> getKitchen() {
 
@@ -141,6 +172,34 @@ public class DbAdapter {
         return result;
     }
 
+    public ArrayList<FormationModel> getFormation() {
+
+        ArrayList<FormationModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " + FormationTable.STRUCTURE_FORMATION_TABLE;
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new FormationModel(
+                        cursor.getLong(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_PHOTO_1)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_PHOTO_2)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_PHOTO_3)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_PHOTO_4)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_PHOTO_5)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_PHOTO_6)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_DESCRIPTION_1)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_DESCRIPTION_2)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_DESCRIPTION_3)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_DESCRIPTION_4)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_DESCRIPTION_5)),
+                        cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_DESCRIPTION_6))
+                ));
+            }
+        }
+        cursor.close();
+        return result;
+    }
 
 
 }

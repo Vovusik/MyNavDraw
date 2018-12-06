@@ -116,14 +116,17 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_alkcokitchen:
-               // Intent intent;
                 intent = new Intent(MainActivity.this, KitchenActivity.class);
                 startActivity(intent);
                 break;
 
             case R.id.nav_reproduction:
-
                 intent = new Intent(MainActivity.this, ReproductionActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_formuvannya:
+                intent = new Intent(MainActivity.this, FormationActivity.class);
                 startActivity(intent);
                 break;
 

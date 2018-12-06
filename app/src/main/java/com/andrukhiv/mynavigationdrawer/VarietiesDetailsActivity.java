@@ -29,7 +29,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -43,7 +43,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class VarietiesDetailsActivity extends AppCompatActivity {
 
-    private VarietiesModel mGrapes;
+    private SpecificationsModel mGrapes;
     public SlidrConfig mConfig;
     private boolean isActive = false;
 
@@ -59,7 +59,7 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
-        mGrapes = (VarietiesModel) getIntent().getSerializableExtra(EXTRA_GRAPES_ID);
+        mGrapes = (SpecificationsModel) getIntent().getSerializableExtra(EXTRA_GRAPES_ID);
 
         // Включити кнопку Вверх на панелі дій.
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));

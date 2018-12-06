@@ -33,7 +33,7 @@ public class ReproductionChubuk extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_kitchen, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_nested_scroll_tab, container, false);
 
         mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
         reproduction = mDbHelper.getReproduction();

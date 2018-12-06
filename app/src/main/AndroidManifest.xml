@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.andrukhiv.mynavigationdrawer">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -27,6 +29,7 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
+
         <activity
             android:name=".VarietiesDetailsActivity"
             android:theme="@style/DetailTheme">
@@ -35,14 +38,16 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".KitchenActivity"
-            android:label="@string/name_kitchen"></activity>
+        <activity
+            android:name=".KitchenActivity"
+            android:label="@string/name_kitchen" />
 
-        <activity android:name=".ReproductionActivity"
-            android:label="@string/name_reproduction"></activity>
+        <activity
+            android:name=".ReproductionActivity"
+            android:label="@string/name_reproduction" />
 
-
-
+        <activity android:name=".FormationActivity"
+            android:label="@string/name_formation"/>
     </application>
 
 </manifest>

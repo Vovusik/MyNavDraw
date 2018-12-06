@@ -13,12 +13,10 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
 
 import java.util.ArrayList;
@@ -30,10 +28,10 @@ public class RecyclerViewAdapter
     private static MyClickListener myClickListener;
     private Context context;
     private CustomFilter filter;
-    protected ArrayList<VarietiesModel> mDataset, filterList;
+    protected ArrayList<SpecificationsModel> mDataset, filterList;
 
 
-    public RecyclerViewAdapter(ArrayList<VarietiesModel> myDataset) {
+    public RecyclerViewAdapter(ArrayList<SpecificationsModel> myDataset) {
         mDataset = myDataset;
         filterList = myDataset;
     }
@@ -108,7 +106,7 @@ public class RecyclerViewAdapter
     }
 
 
-    public void addItem(VarietiesModel dataObj, int index) {
+    public void addItem(SpecificationsModel dataObj, int index) {
         mDataset.add(index, dataObj);
         notifyItemInserted(index);
     }

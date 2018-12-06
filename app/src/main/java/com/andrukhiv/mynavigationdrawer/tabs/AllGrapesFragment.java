@@ -1,13 +1,7 @@
 package com.andrukhiv.mynavigationdrawer.tabs;
-import android.app.SearchManager;
-import android.app.SearchableInfo;
-import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,44 +10,21 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import android.support.v7.widget.SearchView;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.andrukhiv.mynavigationdrawer.RecyclerViewAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
-import com.andrukhiv.mynavigationdrawer.models.VarietiesModel;
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.andrukhiv.mynavigationdrawer.VarietiesDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.tables.VarietiesTable;
 
-import java.util.ArrayList;
 import java.util.Objects;
-
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import java.util.ArrayList;
-import android.support.v7.widget.SearchView;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 public class AllGrapesFragment extends Fragment {
 
@@ -67,7 +38,7 @@ public class AllGrapesFragment extends Fragment {
 
     RecyclerView mRecyclerView;
     private RecyclerViewAdapter mAdapter;
-    private ArrayList<VarietiesModel> grapes;
+    private ArrayList<SpecificationsModel> grapes;
 
 
     @Override
@@ -81,7 +52,7 @@ public class AllGrapesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view;
-        view = inflater.inflate(R.layout.fragment_tabs, container, false);
+        view = inflater.inflate(R.layout.fragment_recycler_tabs, container, false);
         setHasOptionsMenu(true);
         mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
 
@@ -93,7 +64,7 @@ public class AllGrapesFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), numColumns);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        grapes = mDbHelper.getGrapes();
+        grapes = mDbHelper.getAllGrapes();
 
         // Передати масиви адаптера.
         mAdapter = new RecyclerViewAdapter(grapes);

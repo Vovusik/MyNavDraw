@@ -6,18 +6,24 @@ import com.andrukhiv.mynavigationdrawer.R;
 
 import java.io.Serializable;
 
-public class VarietiesModel implements Serializable {
+public class SpecificationsModel implements Serializable {
 
 
-    public VarietiesModel(long id,
-                          String name,
-                          String description,
-                          String photoSmall,
-                          String photoLarge,
-                          String link,
-                          int favorite,
-                          int sorty) {
+    public SpecificationsModel() {
+
+    }
+
+    public SpecificationsModel(long id,
+                               String varieties_id,
+                               String name,
+                               String description,
+                               String photoSmall,
+                               String photoLarge,
+                               String link,
+                               int favorite,
+                               int sorty) {
         this.id = id;
+        this.varieties_id = varieties_id;
         this.name = name;
         this.description = description;
         this.photoSmall = photoSmall;
@@ -28,6 +34,7 @@ public class VarietiesModel implements Serializable {
     }
 
     private long id;
+    private String varieties_id;
     private String name;
     private String description;
     private String photoSmall;
@@ -100,16 +107,24 @@ public class VarietiesModel implements Serializable {
         this.sorty = sorty;
     }
 
+    public String getVarieties_id() {
+        return varieties_id;
+    }
+
+    public void setVarieties_id(String varieties_id) {
+        this.varieties_id = varieties_id;
+    }
 
     @Override
     public String toString() {
-        return "VarietiesTable{" +
+        return "SpecificationsModel{" +
                 "id=" + id +
+                ", varieties_id='" + varieties_id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", photoSmall='" + photoSmall + '\'' +
                 ", photoLarge='" + photoLarge + '\'' +
-                ", link=" + link +
+                ", link='" + link + '\'' +
                 ", favorite=" + favorite +
                 ", sorty=" + sorty +
                 '}';
