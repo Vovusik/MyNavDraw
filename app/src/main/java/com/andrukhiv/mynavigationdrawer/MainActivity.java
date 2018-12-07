@@ -130,6 +130,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
+            case R.id.nav_region:
+                intent = new Intent(MainActivity.this, RegionActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.nav_star:
                 rate();
                 break;

@@ -1,5 +1,6 @@
 package com.andrukhiv.mynavigationdrawer.tabs;
 
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.os.Bundle;
@@ -112,7 +113,6 @@ public class AllGrapesFragment extends Fragment {
             }
         });
 
-
         ImageView searchIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_button);
         searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
 
@@ -124,4 +124,27 @@ public class AllGrapesFragment extends Fragment {
 
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+//
+//        ImageView searchIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_button);
+//        searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
+//
+//        ImageView closeIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+//        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
+//
+//        // встановлюю ширину вікна пошуку на весь екран
+//        searchView.setMaxWidth(Integer.MAX_VALUE);
+//
+//        super.onPrepareOptionsMenu(menu);
+//    }
+
 }
+
+
+
+

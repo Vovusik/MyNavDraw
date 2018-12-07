@@ -56,7 +56,7 @@
                     android:icon="@drawable/drawer_icon_sun"
                     android:title="@string/drawer_item_temperature" />
                 <item
-                    android:id="@+id/nav_thermometer"
+                    android:id="@+id/nav_region"
                     android:icon="@drawable/drawer_icon_thermometer"
                     android:title="@string/drawer_item_summ_temperature" />
                 <item

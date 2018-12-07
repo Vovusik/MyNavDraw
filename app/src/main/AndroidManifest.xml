@@ -48,6 +48,9 @@
 
         <activity android:name=".FormationActivity"
             android:label="@string/name_formation"/>
+
+        <activity android:name=".RegionActivity"
+            android:label="@string/name_region"/>
     </application>
 
 </manifest>
