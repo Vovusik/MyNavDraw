@@ -135,6 +135,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
+            case R.id.nav_library:
+                intent = new Intent(MainActivity.this, LibraryActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.nav_star:
                 rate();
                 break;

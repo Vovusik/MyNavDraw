@@ -9,9 +9,11 @@ import android.util.Log;
 
 import com.andrukhiv.mynavigationdrawer.models.FormationModel;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
+import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
 import com.andrukhiv.mynavigationdrawer.models.ReproductionModel;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.andrukhiv.mynavigationdrawer.tables.KitchenTable;
+import com.andrukhiv.mynavigationdrawer.tables.LibraryTable;
 import com.andrukhiv.mynavigationdrawer.tables.ReproductionTable;
 import com.andrukhiv.mynavigationdrawer.tables.SpecificationsTable;
 import com.andrukhiv.mynavigationdrawer.tables.FormationTable;
@@ -103,8 +105,8 @@ public class DbAdapter {
                         cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT))
                 ));
             }
+            cursor.close();
         }
-        cursor.close();
         return result;
     }
 
@@ -131,10 +133,11 @@ public class DbAdapter {
                         cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT))
                 ));
             }
+            cursor.close();
         }
-        cursor.close();
         return result;
     }
+
 
     public ArrayList<KitchenModel> getKitchen() {
 
@@ -149,10 +152,11 @@ public class DbAdapter {
                         cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_NAME))
                 ));
             }
+            cursor.close();
         }
-        cursor.close();
         return result;
     }
+
 
     public ArrayList<ReproductionModel> getReproduction() {
 
@@ -167,10 +171,11 @@ public class DbAdapter {
                         cursor.getString(cursor.getColumnIndex(ReproductionTable.REPRODUCTION_COLUMN_DESCRIPTION))
                 ));
             }
+            cursor.close();
         }
-        cursor.close();
         return result;
     }
+
 
     public ArrayList<FormationModel> getFormation() {
 
@@ -196,10 +201,30 @@ public class DbAdapter {
                         cursor.getString(cursor.getColumnIndex(FormationTable.STRUCTURE_FORMATION_COLUMN_DESCRIPTION_6))
                 ));
             }
+            cursor.close();
         }
-        cursor.close();
         return result;
     }
 
 
+    public ArrayList<LibraryModel> getLibrary() {
+
+        ArrayList<LibraryModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " +
+                LibraryTable.LIBRARY_NAME_TABLE;
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new LibraryModel(
+                        cursor.getLong(cursor.getColumnIndex(LibraryTable.LIBRARY_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(LibraryTable.LIBRARY_COLUMN_IMAGE)),
+                        cursor.getString(cursor.getColumnIndex(LibraryTable.LIBRARY_COLUMN_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(LibraryTable.LIBRARY_COLUMN_AUTHOR)),
+                        cursor.getString(cursor.getColumnIndex(LibraryTable.LIBRARY_COLUMN_LINK))
+                ));
+            }
+            cursor.close();
+        }
+        return result;
+    }
 }

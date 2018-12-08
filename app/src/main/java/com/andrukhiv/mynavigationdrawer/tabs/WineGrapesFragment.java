@@ -26,7 +26,7 @@ public class WineGrapesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main_tabs, container, false);
-        ImageView imageView = (ImageView) rootView.findViewById(R.id.image);
+        ImageView imageView = (ImageView) rootView.findViewById(R.id.image_cover);
         imageView.setImageResource(R.drawable.tab_icon_wine_true);
         TextView textView = (TextView) rootView.findViewById(R.id.tab);
         textView.setText("перелік технічних сортів винограду");

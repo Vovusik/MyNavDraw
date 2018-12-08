@@ -51,6 +51,9 @@
 
         <activity android:name=".RegionActivity"
             android:label="@string/name_region"/>
+
+        <activity android:name=".LibraryActivity"
+            android:label="@string/name_region"/>
     </application>
 
 </manifest>

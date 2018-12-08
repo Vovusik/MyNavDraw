@@ -9,7 +9,7 @@
     android:layout_gravity="center"
     android:layout_marginBottom="16dp"
     android:layout_marginEnd="16dp"
-    android:background="@color/windowBackground"
+    android:background="@color/rowBackground"
     android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="3dp"
     app:cardElevation="2dp"
