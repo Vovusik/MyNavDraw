@@ -140,6 +140,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
+            case R.id.nav_filter:
+                intent = new Intent(MainActivity.this, SortableActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.nav_star:
                 rate();
                 break;

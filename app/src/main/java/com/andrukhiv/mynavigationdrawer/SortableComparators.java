@@ -1,0 +1,108 @@
+package com.andrukhiv.mynavigationdrawer;
+
+
+
+import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
+
+import java.util.Comparator;
+
+// Для сортування даних використовуємо SortableTableView замість звичайного TableView.
+// Для того, щоб таблиця сортується по колонці, все, що потрібно зробити, це реалізувати
+// компаратор і встановити його в конкретній колонці:
+
+public final class SortableComparators {
+
+    private SortableComparators() {
+    }
+
+    public static Comparator<SpecificationsModel> getGrapesNameComparator() {
+        return new GrapesNameComparator();
+    }
+
+    public static Comparator<SpecificationsModel> getGrapesSortyComparator() {
+        return new GrapesSortyComparator();
+    }
+
+    public static Comparator<SpecificationsModel> getGrapesTermComparator() {
+        return new GrapesTermComparator();
+    }
+
+    public static Comparator<SpecificationsModel> getGrapesFrostComparator() {
+        return new GrapesFrostComparator();
+    }
+
+
+    public static Comparator<SpecificationsModel> getGrapesColorComparator() {
+        return new GrapesColorComparator();
+    }
+
+    public static Comparator<SpecificationsModel> getGrapesGrowthComparator() {
+        return new GrapesGrowthComparator();
+    }
+
+    public static Comparator<SpecificationsModel> getGrapesWeightComparator() {
+        return new WeightComparator();
+    }
+
+
+
+    private static class GrapesNameComparator implements Comparator<SpecificationsModel> {
+
+        @Override
+        public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
+            return grapes1.getName().compareTo(grapes2.getName());
+        }
+    }
+
+    private static class GrapesSortyComparator implements Comparator<SpecificationsModel> {
+
+        @Override
+        public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
+            return grapes1.getSort().compareTo(grapes2.getSort());
+        }
+    }
+
+    private static class GrapesTermComparator implements Comparator<SpecificationsModel> {
+
+        @Override
+        public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
+            return grapes1.getTerm().compareTo(grapes2.getTerm());
+        }
+    }
+
+    private static class GrapesFrostComparator implements Comparator<SpecificationsModel> {
+
+        @Override
+        public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
+            if (grapes1.getFrost() < grapes2.getFrost()) return -1;
+            if (grapes1.getFrost() > grapes2.getFrost()) return 1;
+            return 0;
+        }
+    }
+
+    private static class GrapesColorComparator implements Comparator<SpecificationsModel> {
+
+        @Override
+        public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
+            return grapes1.getColor().compareTo(grapes2.getColor());
+        }
+    }
+
+    private static class GrapesGrowthComparator implements Comparator<SpecificationsModel> {
+
+        @Override
+        public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
+            return grapes1.getGrowth().compareTo(grapes2.getGrowth());
+        }
+    }
+
+    private static class WeightComparator implements Comparator<SpecificationsModel> {
+
+        @Override
+        public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
+            if (grapes1.getWeight() < grapes2.getWeight()) return -1;
+            if (grapes1.getWeight() > grapes2.getWeight()) return 1;
+            return 0;
+        }
+    }
+}

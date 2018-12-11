@@ -5,6 +5,7 @@
     <string name="name_formation">Будова і формування</string>
     <string name="name_region">Сума активних температур</string>
     <string name="name_library">Бібліотека</string>
+    <string name="name_specification">Характеристики</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -102,4 +103,12 @@
     <string name="tab_formuvannya_viyalo">Віяло</string>
     <string name="tab_formuvannya_cordon">Кордон</string>
 
+    <!--Найзви колонок у таблиці-->
+    <string name="name">Назва</string>
+    <string name="sort">Група</string>
+    <string name="term">Строк</string>
+    <string name="frost">Мороз</string>
+    <string name="color">Колір</string>
+    <string name="growth">Ріст</string>
+    <string name="weight">Вага</string>
 </resources>

@@ -25,7 +25,7 @@ public class DbAdapter {
 
     private static final String TAG = "DbAdapter";
 
-    private SQLiteDatabase mDb;
+    private static SQLiteDatabase mDb;
     private DbHelper mDbHelper;
 
     public static final int MODE_ALL = 0;
@@ -85,7 +85,7 @@ public class DbAdapter {
     }
 
 
-    public ArrayList<SpecificationsModel> getAllGrapes() {
+    public static ArrayList<SpecificationsModel> getAllGrapes() {
 
         ArrayList<SpecificationsModel> result = new ArrayList<>();
         String sql = "SELECT * FROM " +
@@ -95,14 +95,19 @@ public class DbAdapter {
             while (cursor.moveToNext()) {
                 result.add(new SpecificationsModel(
                         cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
-                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_VARIETIES_ID)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT_INT)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_DESCRIPTION)),
-                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_SMALL)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_LARGE)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_SMALL)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_LINK)),
-                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FAVORITE)),
-                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT))
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_TERM)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FROST)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_COLOR)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_GROWTH)),
+                        cursor.getDouble(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_WEIGHT)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FAVORITE))
                 ));
             }
             cursor.close();
@@ -116,21 +121,26 @@ public class DbAdapter {
         String sql = "SELECT * FROM " +
                 SpecificationsTable.SPECIFICATIONS_TABLE +
                 " WHERE " +
-                SpecificationsTable.SPECIFICATIONS_COLUMN_SORT + " =2";// столові сорти
+                SpecificationsTable.SPECIFICATIONS_COLUMN_SORT_INT + " =2";// столові сорти
 
         Cursor cursor = mDb.rawQuery(sql, null);
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 result.add(new SpecificationsModel(
                         cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
-                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_VARIETIES_ID)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT_INT)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_DESCRIPTION)),
-                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_SMALL)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_LARGE)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_PHOTO_SMALL)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_LINK)),
-                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FAVORITE)),
-                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT))
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_TERM)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FROST)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_COLOR)),
+                        cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_GROWTH)),
+                        cursor.getDouble(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_WEIGHT)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_FAVORITE))
                 ));
             }
             cursor.close();

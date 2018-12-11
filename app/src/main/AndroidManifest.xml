@@ -53,7 +53,11 @@
             android:label="@string/name_region"/>
 
         <activity android:name=".LibraryActivity"
-            android:label="@string/name_region"/>
+            android:label="@string/name_library"/>
+
+        <activity android:name=".SortableActivity"
+            android:label="@string/name_specification"
+            android:screenOrientation="sensorLandscape"/>
     </application>
 
 </manifest>
