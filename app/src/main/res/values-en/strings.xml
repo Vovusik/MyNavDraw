@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">My Settins</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!--Категорія загальних налаштувань-->
+    <string name="category_title_general">General settings</string>
+    <string name="title_theme">The theme of the application</string>
+
+    <string name="title_language">The language of the application</string>
+
+    <!--Категорія сповіщень-->
+    <string name="category_title_notifications">Notification settings</string>
+
+    <string name="title_notifications_new_message_ringtone">Choose a ringtone notification</string>
+    <string name="title_notifications_new_message">New message notification</string>
+    <string name="title_vibrate">Vibration</string>
+    <string name="summary_vibrate">Vibration when receiving notifications</string>
+    <string name="pref_ringtone_silent">No sound</string>
+
+    <!--Категорія Про додаток-->
+    <string name="category_title_about">About</string>
+
+    <string name="summary_description">Description of the features of the application</string>
+    <string name="title_licenses">Open source licenses</string>
+    <string name="button_licenses">Close</string>
+    <string name="summary_licenses">Details of the open source license</string>
+    <string name="title_version">Version</string>
+    <string name="summary_version">1.0</string>
+
+    <!--Заповнення меню NavigationDrawer-->
+    <string name="drawer_item_home">Home page</string>
+
+</resources>

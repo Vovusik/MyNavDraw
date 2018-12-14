@@ -145,6 +145,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
+            case R.id.nav_settings:
+                intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.nav_star:
                 rate();
                 break;
@@ -155,10 +160,6 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_email:
                 email();
-                break;
-
-            case R.id.nav_settings:
-
                 break;
         }
 

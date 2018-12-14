@@ -79,7 +79,7 @@
          отримання додаткової інформації. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_search_icon" />
+            android:resource="@drawable/dialog_icon_logo" />
         <!-- Встановити колір, який використовується з вхідними повідомленнями.
         Це використовується, якщо для вхідного не встановлено жодного кольору повідомлення
         про повідомлення Див. README (https://goo.gl/6BKBk7) для отримання додаткової інформації. -->
@@ -87,7 +87,10 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
 
-
+        <activity
+            android:name="SettingActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Preference"/>
 
 
     </application>

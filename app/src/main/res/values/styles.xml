@@ -107,4 +107,27 @@
         <item name="android:lineSpacingExtra">4dp</item>
     </style>
 
+    <!-- Стиль для "Актівіті Налаштування" -->
+    <style name="Theme.Preference" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:windowBackground">@color/rowBackground</item>
+        <item name="android:alertDialogTheme">@style/MyAlertDialogStyle</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <!--Розділові лінії-->
+        <!--<item name="android:divider">@null</item>-->
+        <!--<item name="android:dividerHeight">2dp</item>-->
+    </style>
+
+    <!-- Стиль для діалогу "Ліцензії з відкритим кодом" -->
+    <style name="DialogFullscreenWithTitle" parent="@android:style/Theme.Material.Light.DialogWhenLarge">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:background">@color/windowBackground</item>
+        <item name="android:colorPrimaryDark">@color/windowBackground</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+    </style>
 </resources>
