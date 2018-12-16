@@ -51,18 +51,18 @@
                     android:id="@+id/nav_filter"
                     android:icon="@drawable/drawer_icon_filter"
                     android:title="@string/drawer_item_speсifications" />
-                <item
-                    android:id="@+id/nav_sun"
-                    android:icon="@drawable/drawer_icon_sun"
-                    android:title="@string/drawer_item_temperature" />
+                <!--<item-->
+                    <!--android:id="@+id/nav_sun"-->
+                    <!--android:icon="@drawable/drawer_icon_sun"-->
+                    <!--android:title="@string/drawer_item_temperature" />-->
                 <item
                     android:id="@+id/nav_region"
                     android:icon="@drawable/drawer_icon_thermometer"
                     android:title="@string/drawer_item_summ_temperature" />
-                <item
-                    android:id="@+id/nav_security"
-                    android:icon="@drawable/drawer_icon_security"
-                    android:title="@string/drawer_item_preparaty" />
+                <!--<item-->
+                    <!--android:id="@+id/nav_security"-->
+                    <!--android:icon="@drawable/drawer_icon_security"-->
+                    <!--android:title="@string/drawer_item_preparaty" />-->
                 <item
                     android:id="@+id/nav_calendar"
                     android:icon="@drawable/drawer_icon_calendar"

@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;

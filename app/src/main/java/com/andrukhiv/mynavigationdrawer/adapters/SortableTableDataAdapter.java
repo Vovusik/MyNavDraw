@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.adapters;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 
 import java.text.NumberFormat;

@@ -1,6 +1,5 @@
 package com.andrukhiv.mynavigationdrawer.tabs;
 
-import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.os.Bundle;
@@ -23,10 +22,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.andrukhiv.mynavigationdrawer.RecyclerViewAdapter;
+import com.andrukhiv.mynavigationdrawer.adapters.RecyclerViewAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
-import com.andrukhiv.mynavigationdrawer.VarietiesDetailsActivity;
+import com.andrukhiv.mynavigationdrawer.activity.VarietiesDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.R;
 
 import java.util.Objects;

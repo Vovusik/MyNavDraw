@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +17,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import com.andrukhiv.mynavigationdrawer.AppRating;
+import com.andrukhiv.mynavigationdrawer.Constant;
+import com.andrukhiv.mynavigationdrawer.R;
+import com.andrukhiv.mynavigationdrawer.adapters.MainPagerAdapter;
 
 import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_ANDROID;

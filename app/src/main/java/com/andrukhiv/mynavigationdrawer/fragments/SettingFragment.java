@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -18,6 +18,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+
+import com.andrukhiv.mynavigationdrawer.AppController;
+import com.andrukhiv.mynavigationdrawer.BuildConfig;
+import com.andrukhiv.mynavigationdrawer.LocaleHelper;
+import com.andrukhiv.mynavigationdrawer.R;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 

@@ -10,7 +10,7 @@
 
         <intent
             android:action="android.intent.action.MAIN"
-            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.activity.MainActivity"
             android:targetPackage="com.andrukhiv.mynavigationdrawer" />
 
         <intent
@@ -28,12 +28,12 @@
 
         <intent
             android:action="android.intent.action.MAIN"
-            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.activity.MainActivity"
             android:targetPackage="com.andrukhiv.mynavigationdrawer" />
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.andrukhiv.mynavigationdrawer.FormationActivity"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.activity.FormationActivity"
             android:targetPackage="com.andrukhiv.mynavigationdrawer" />
     </shortcut>
 
@@ -46,7 +46,7 @@
 
         <intent
             android:action="android.intent.action.MAIN"
-            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.activity.MainActivity"
             android:targetPackage="com.andrukhiv.mynavigationdrawer" />
 
         <intent
@@ -64,7 +64,7 @@
 
         <intent
             android:action="android.intent.action.MAIN"
-            android:targetClass="com.andrukhiv.mynavigationdrawer.MainActivity"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.activity.MainActivity"
             android:targetPackage="com.andrukhiv.mynavigationdrawer" />
 
         <intent

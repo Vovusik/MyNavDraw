@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.adapters;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
@@ -54,12 +55,12 @@ public class LibraryRecyclerViewAdapter extends RecyclerView
     }
 
 
-    void setOnItemClickListener(MyClickListener myClickListener) {
+    public void setOnItemClickListener(MyClickListener myClickListener) {
         LibraryRecyclerViewAdapter.myClickListener = myClickListener;
     }
 
 
-    LibraryRecyclerViewAdapter(ArrayList<LibraryModel> myDataset) {
+    public LibraryRecyclerViewAdapter(ArrayList<LibraryModel> myDataset) {
         mDataset = myDataset;
     }
 

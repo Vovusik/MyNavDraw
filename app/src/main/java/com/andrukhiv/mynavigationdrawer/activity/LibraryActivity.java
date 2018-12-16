@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.app.DownloadManager;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.andrukhiv.mynavigationdrawer.adapters.LibraryRecyclerViewAdapter;
+import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
 import java.util.ArrayList;

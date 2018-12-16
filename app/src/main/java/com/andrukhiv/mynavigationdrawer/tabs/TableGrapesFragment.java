@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.RecyclerViewAdapter2;
-import com.andrukhiv.mynavigationdrawer.VarietiesDetailsActivity;
+import com.andrukhiv.mynavigationdrawer.adapters.RecyclerViewAdapter2;
+import com.andrukhiv.mynavigationdrawer.activity.VarietiesDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 

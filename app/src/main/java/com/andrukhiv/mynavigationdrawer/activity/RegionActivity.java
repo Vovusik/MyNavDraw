@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.andrukhiv.mynavigationdrawer.R;
+import com.andrukhiv.mynavigationdrawer.RegionMapView;
 import com.andrukhiv.mynavigationdrawer.models.RegionModel;
 
 public class RegionActivity extends AppCompatActivity {

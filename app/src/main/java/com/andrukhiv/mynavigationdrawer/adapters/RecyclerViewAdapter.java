@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.adapters;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -14,6 +14,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andrukhiv.mynavigationdrawer.CustomFilter;
+import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
@@ -28,7 +30,7 @@ public class RecyclerViewAdapter
     private static MyClickListener myClickListener;
     private Context context;
     private CustomFilter filter;
-    protected ArrayList<SpecificationsModel> mDataset, filterList;
+    public ArrayList<SpecificationsModel> mDataset, filterList;
 
 
     public RecyclerViewAdapter(ArrayList<SpecificationsModel> myDataset) {

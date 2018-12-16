@@ -235,7 +235,7 @@ public class RegionMapView extends View {
         this.listener = listener;
     }
 
-    interface OnMapItemListener {
+    public interface OnMapItemListener {
         void onItemClick(RegionModel item);
     }
 

@@ -1,4 +1,4 @@
-package com.andrukhiv.mynavigationdrawer;
+package com.andrukhiv.mynavigationdrawer.adapters;
 
 
 import android.support.v4.app.Fragment;

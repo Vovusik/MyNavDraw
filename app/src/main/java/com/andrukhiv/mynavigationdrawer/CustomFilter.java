@@ -2,6 +2,7 @@ package com.andrukhiv.mynavigationdrawer;
 
 import android.widget.Filter;
 
+import com.andrukhiv.mynavigationdrawer.adapters.RecyclerViewAdapter;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class CustomFilter extends Filter {
     private ArrayList<SpecificationsModel> mFilterList;
 
 
-    CustomFilter(ArrayList<SpecificationsModel> filterList, RecyclerViewAdapter adapter) {
+    public CustomFilter(ArrayList<SpecificationsModel> filterList, RecyclerViewAdapter adapter) {
         this.mAdapter = adapter;
         this.mFilterList = filterList;
     }

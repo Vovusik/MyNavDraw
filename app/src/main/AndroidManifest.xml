@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -31,31 +31,31 @@
         </activity>
 
         <activity
-            android:name=".VarietiesDetailsActivity"
+            android:name=".activity.VarietiesDetailsActivity"
             android:theme="@style/DetailTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
 
         <activity
-            android:name=".KitchenActivity"
+            android:name=".activity.KitchenActivity"
             android:label="@string/name_kitchen" />
 
         <activity
-            android:name=".ReproductionActivity"
+            android:name=".activity.ReproductionActivity"
             android:label="@string/name_reproduction" />
 
-        <activity android:name=".FormationActivity"
+        <activity android:name=".activity.FormationActivity"
             android:label="@string/name_formation"/>
 
-        <activity android:name=".RegionActivity"
+        <activity android:name=".activity.RegionActivity"
             android:label="@string/name_region"/>
 
-        <activity android:name=".LibraryActivity"
+        <activity android:name=".activity.LibraryActivity"
             android:label="@string/name_library"/>
 
-        <activity android:name=".SortableActivity"
+        <activity android:name=".activity.SortableActivity"
             android:label="@string/name_specification"
             android:screenOrientation="sensorLandscape"/>
 
@@ -88,8 +88,8 @@
             android:resource="@color/colorPrimary" />
 
         <activity
-            android:name="SettingActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".activity.SettingActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Theme.Preference"/>
 
 
