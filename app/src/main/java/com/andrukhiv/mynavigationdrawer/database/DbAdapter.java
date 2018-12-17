@@ -10,10 +10,12 @@ import android.util.Log;
 import com.andrukhiv.mynavigationdrawer.models.FormationModel;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
+import com.andrukhiv.mynavigationdrawer.models.MapsModel;
 import com.andrukhiv.mynavigationdrawer.models.ReproductionModel;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.andrukhiv.mynavigationdrawer.tables.KitchenTable;
 import com.andrukhiv.mynavigationdrawer.tables.LibraryTable;
+import com.andrukhiv.mynavigationdrawer.tables.MapsTable;
 import com.andrukhiv.mynavigationdrawer.tables.ReproductionTable;
 import com.andrukhiv.mynavigationdrawer.tables.SpecificationsTable;
 import com.andrukhiv.mynavigationdrawer.tables.FormationTable;
@@ -237,4 +239,65 @@ public class DbAdapter {
         }
         return result;
     }
+
+
+    public static ArrayList<MapsModel> getMaps() {
+
+        ArrayList<MapsModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " + MapsTable.MAPS_NAME_TABLE +
+                " WHERE " +
+                MapsTable.MAPS_COLUMN_REGION_INT + " =1";// столові сорти
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new MapsModel(
+                        cursor.getLong(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_REGION)),
+                        cursor.getInt(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_REGION_INT)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_ADDRESS)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_WEB)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_PHONE)),
+                        cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LAT)),
+                        cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LNG)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_NAVIGATION_POSITION))
+                ));
+            }
+            cursor.close();
+        }
+        return result;
+    }
+
+
+    public static ArrayList<MapsModel> getMapsOdesa() {
+
+        ArrayList<MapsModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " + MapsTable.MAPS_NAME_TABLE +
+                " WHERE " +
+                MapsTable.MAPS_COLUMN_REGION_INT + " =2";// столові сорти
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new MapsModel(
+                        cursor.getLong(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_REGION)),
+                        cursor.getInt(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_REGION_INT)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_ADDRESS)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_WEB)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_PHONE)),
+                        cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LAT)),
+                        cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LNG)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_NAVIGATION_POSITION))
+                ));
+            }
+            cursor.close();
+        }
+        return result;
+    }
+
+
+
 }

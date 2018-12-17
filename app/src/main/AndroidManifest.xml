@@ -3,7 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.andrukhiv.mynavigationdrawer">
 
+    <!-- Позволяет приложениям открывать сетевые сокеты. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Приложение сможет получать доступ к точному местоположению - малювати маршрут в Винний тур -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--Позволяет приложению инициировать телефонный звонок без прохождения через пользовательский
+   интерфейс Dialer для подтверждения пользователем вызова - телефонувати в Винний тур-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- MAPS -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
 
     <application
         android:name=".AppController"
@@ -92,6 +104,16 @@
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Theme.Preference"/>
 
+        <activity android:name=".activity.MapsActivity"/>
+
+
+        <!-- MAPS -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
 
     </application>
 

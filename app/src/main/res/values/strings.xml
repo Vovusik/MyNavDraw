@@ -143,9 +143,25 @@
     <string name="action_settings">Settings</string>
 
 
+    <!-- Заповнення діалогового вікна спінера MapsActivity-->
+    <string-array name="region">
+        <item>Закарпаття</item>
+        <item>Одеса</item>
+    </string-array>
 
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
+    <string name="hasPermissions" translatable="false">Разрешение было успешно выполнено</string>
+    <string name="rationale_call" translatable="false">Разрешение на вызов отклонено</string>
+    <string name="rationale_location" translatable="false">Это приложение нуждается в доступе к вашему местоположению, чтобы узнать, где вы.</string>
 
+    <string name="returned_from_app_settings_to_activity" translatable="false">
+        Возврат из настроек приложения в MainActivity со следующими разрешениями:
+        \n\nPhone: %s
+        \nLocation: %s
+    </string>
+    <string name="yes" translatable="false">Yes</string>
+    <string name="no" translatable="false">No</string>
 //
     <!--<string name="name_kitchen">Алкокухня</string>-->
     <!--<string name="name_reproduction">Розмноження</string>-->

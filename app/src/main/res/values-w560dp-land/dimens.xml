@@ -17,4 +17,7 @@
     <dimen name="big_activity_margin_horizontal">72dp</dimen>
     <dimen name="big_activity_fab_margin">8dp</dimen>
 
+
+
+    <dimen name="padding_top_fragment_maps">400</dimen>
 </resources>

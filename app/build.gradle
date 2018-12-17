@@ -52,6 +52,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    // Бібліотеки для застосування карт
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.github.nitrico.mapviewpager:mapviewpager:1.0.0'
+    // Бібліотека роботи з дозволами
+    implementation 'pub.devrel:easypermissions:1.2.0'
 
 
 }

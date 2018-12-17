@@ -155,6 +155,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
+            case R.id.nav_marker:
+                intent = new Intent(MainActivity.this, MapsActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.nav_star:
                 rate();
                 break;

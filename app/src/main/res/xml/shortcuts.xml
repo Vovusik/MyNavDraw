@@ -69,7 +69,7 @@
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.andrukhiv.mynavigationdrawer.LivingActivity"
+            android:targetClass="com.andrukhiv.mynavigationdrawer.activity.MapsActivity"
             android:targetPackage="com.andrukhiv.mynavigationdrawer" />
     </shortcut>
 
