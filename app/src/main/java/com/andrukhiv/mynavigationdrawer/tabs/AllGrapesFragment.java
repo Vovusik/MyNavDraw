@@ -112,10 +112,10 @@ public class AllGrapesFragment extends Fragment {
             }
         });
 
-        ImageView searchIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_button);
+        ImageView searchIcon = searchView.findViewById(R.id.search_button);
         searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
 
-        ImageView closeIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+        ImageView closeIcon = searchView.findViewById(R.id.search_close_btn);
         closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
 
         // встановлюю ширину вікна пошуку на весь екран

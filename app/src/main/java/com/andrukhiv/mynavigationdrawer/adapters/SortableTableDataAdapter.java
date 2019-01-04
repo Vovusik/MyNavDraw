@@ -78,7 +78,8 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
 
         switch (columnIndex) {
             case 1:
-                renderedView = renderEditableGrapesName(grapes);
+                renderedView = renderSorty(grapes);
+                //renderedView = renderEditableGrapesName(grapes);
                 break;
             default:
                 renderedView = getDefaultCellView(rowIndex, columnIndex, parentView);

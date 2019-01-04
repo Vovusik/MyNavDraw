@@ -1,12 +1,16 @@
-package com.andrukhiv.mynavigationdrawer.tabs;
+package com.andrukhiv.mynavigationdrawer.fragments;
+
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,22 +18,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.andrukhiv.mynavigationdrawer.DividerItemDecoration;
 import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.adapters.RecyclerViewAdapter2;
-import com.andrukhiv.mynavigationdrawer.activity.VarietiesDetailsActivity;
+import com.andrukhiv.mynavigationdrawer.activity.KitchenDetailsActivity;
+import com.andrukhiv.mynavigationdrawer.adapters.KitchenRecyclerAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
-import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
+import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-public class TableGrapesFragment extends Fragment implements android.support.v7.widget.SearchView.OnQueryTextListener {
+public class KitchenFragment extends Fragment implements android.support.v7.widget.SearchView.OnQueryTextListener {
 
-    // Требуемый пустой публичный конструктор
-    public TableGrapesFragment() {
+    public KitchenFragment() {
     }
 
     DbAdapter mDbHelper;
@@ -37,8 +42,8 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
     protected static final String TAG = "TableGrapesFragment";
 
     RecyclerView mRecyclerView;
-    private RecyclerViewAdapter2 mAdapter;
-    private ArrayList<SpecificationsModel> grapes;
+    private KitchenRecyclerAdapter mAdapter;
+    private ArrayList<KitchenModel> kitchenModels;
 
 
     @Override
@@ -51,8 +56,7 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view;
-        view = inflater.inflate(R.layout.fragment_recycler_tabs, container, false);
+        View view = inflater.inflate(R.layout.kitchen_content_main, container, false);
         setHasOptionsMenu(true);
         mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
 
@@ -60,22 +64,23 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        grapes = mDbHelper.getTableGrapes();
-        mAdapter = new RecyclerViewAdapter2(grapes);
+        kitchenModels = mDbHelper.getKitchen();
+        mAdapter = new KitchenRecyclerAdapter(kitchenModels);
         mRecyclerView.setAdapter(mAdapter);
-
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), android.support.v7.widget.DividerItemDecoration.VERTICAL, 0));
         return mRecyclerView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        ((RecyclerViewAdapter2) mAdapter).setOnItemClickListener(new RecyclerViewAdapter2.MyClickListener() {
+        ((KitchenRecyclerAdapter) mAdapter).setOnItemClickListener(new KitchenRecyclerAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Log.i(TAG, " Clicked on Item " + grapes.get(position));
-                Intent intent = new Intent(getActivity().getApplicationContext(), VarietiesDetailsActivity.class);
-                intent.putExtra(VarietiesDetailsActivity.EXTRA_GRAPES_ID, grapes.get(position));
+                Log.i(TAG, " Clicked on Item " + kitchenModels.get(position));
+                Intent intent = new Intent(getActivity().getApplicationContext(), KitchenDetailsActivity.class);
+                intent.putExtra(KitchenDetailsActivity.EXTRA_KITCHEN_ID, kitchenModels.get(position));
                 startActivity(intent);
             }
         });
@@ -86,13 +91,22 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
         inflater.inflate(R.menu.search, menu);
 
         final MenuItem item = menu.findItem(R.id.action_search);
-        final android.support.v7.widget.SearchView searchView = (android.support.v7.widget.SearchView) MenuItemCompat.getActionView(item);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(this);
+
+        ImageView searchIcon = searchView.findViewById(R.id.search_button);
+        searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
+
+        ImageView closeIcon = searchView.findViewById(R.id.search_close_btn);
+        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
+
+        // встановлюю ширину вікна пошуку на весь екран
+        searchView.setMaxWidth(Integer.MAX_VALUE);
     }
 
     @Override
     public boolean onQueryTextChange(String query) {
-        final List<SpecificationsModel> filteredModelList = filter(grapes, query);
+        final List<KitchenModel> filteredModelList = filter(kitchenModels, query);
         mAdapter.animateTo(filteredModelList);
         mRecyclerView.scrollToPosition(0);
         return true;
@@ -103,12 +117,11 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
         return false;
     }
 
-
-    private List<SpecificationsModel> filter(List<SpecificationsModel> models, String query) {
+    private List<KitchenModel> filter(List<KitchenModel> models, String query) {
         query = query.toLowerCase();
 
-        final List<SpecificationsModel> filteredModelList = new ArrayList<>();
-        for (SpecificationsModel model : models) {
+        final List<KitchenModel> filteredModelList = new ArrayList<>();
+        for (KitchenModel model : models) {
             final String text = model.getName().toLowerCase();
             if (text.contains(query)) {
                 filteredModelList.add(model);
@@ -116,5 +129,4 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
         }
         return filteredModelList;
     }
-
 }

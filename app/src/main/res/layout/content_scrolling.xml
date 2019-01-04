@@ -38,11 +38,12 @@
             tools:ignore="OnClick" />
 
         <CheckBox
-            android:id="@+id/check_favorite"
+            android:id="@+id/favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/favorite"
             android:onClick="onFavoriteClicked"
-            android:text="favorite" />
+            />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

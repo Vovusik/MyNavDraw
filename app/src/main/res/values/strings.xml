@@ -6,6 +6,7 @@
     <string name="name_region" translatable="false">Сума активних температур</string>
     <string name="name_library" translatable="false">Бібліотека</string>
     <string name="name_specification" translatable="false">Характеристики</string>
+    <string name="name_bug" translatable="false">Хвороби і шкідники</string>
 
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
@@ -278,10 +279,11 @@
 
 
 
+    <string name="favorite" translatable="false">Favorite</string>
 
 
-
-
+    <string name="tab_name_mildiu" translatable="false">Мілдью</string>
+    <string name="tab_name_oidium" translatable="false">Оїдіум</string>
 
 
 </resources>

@@ -13,10 +13,8 @@ public class KitchenModel implements Serializable {
     }
 
     private long id;
-
-    private String description;
-
     private String name;
+    private String description;
 
     public long getId() {
         return id;

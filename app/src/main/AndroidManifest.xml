@@ -53,6 +53,7 @@
         <activity
             android:name=".activity.KitchenActivity"
             android:label="@string/name_kitchen" />
+        <activity android:name=".activity.KitchenDetailsActivity" />
 
         <activity
             android:name=".activity.ReproductionActivity"
@@ -114,6 +115,9 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity android:name=".activity.BugActivity"
+            android:label="@string/name_bug"/>
 
     </application>
 

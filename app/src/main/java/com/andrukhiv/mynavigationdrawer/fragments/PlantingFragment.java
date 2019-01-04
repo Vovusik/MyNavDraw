@@ -54,7 +54,7 @@ public class PlantingFragment extends Fragment {
                 String description_1 = cursor.getString(7);
 
                 ImageView photo1 = rootView.findViewById(R.id.imageView_1);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo1);
+                Glide.with(getContext()).load(photo_1).into(photo1);
 
                 TextView description1 = rootView.findViewById(R.id.textView_1);
                 description1.setText(description_1);

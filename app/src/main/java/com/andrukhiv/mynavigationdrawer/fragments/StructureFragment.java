@@ -49,11 +49,12 @@ public class StructureFragment extends Fragment {
                     new String[]{Integer.toString(1)},
                     null, null, null);
             if (cursor.moveToFirst()) {
+                String photo_1 = cursor.getString(1);
                 String description_1 = cursor.getString(7);
-                String photo_1 = cursor.getString(2);
 
                 ImageView photo = rootView.findViewById(R.id.imageView_1);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo);
+                Glide.with(getContext()).load(photo_1).into(photo);
+
                 TextView description = rootView.findViewById(R.id.textView_1);
                 description.setText(description_1);
             }

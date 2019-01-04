@@ -64,17 +64,17 @@ public class GuyotFragment extends Fragment {
                 String description_6 = cursor.getString(12);
 
                 ImageView photo1 = rootView.findViewById(R.id.imageView_1);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo1);
+                Glide.with(getContext()).load(photo_1).into(photo1);
                 ImageView photo2 = rootView.findViewById(R.id.imageView_2);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo2);
+                Glide.with(getContext()).load(photo_2).into(photo2);
                 ImageView photo3 = rootView.findViewById(R.id.imageView_3);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo3);
+                Glide.with(getContext()).load(photo_3).into(photo3);
                 ImageView photo4 = rootView.findViewById(R.id.imageView_4);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo4);
+                Glide.with(getContext()).load(photo_4).into(photo4);
                 ImageView photo5 = rootView.findViewById(R.id.imageView_5);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo5);
+                Glide.with(getContext()).load(photo_5).into(photo5);
                 ImageView photo6 = rootView.findViewById(R.id.imageView_6);
-                Glide.with(getContext()).load(R.drawable.placeholder).into(photo6);
+                Glide.with(getContext()).load(photo_6).into(photo6);
 
                 TextView description1 = rootView.findViewById(R.id.textView_1);
                 description1.setText(description_1);

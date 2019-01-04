@@ -1,10 +1,14 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
+import android.Manifest;
 import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Keep;
+import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +24,9 @@ import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
 import java.util.ArrayList;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class LibraryActivity extends AppCompatActivity {
 
@@ -117,6 +124,34 @@ public class LibraryActivity extends AppCompatActivity {
                 .addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(i, REQUEST_OPEN);
     }
+
+//    private void openDownloadsPage(Context context) {
+//        Intent pageView = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
+//        pageView.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        context.startActivity(pageView);
+//    }
+
+
+//    @Keep
+//    @AfterPermissionGranted(REQUEST_PERMISSION)
+//    private void navigateToPlayer() {
+//        if (EasyPermissions.hasPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+//            Intent intent = new Intent(this, MusicPlayerActivity.class);
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            EasyPermissions.requestPermissions(this, getString(R.string.read_permission_rational), REQUEST_PERMISSION, Manifest.permission.READ_EXTERNAL_STORAGE);
+//        }
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//
+//        // Forward results to EasyPermissions
+//        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+//    }
+
 
 
     private void show() {

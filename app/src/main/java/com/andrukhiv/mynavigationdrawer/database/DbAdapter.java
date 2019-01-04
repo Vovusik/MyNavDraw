@@ -7,12 +7,14 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.andrukhiv.mynavigationdrawer.models.BugModel;
 import com.andrukhiv.mynavigationdrawer.models.FormationModel;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
 import com.andrukhiv.mynavigationdrawer.models.MapsModel;
 import com.andrukhiv.mynavigationdrawer.models.ReproductionModel;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
+import com.andrukhiv.mynavigationdrawer.tables.BugTable;
 import com.andrukhiv.mynavigationdrawer.tables.KitchenTable;
 import com.andrukhiv.mynavigationdrawer.tables.LibraryTable;
 import com.andrukhiv.mynavigationdrawer.tables.MapsTable;
@@ -160,8 +162,9 @@ public class DbAdapter {
             while (cursor.moveToNext()) {
                 result.add(new KitchenModel(
                         cursor.getLong(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_ID)),
-                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_DESCRIPTION)),
-                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_NAME))
+                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndex(KitchenTable.KITCHEN_COLUMN_DESCRIPTION))
+
                 ));
             }
             cursor.close();
@@ -298,6 +301,46 @@ public class DbAdapter {
         return result;
     }
 
+    public static ArrayList<BugModel> getBugMildew() {
 
+        ArrayList<BugModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " + BugTable.BUG_NAME_TABLE+
+                " WHERE " +
+                BugTable.BUG_COLUMN_CATEGORY_ID + " =1";
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new BugModel(
+                        cursor.getString(cursor.getColumnIndex(BugTable.BUG_COLUMN_IMAGE)),
+                        cursor.getString(cursor.getColumnIndex(BugTable.BUG_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(BugTable.BUG_COLUMN_CATEGORY)),
+                        cursor.getInt(cursor.getColumnIndex(BugTable.BUG_COLUMN_CATEGORY_ID))
+                ));
+            }
+            cursor.close();
+        }
+        return result;
+    }
+
+    public static ArrayList<BugModel> getBugOidium() {
+
+        ArrayList<BugModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " + BugTable.BUG_NAME_TABLE+
+                " WHERE " +
+                BugTable.BUG_COLUMN_CATEGORY_ID + " =2";
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new BugModel(
+                        cursor.getString(cursor.getColumnIndex(BugTable.BUG_COLUMN_IMAGE)),
+                        cursor.getString(cursor.getColumnIndex(BugTable.BUG_COLUMN_DESCRIPTION)),
+                        cursor.getString(cursor.getColumnIndex(BugTable.BUG_COLUMN_CATEGORY)),
+                        cursor.getInt(cursor.getColumnIndex(BugTable.BUG_COLUMN_CATEGORY_ID))
+                ));
+            }
+            cursor.close();
+        }
+        return result;
+    }
 
 }
