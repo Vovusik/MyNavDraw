@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -17,25 +18,29 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.andrukhiv.mynavigationdrawer.AppRating;
 import com.andrukhiv.mynavigationdrawer.Constant;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.MainPagerAdapter;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_ANDROID;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_WEB;
+import static com.andrukhiv.mynavigationdrawer.Constant.URL_NAV_HEADER;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawer;
-    private FloatingActionButton mFab;
-    private Toolbar mToolbar;
     private Intent intent;
-
+    private ImageView imgNavHeaderBg;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = findViewById(R.id.toolbar);
+        Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
         mDrawer = findViewById(R.id.drawer_layout);
@@ -59,7 +64,13 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View navHeader = navigationView.getHeaderView(0);
+        imgNavHeaderBg = navHeader.findViewById(R.id.img_header_bg);
+
         setTab();
+
+        // завантажити фонового зображення навігаціонного меню
+        loadNavHeader();
 
         // todo - діалогове вікно «Оцінити цей додаток» - не слухається
         AppRating.app_launched(this);
@@ -74,6 +85,10 @@ public class MainActivity extends AppCompatActivity
 //        RateThisApp.init(config);
 //        // Если условие выполнено, будет показано диалоговое окно «Оценить это приложение»
 //        RateThisApp.showRateDialogIfNeeded(this, R.style.MyAlertDialogStyle);
+    }
+
+    private void loadNavHeader() {
+        Glide.with(this).load(URL_NAV_HEADER).into(imgNavHeaderBg);
     }
 
 
@@ -122,6 +137,11 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_alkcokitchen:
                 intent = new Intent(MainActivity.this, KitchenActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_gallery:
+                intent = new Intent(MainActivity.this, GalleryActivity.class);
                 startActivity(intent);
                 break;
 

@@ -23,7 +23,7 @@ public class FormationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
+        setContentView(R.layout.app_bar_main);
 
         mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(this).getApplicationContext());
         mStructureFormation = mDbHelper.getFormation();

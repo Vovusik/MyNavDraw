@@ -7,8 +7,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Приложение сможет получать доступ к точному местоположению - малювати маршрут в Винний тур -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!--Позволяет приложению инициировать телефонный звонок без прохождения через пользовательский
-   интерфейс Dialer для подтверждения пользователем вызова - телефонувати в Винний тур-->
+    <!--
+   Позволяет приложению инициировать телефонный звонок без прохождения через пользовательский
+   интерфейс Dialer для подтверждения пользователем вызова - телефонувати в Винний тур
+    -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- MAPS -->
@@ -16,7 +18,7 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -41,7 +43,6 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
-
         <activity
             android:name=".activity.VarietiesDetailsActivity"
             android:theme="@style/DetailTheme">
@@ -49,53 +50,52 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
         <activity
             android:name=".activity.KitchenActivity"
             android:label="@string/name_kitchen" />
         <activity android:name=".activity.KitchenDetailsActivity" />
-
         <activity
             android:name=".activity.ReproductionActivity"
             android:label="@string/name_reproduction" />
-
-        <activity android:name=".activity.FormationActivity"
-            android:label="@string/name_formation"/>
-
-        <activity android:name=".activity.RegionActivity"
-            android:label="@string/name_region"/>
-
-        <activity android:name=".activity.LibraryActivity"
-            android:label="@string/name_library"/>
-
-        <activity android:name=".activity.SortableActivity"
+        <activity
+            android:name=".activity.FormationActivity"
+            android:label="@string/name_formation" />
+        <activity
+            android:name=".activity.RegionActivity"
+            android:label="@string/name_region" />
+        <activity
+            android:name=".activity.LibraryActivity"
+            android:label="@string/name_library" />
+        <activity
+            android:name=".activity.SortableActivity"
             android:label="@string/name_specification"
-            android:screenOrientation="sensorLandscape"/>
+            android:screenOrientation="sensorLandscape" />
 
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <!--Для використання сповіщеннь Firebase-->
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <!-- Для використання сповіщеннь Firebase -->
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
 
-        <!-- Встановити спеціальний значок за замовчуванням. Це використовується, коли для вхідних
+        <!--
+         Встановити спеціальний значок за замовчуванням. Це використовується, коли для вхідних
          повідомлень не встановлено піктограму. Див. README (https://goo.gl/l4GJaQ) для
-         отримання додаткової інформації. -->
+         отримання додаткової інформації.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/dialog_icon_logo" />
-        <!-- Встановити колір, який використовується з вхідними повідомленнями.
+        <!--
+        Встановити колір, який використовується з вхідними повідомленнями.
         Це використовується, якщо для вхідного не встановлено жодного кольору повідомлення
-        про повідомлення Див. README (https://goo.gl/6BKBk7) для отримання додаткової інформації. -->
+        про повідомлення Див. README (https://goo.gl/6BKBk7) для отримання додаткової інформації.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
@@ -103,10 +103,8 @@
         <activity
             android:name=".activity.SettingActivity"
             android:parentActivityName=".activity.MainActivity"
-            android:theme="@style/Theme.Preference"/>
-
-        <activity android:name=".activity.MapsActivity"/>
-
+            android:theme="@style/Theme.Preference" />
+        <activity android:name=".activity.MapsActivity" />
 
         <!-- MAPS -->
         <meta-data
@@ -116,8 +114,16 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activity.BugActivity"
-            android:label="@string/name_bug"/>
+        <activity
+            android:name=".activity.BugActivity"
+            android:label="@string/name_bug" />
+
+        <activity
+            android:name=".activity.GalleryActivity"
+            android:label="@string/name_gallery"
+            android:theme="@style/GalleryTheme"/>
+
+
 
     </application>
 

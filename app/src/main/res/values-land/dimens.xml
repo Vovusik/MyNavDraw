@@ -2,4 +2,6 @@
 <resources>
     <!--висота action_bar BUG-->
     <dimen name="action_bar_size">0dp</dimen>
+
+    <integer name="grid_span_count">3</integer>
 </resources>

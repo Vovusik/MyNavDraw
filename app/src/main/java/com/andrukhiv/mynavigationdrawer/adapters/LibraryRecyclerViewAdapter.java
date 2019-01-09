@@ -87,8 +87,8 @@ public class LibraryRecyclerViewAdapter extends RecyclerView
                 .load(mDataset.get(position).getImage())
 
                 .apply(new RequestOptions()
-//                        .fitCenter()
-                        .override(200, 150)
+                        .fitCenter()
+                        //.override(200, 150)
 //                        .placeholder(R.drawable.placeholder)
 //                        .fallback(R.drawable.ic_520016)
 //                        .error(R.drawable.oops)

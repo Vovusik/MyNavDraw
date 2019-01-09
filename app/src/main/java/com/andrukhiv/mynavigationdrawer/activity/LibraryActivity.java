@@ -1,14 +1,10 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
-import android.Manifest;
 import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Keep;
-import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -23,10 +19,8 @@ import com.andrukhiv.mynavigationdrawer.adapters.LibraryRecyclerViewAdapter;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
-import java.util.ArrayList;
 
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.EasyPermissions;
+import java.util.ArrayList;
 
 public class LibraryActivity extends AppCompatActivity {
 
@@ -98,17 +92,17 @@ public class LibraryActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_library, menu);
+        getMenuInflater().inflate(R.menu.library, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.pdfs) {
-            open();
-        } else if (item.getItemId() == R.id.btnShowDwn) {
+        if (item.getItemId() == R.id.btnShowDwn) {
             show();
+//        } else if (item.getItemId() == R.id.pdfs) {
+//            open();
         } else if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
@@ -117,13 +111,13 @@ public class LibraryActivity extends AppCompatActivity {
     }
 
 
-    private void open() {
-        Intent i = new Intent()
-                .setType("application/menu_library")
-                .setAction(Intent.ACTION_OPEN_DOCUMENT)
-                .addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(i, REQUEST_OPEN);
-    }
+//    private void open() {
+//        Intent i = new Intent()
+//                .setType("application/library")
+//                .setAction(Intent.ACTION_OPEN_DOCUMENT)
+//                .addCategory(Intent.CATEGORY_OPENABLE);
+//        startActivityForResult(i, REQUEST_OPEN);
+//    }
 
 //    private void openDownloadsPage(Context context) {
 //        Intent pageView = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
@@ -151,7 +145,6 @@ public class LibraryActivity extends AppCompatActivity {
 //        // Forward results to EasyPermissions
 //        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
 //    }
-
 
 
     private void show() {
