@@ -14,6 +14,9 @@ import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 
 public class AppController extends Application {
 
+    public static final String LIGHT_MODE = "light";
+    public static final String DARK_MODE = "dark";
+    public static final String DEFAULT_MODE = "default";
     DbAdapter mDbHelper;
 
     @Override
@@ -28,7 +31,7 @@ public class AppController extends Application {
 
         // Створюю власну тему для додатка
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String theme = prefs.getString("theme", "default");
+        String theme = prefs.getString("theme", DEFAULT_MODE);
         AppCompatDelegate.setDefaultNightMode(
                 getNightModeInt(theme)
         );
@@ -54,9 +57,9 @@ public class AppController extends Application {
     @AppCompatDelegate.NightMode
     public static int getNightModeInt(String nightMode){
         switch (nightMode) {
-            case "light":
+            case LIGHT_MODE:
                 return AppCompatDelegate.MODE_NIGHT_NO;
-            case "dark":
+            case DARK_MODE:
                 return AppCompatDelegate.MODE_NIGHT_YES;
             default:
                 return AppCompatDelegate.MODE_NIGHT_AUTO;

@@ -39,6 +39,10 @@ public class SortableGrapesTableView extends SortableTableView<SpecificationsMod
         simpleTableHeaderAdapter.setTextColor(ContextCompat.getColor(context, R.color.colorWhite));
         setHeaderAdapter(simpleTableHeaderAdapter);
 
+        simpleTableHeaderAdapter.setPaddings(20, 50, 0, 50);
+        simpleTableHeaderAdapter.setTypeface(1);
+        simpleTableHeaderAdapter.setTextSize(14);
+
         final int rowColorEven = ContextCompat.getColor(context, R.color.windowBackground);
         final int rowColorOdd = ContextCompat.getColor(context, R.color.rowBackground);
         setDataRowBackgroundProvider(TableDataRowBackgroundProviders.alternatingRowColors(rowColorEven, rowColorOdd));

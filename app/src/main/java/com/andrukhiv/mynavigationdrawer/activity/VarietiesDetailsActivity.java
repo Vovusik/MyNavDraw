@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.PathInterpolator;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -48,6 +49,7 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
     private SpecificationsModel mGrapes;
     public SlidrConfig mConfig;
     private boolean isActive = false;
+    private AlphaAnimation alphaAnimationShowIcon;
 
     // Добавляємо константу EXTRA_GRAPES_ID
     public static final String EXTRA_GRAPES_ID = "grapesId";
@@ -110,13 +112,17 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
 
         // Добавляю анімацію кнопки FAB
         fabAnimation();
+
+
     }
 
 
     private void fabAnimation() {
+
+        final FloatingActionButton mFab = findViewById(R.id.floatingActionButton);
         @ColorInt final int colorActive = ContextCompat.getColor(this, android.R.color.white);
         @ColorInt final int colorPassive = ContextCompat.getColor(this, R.color.colorAccent);
-        final FloatingActionButton mFab = findViewById(R.id.floatingActionButton);
+
 
         final float from = 1.0f;
         final float to = 1.2f; //Збільшую FAB
@@ -170,12 +176,23 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
             }
         });
 
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+        alphaAnimation.setDuration(700);
+        alphaAnimationShowIcon = new AlphaAnimation(0.2f, 1.0f);
+        alphaAnimationShowIcon.setDuration(300);
+
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isActive) {
+                    mFab.setImageResource(R.drawable.ic_favorite_passive);
+                    mFab.startAnimation(alphaAnimationShowIcon);
+                    isActive = true;
                     Snackbar.make(v, "Видалено з улюблених", Snackbar.LENGTH_LONG).show();
                 } else {
+                    mFab.setImageResource(R.drawable.ic_favorite_active);
+                    mFab.startAnimation(alphaAnimationShowIcon);
+                    isActive = false;
                     Snackbar.make(v, "Добавлено до улюблених", Snackbar.LENGTH_LONG).show();
                 }
 

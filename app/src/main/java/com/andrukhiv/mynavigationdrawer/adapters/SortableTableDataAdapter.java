@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ import de.codecrafters.tableview.toolkit.LongPressAwareTableDataAdapter;
 
 public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<SpecificationsModel> {
 
-    private static final int TEXT_SIZE = 16;
+    private static final int TEXT_SIZE = 14;
     private static final NumberFormat NUMBER_FORMAT = NumberFormat.getNumberInstance();
 
     public SortableTableDataAdapter(final Context context,
@@ -91,7 +92,7 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
     private View renderEditableGrapesName(final SpecificationsModel grapes) {
         final EditText editText = new EditText(getContext());
         editText.setText(grapes.getName());
-        editText.setPadding(20, 10, 0, 10);
+        editText.setPadding(20, 40, 20, 40);
         editText.setTextSize(TEXT_SIZE);
         editText.setSingleLine();
         editText.addTextChangedListener(new GrapesNameUpdater(grapes));
@@ -109,7 +110,7 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
     private View renderString(final String value) {
         final TextView textView = new TextView(getContext());
         textView.setText(value);
-        textView.setPadding(20, 10, 20, 10);
+        textView.setPadding(20, 40, 20, 40);
         textView.setTextSize(TEXT_SIZE);
         textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColorSecondary));
         return textView;
@@ -124,8 +125,9 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
 
         final TextView textView = new TextView(getContext());
         textView.setText(frostString);
-        textView.setPadding(20, 10, 20, 10);
+        textView.setPadding(20, 40, 20, 40);
         textView.setTextSize(TEXT_SIZE);
+        textView.setGravity(Gravity.CENTER);
         textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColorSecondary));
 
         if (grapes.getFrost() < 22) {
@@ -150,8 +152,9 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
 
         final TextView textView = new TextView(getContext());
         textView.setText(weightString);
-        textView.setPadding(20, 10, 20, 10);
+        textView.setPadding(20, 40, 20, 40);
         textView.setTextSize(TEXT_SIZE);
+        textView.setGravity(Gravity.CENTER);
         textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColorSecondary));
         return textView;
     }
@@ -180,3 +183,4 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
         }
     }
 }
+

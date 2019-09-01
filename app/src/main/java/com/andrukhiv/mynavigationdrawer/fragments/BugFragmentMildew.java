@@ -18,11 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.andrukhiv.mynavigationdrawer.BugParallaxPageTransformer;
+import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.BugPagerAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbHelper;
-import com.andrukhiv.mynavigationdrawer.BugParallaxPageTransformer;
-import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.BugModel;
 import com.andrukhiv.mynavigationdrawer.tables.BugTable;
 
@@ -34,6 +35,8 @@ import static com.andrukhiv.mynavigationdrawer.database.DbAdapter.getBugMildew;
 public class BugFragmentMildew extends Fragment implements View.OnClickListener {
 
     ViewPager mViewPager;
+    DbAdapter mDbHelper;
+    ArrayList<BugModel> bugModels;
     LinearLayout mSliderDotsPanel;
     private int mDotsCount;
     private ImageView[] mDots;
@@ -50,7 +53,12 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
         mRightButton = (ImageButton) view.findViewById(R.id.right_nav);
         mRightButton.setOnClickListener(this);
 
+        mLeftButton.setVisibility(View.GONE);
+
         mViewPager = view.findViewById(R.id.viewPager);
+
+        mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
+        bugModels = getBugMildew();
 
         BugPagerAdapter adapter = new BugPagerAdapter(getFragmentManager(), getBugMildew());
         mViewPager.setAdapter(adapter);
@@ -121,6 +129,24 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
         mDots[0].setImageDrawable(ContextCompat.getDrawable(getContext(),
                 R.drawable.active_dot));
 
+        mLeftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isFirstPage()) {
+                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
+                }
+            }
+        });
+
+        mRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isLastPage()) {
+                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
+                }
+            }
+        });
+
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -136,6 +162,8 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
 
                 mDots[position].setImageDrawable(ContextCompat.getDrawable(getContext(),
                         R.drawable.active_dot));
+
+                handleVisibility();
             }
 
             @Override
@@ -152,7 +180,30 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
                 break;
             case R.id.right_nav:
                 mViewPager.arrowScroll(View.FOCUS_RIGHT);
+
                 break;
         }
+    }
+
+    private void handleVisibility() {
+        if (isFirstPage()) {
+            mLeftButton.setVisibility(View.INVISIBLE);
+        } else {
+            mLeftButton.setVisibility(View.VISIBLE);
+        }
+
+        if (isLastPage()) {
+            mRightButton.setVisibility(View.INVISIBLE);
+        } else {
+            mRightButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private boolean isFirstPage() {
+        return mViewPager.getCurrentItem() == 0;
+    }
+
+    private boolean isLastPage() {
+        return mViewPager.getCurrentItem() == mViewPager.getAdapter().getCount() - 1;
     }
 }

@@ -16,7 +16,10 @@
 
             <TextView
                 android:id="@+id/description"
-                style="@style/TextViewScroll" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="@color/textColorSecondary" />
 
         </LinearLayout>
 

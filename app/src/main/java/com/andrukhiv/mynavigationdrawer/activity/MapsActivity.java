@@ -2,12 +2,14 @@ package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -58,6 +60,11 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
         // Прибрав назву заголовку з тулбара
         getSupportActionBar().setTitle(null);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);// замените своим пользовательским значком
+        }
+
         mDbHelper = DbAdapter.getInstance(getApplicationContext());
         mapsModels = DbAdapter.getMaps();
         mapsModelsOdesa = DbAdapter.getMapsOdesa();
@@ -104,7 +111,6 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
     }
 
 
-
     private void transcarpathianMapViewPager() {
         mvp = new MapViewPager.Builder(MapsActivity.this)
                 .mapFragment(mapFragment)
@@ -132,18 +138,30 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             mvp.getMap().setPadding(
                     0,
-                    40,
+                    Utils.dp(this, 40),
                     Utils.getNavigationBarWidth(this),
-                    viewPager.getHeight());
+                    viewPager.getHeight() + Utils.getNavigationBarHeight(this));
             mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        }
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             mvp.getMap().setPadding(
                     0,
                     800,
                     Utils.getNavigationBarWidth(this),
                     viewPager.getHeight());
-            mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            mvp.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         }
+//        if ((Build.VERSION.SDK_INT == 26)) {
+//            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//
+//                mvp.getMap().setPadding(
+//                        190,
+//                        1500,
+//                        Utils.getNavigationBarWidth(this),
+//                        viewPager.getHeight());
+//                mvp.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+//            }
+//        }
     }
 
     @Override
@@ -169,5 +187,14 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Не могу найти стиль. Ошибка:", e);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sommelier</string>
     <string name="name_kitchen" translatable="false">Алкокухня</string>
     <string name="name_reproduction" translatable="false">Розмноження</string>
@@ -107,13 +107,13 @@
     <string name="tab_formuvannya_cordon" translatable="false">Кордон</string>
 
     <!--Найзви колонок у таблиці-->
-    <string name="name" translatable="false">Назва</string>
-    <string name="sort" translatable="false">Група</string>
-    <string name="term" translatable="false">Строк</string>
-    <string name="frost" translatable="false">Мороз</string>
-    <string name="color" translatable="false">Колір</string>
-    <string name="growth" translatable="false">Ріст</string>
-    <string name="weight" translatable="false">Вага</string>
+    <string name="name" translatable="false">НАЗВА</string>
+    <string name="sort" translatable="false">ГРУПА</string>
+    <string name="term" translatable="false">СТРОК</string>
+    <string name="frost" translatable="false">МОРОЗ</string>
+    <string name="color" translatable="false">КОЛІР</string>
+    <string name="growth" translatable="false">РІСТ</string>
+    <string name="weight"  translatable="false">ВАГА</string>
 
 
     <!--Категорія загальних налаштувань-->

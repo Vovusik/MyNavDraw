@@ -21,7 +21,7 @@
 
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/shortcut_icon_formuvannya"
+        android:icon="@drawable/shortcut_icon_structure"
         android:shortcutId="formuvannya"
         android:shortcutLongLabel="@string/shortcut_long_label_formuvannya"
         android:shortcutShortLabel="@string/shortcut_short_label_formuvannya">
