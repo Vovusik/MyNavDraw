@@ -14,9 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="autoMirrored" value="true" />
-                            <entry key="outputName" value="ic_web_site" />
-                            <entry key="sourceFile" value="C:\Users\user\Downloads\web-site.svg" />
+                            <entry key="outputName" value="draweer_home" />
+                            <entry key="sourceFile" value="C:\Users\user\Downloads\home (2).svg" />
                           </map>
                         </option>
                       </PersistentState>

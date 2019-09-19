@@ -29,11 +29,15 @@
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
         <item name="tabSelectedTextColor">@color/tab_icon_and_text_selector_color</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
     </style>
 
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
         <item name="textAllCaps">true</item>
     </style>
 
@@ -80,37 +84,37 @@
 
     <!--&lt;!&ndash;Стиль для тексту TextView&ndash;&gt;-->
     <!--<style name="TextViewScroll">-->
-        <!--<item name="android:layout_width">match_parent</item>-->
-        <!--<item name="android:layout_height">wrap_content</item>-->
-        <!--<item name="android:layout_margin">16dp</item>-->
-        <!--<item name="android:lineSpacingExtra">4dp</item>-->
-        <!--<item name="android:textColor">@color/textColorSecondary</item>-->
-        <!--<item name="android:textSize">16sp</item>-->
+    <!--<item name="android:layout_width">match_parent</item>-->
+    <!--<item name="android:layout_height">wrap_content</item>-->
+    <!--<item name="android:layout_margin">16dp</item>-->
+    <!--<item name="android:lineSpacingExtra">4dp</item>-->
+    <!--<item name="android:textColor">@color/textColorSecondary</item>-->
+    <!--<item name="android:textSize">16sp</item>-->
     <!--</style>-->
 
 
     <!--Стиль для ImageView-->
-    <style name="FormationImageView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:adjustViewBounds">true</item>
-        <item name="android:scaleType">fitStart</item>
-        <item name="android:layout_margin">16dp</item>
-    </style>
+    <!--<style name="FormationImageView">-->
+        <!--<item name="android:layout_width">match_parent</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:adjustViewBounds">true</item>-->
+        <!--<item name="android:scaleType">fitStart</item>-->
+
+    <!--</style>-->
 
     <!--Стиль для тексту TextView-->
-    <style name="FormationTextView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/textColorSecondary</item>
-        <item name="android:layout_margin">16dp</item>
-        <item name="android:lineSpacingExtra">4dp</item>
-    </style>
+    <!--<style name="FormationTextView">-->
+        <!--<item name="android:layout_width">match_parent</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:textColor">@color/textColorSecondary</item>-->
+        <!--<item name="android:paddingTop">16dp</item>-->
+        <!--<item name="android:lineSpacingExtra">4dp</item>-->
+    <!--</style>-->
 
     <!-- Стиль для "Актівіті Налаштування" -->
     <style name="Theme.Preference" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:windowBackground">@color/rowBackground</item>
@@ -134,7 +138,7 @@
     <!--Тема для розділу "Галерея"-->
     <style name="GalleryTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -152,9 +156,5 @@
         <item name="android:padding">8dp</item>
         <item name="android:fontFamily">@font/raleway_regular</item>
     </style>
-
-
-
-
 
 </resources>

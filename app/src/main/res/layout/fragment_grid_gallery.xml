@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.RecyclerView
+<androidx.recyclerview.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/recycler_view"
@@ -11,5 +11,5 @@
     android:background="@color/windowBackground"
     android:paddingEnd="8dp"
     android:scrollbars="vertical"
-    app:layoutManager="android.support.v7.widget.GridLayoutManager"
-    app:spanCount="@integer/grid_span_count"/>
+    app:spanCount="@integer/grid_span_count"
+    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>

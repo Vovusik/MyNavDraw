@@ -2,11 +2,11 @@ package com.andrukhiv.mynavigationdrawer.tabs;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.andrukhiv.mynavigationdrawer.R;
+import com.andrukhiv.mynavigationdrawer.activity.DetailsActivity;
 import com.andrukhiv.mynavigationdrawer.adapters.RecyclerViewAdapter2;
-import com.andrukhiv.mynavigationdrawer.activity.VarietiesDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class TableGrapesFragment extends Fragment implements android.support.v7.widget.SearchView.OnQueryTextListener {
+public class TableGrapesFragment extends Fragment implements androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
     // Требуемый пустой публичный конструктор
     public TableGrapesFragment() {
@@ -74,8 +74,8 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(TAG, " Clicked on Item " + grapes.get(position));
-                Intent intent = new Intent(getActivity().getApplicationContext(), VarietiesDetailsActivity.class);
-                intent.putExtra(VarietiesDetailsActivity.EXTRA_GRAPES_ID, grapes.get(position));
+                Intent intent = new Intent(getActivity().getApplicationContext(), DetailsActivity.class);
+                intent.putExtra(DetailsActivity.EXTRA_GRAPES_ID, grapes.get(position));
                 startActivity(intent);
             }
         });
@@ -86,7 +86,7 @@ public class TableGrapesFragment extends Fragment implements android.support.v7.
         inflater.inflate(R.menu.search, menu);
 
         final MenuItem item = menu.findItem(R.id.action_search);
-        final android.support.v7.widget.SearchView searchView = (android.support.v7.widget.SearchView) MenuItemCompat.getActionView(item);
+        final androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(this);
     }
 

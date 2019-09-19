@@ -44,7 +44,7 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".activity.VarietiesDetailsActivity"
+            android:name=".activity.DetailsActivity"
             android:theme="@style/DetailTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -58,7 +58,7 @@
             android:name=".activity.ReproductionActivity"
             android:label="@string/name_reproduction" />
         <activity
-            android:name=".activity.FormationActivity"
+            android:name=".activity.BudovaActivity"
             android:label="@string/name_formation" />
         <activity
             android:name=".activity.RegionActivity"

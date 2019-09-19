@@ -1,14 +1,12 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.andrukhiv.mynavigationdrawer.fragments.GalleryGridFragment;
 import com.andrukhiv.mynavigationdrawer.R;
-
-import java.util.ArrayList;
 
 /**
  * Основной вид приложения «Gallery».

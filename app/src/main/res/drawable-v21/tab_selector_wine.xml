@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/tab_icon_wine_true"
+
+    <item android:drawable="@drawable/tab_wine_true"
         android:state_selected="true" />
-    <item android:drawable="@drawable/tab_icon_wine_default" /><!-- default -->
+    <item android:drawable="@drawable/tab_wine_default" /> <!-- default -->
+
 </selector>

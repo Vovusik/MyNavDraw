@@ -1,31 +1,31 @@
 package com.andrukhiv.mynavigationdrawer.tabs;
 
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-import android.support.v7.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.andrukhiv.mynavigationdrawer.activity.DetailsActivity;
 import com.andrukhiv.mynavigationdrawer.adapters.RecyclerViewAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
-import com.andrukhiv.mynavigationdrawer.activity.VarietiesDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.R;
 
 import java.util.Objects;
@@ -85,8 +85,8 @@ public class AllGrapesFragment extends Fragment {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(TAG, " Clicked on Item " + grapes.get(position));
-                Intent intent = new Intent(getActivity().getApplicationContext(), VarietiesDetailsActivity.class);
-                intent.putExtra(VarietiesDetailsActivity.EXTRA_GRAPES_ID, grapes.get(position));
+                Intent intent = new Intent(getActivity().getApplicationContext(), DetailsActivity.class);
+                intent.putExtra(DetailsActivity.EXTRA_GRAPES_ID, grapes.get(position));
                 startActivity(intent);
             }
         });

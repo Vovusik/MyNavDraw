@@ -1,16 +1,15 @@
 package com.andrukhiv.mynavigationdrawer.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,20 +18,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.andrukhiv.mynavigationdrawer.DividerItemDecoration;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.activity.KitchenDetailsActivity;
 import com.andrukhiv.mynavigationdrawer.adapters.KitchenRecyclerAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-public class KitchenFragment extends Fragment implements android.support.v7.widget.SearchView.OnQueryTextListener {
+public class KitchenFragment extends Fragment implements androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
     public KitchenFragment() {
     }
@@ -45,12 +42,10 @@ public class KitchenFragment extends Fragment implements android.support.v7.widg
     private KitchenRecyclerAdapter mAdapter;
     private ArrayList<KitchenModel> kitchenModels;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -68,7 +63,7 @@ public class KitchenFragment extends Fragment implements android.support.v7.widg
         mAdapter = new KitchenRecyclerAdapter(kitchenModels);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), android.support.v7.widget.DividerItemDecoration.VERTICAL, 0));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), androidx.recyclerview.widget.DividerItemDecoration.VERTICAL, 0));
         return mRecyclerView;
     }
 
@@ -95,7 +90,7 @@ public class KitchenFragment extends Fragment implements android.support.v7.widg
         searchView.setOnQueryTextListener(this);
 
         ImageView searchIcon = searchView.findViewById(R.id.search_button);
-        searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
+        searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_2));
 
         ImageView closeIcon = searchView.findViewById(R.id.search_close_btn);
         closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));

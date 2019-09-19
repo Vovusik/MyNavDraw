@@ -12,21 +12,20 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.ColorInt;
+import androidx.browser.customtabs.CustomTabsIntent;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.PathInterpolator;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -44,7 +43,7 @@ import com.r0adkll.slidr.model.SlidrPosition;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-public class VarietiesDetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity {
 
     private SpecificationsModel mGrapes;
     public SlidrConfig mConfig;
@@ -79,7 +78,7 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
         progressBar.setVisibility(ProgressBar.VISIBLE);
 
         ImageView photoLarge = findViewById(R.id.photo_large);
-       // Picasso.get().load(mGrapes.getPhotoLarge()).error(R.drawable.oops).into(photoLarge);
+        // Picasso.get().load(mGrapes.getPhotoLarge()).error(R.drawable.oops).into(photoLarge);
         Glide
                 .with(this)
                 .load(mGrapes.getPhotoLarge())
@@ -104,16 +103,11 @@ public class VarietiesDetailsActivity extends AppCompatActivity {
         };
         textLink.setOnClickListener(clickLink);
 
-//        CheckBox favorite = findViewById(R.id.check_favorite);
-//        favorite.setChecked(isFavorite);
-
         // Добавлення слайду для відміни Activity
         slidrConfig();
 
         // Добавляю анімацію кнопки FAB
         fabAnimation();
-
-
     }
 
 

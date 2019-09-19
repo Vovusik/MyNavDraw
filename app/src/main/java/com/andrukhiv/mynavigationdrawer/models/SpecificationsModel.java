@@ -1,8 +1,6 @@
 package com.andrukhiv.mynavigationdrawer.models;
 
-import android.arch.lifecycle.ViewModel;
-
-import com.andrukhiv.mynavigationdrawer.R;
+import androidx.lifecycle.ViewModel;
 
 import java.io.Serializable;
 

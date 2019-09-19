@@ -1,7 +1,7 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.SortableGrapesTableView;

@@ -28,7 +28,7 @@ public class Utils {
         }
     }
     public static boolean hasNavigationBar(Context context) {
-        if (Build.VERSION.SDK_INT < 19) return false; // could have but won't be translucent
+        if (Build.VERSION.SDK_INT < 21) return false; // could have but won't be translucent
         return !ViewConfiguration.get(context).hasPermanentMenuKey();
     }
     public static boolean isPortrait(Context context) {

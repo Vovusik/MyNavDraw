@@ -9,7 +9,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/drawer_icon_home"
-            android:title="@string/drawer_item_home" />
+            android:title="@string/drawer_item_home"/>
         <item
             android:id="@+id/nav_marker"
             android:icon="@drawable/drawer_icon_marker"
@@ -28,7 +28,7 @@
             android:title="@string/drawer_item_library" />
         <item
             android:id="@+id/nav_favorite"
-            android:icon="@drawable/drawer_icon_favorite"
+            android:icon="@drawable/drawer_favorite"
             android:title="@string/drawer_item_favorite_varieties" />
     </group>
 
@@ -76,7 +76,7 @@
             <group android:checkableBehavior="none">
                 <item
                     android:id="@+id/nav_star"
-                    android:icon="@drawable/drawer_icon_star"
+                    android:icon="@drawable/drawer_star_ratings"
                     android:title="@string/drawer_item_rating" />
                 <item
                     android:id="@+id/nav_share"

@@ -2,12 +2,11 @@ package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,7 +73,7 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
 
         viewPager = findViewById(R.id.viewPager);
         viewPager.setPageMargin(Utils.dp(this, 16));
-        Utils.setMargins(viewPager, 0, 0, 0, Utils.getNavigationBarHeight(this));
+        Utils.setMargins(viewPager, 0, 0, 0, 0);
 
         // Добавляю спіннер у тулбар
         mSpinner = findViewById(R.id.spinner);
@@ -137,31 +136,20 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
     public void onMapViewPagerReady() {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             mvp.getMap().setPadding(
-                    0,
-                    Utils.dp(this, 40),
                     Utils.getNavigationBarWidth(this),
-                    viewPager.getHeight() + Utils.getNavigationBarHeight(this));
+                    Utils.getNavigationBarWidth(this),
+                    Utils.getNavigationBarWidth(this),
+                    viewPager.getHeight());
             mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             mvp.getMap().setPadding(
-                    0,
-                    800,
                     Utils.getNavigationBarWidth(this),
-                    viewPager.getHeight());
-            mvp.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    Utils.getNavigationBarWidth(this),
+                    Utils.getNavigationBarWidth(this),
+                    Utils.getNavigationBarWidth(this));
+            mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
-//        if ((Build.VERSION.SDK_INT == 26)) {
-//            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//
-//                mvp.getMap().setPadding(
-//                        190,
-//                        1500,
-//                        Utils.getNavigationBarWidth(this),
-//                        viewPager.getHeight());
-//                mvp.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-//            }
-//        }
     }
 
     @Override

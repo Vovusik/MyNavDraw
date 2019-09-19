@@ -1,12 +1,12 @@
 package com.andrukhiv.mynavigationdrawer.adapters;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.andrukhiv.mynavigationdrawer.fragments.GuyotFragment;
-import com.andrukhiv.mynavigationdrawer.fragments.PlantingFragment;
-import com.andrukhiv.mynavigationdrawer.fragments.StructureFragment;
+import com.andrukhiv.mynavigationdrawer.fragments.BudovaGuyot;
+import com.andrukhiv.mynavigationdrawer.fragments.BudovaPosadka;
+import com.andrukhiv.mynavigationdrawer.fragments.Budova;
 
 public class FormationPagerAdapter extends FragmentPagerAdapter {
 
@@ -21,11 +21,11 @@ public class FormationPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new StructureFragment();
+                return new Budova();
             case 1:
-                return new PlantingFragment();
+                return new BudovaPosadka();
             case 2:
-                return new GuyotFragment();
+                return new BudovaGuyot();
 //            case 3:
 //                return new StelagFragment();
 //            case 4:
