@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.content.ContextCompat;
@@ -57,7 +56,7 @@ public class LibraryActivity extends AppCompatActivity
         setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.toolbar_ic_up_arrow);
         }
 
         textTitle = findViewById(R.id.text_title);
@@ -117,7 +116,7 @@ public class LibraryActivity extends AppCompatActivity
         builder.addDefaultShareMenuItem();
         builder.setShowTitle(true);
         builder.setCloseButtonIcon(BitmapFactory.decodeResource(
-                getResources(), R.drawable.ic_up_arrow_icon));
+                getResources(), R.drawable.toolbar_ic_up_arrow));
         builder.setStartAnimations(LibraryActivity.this, R.anim.slide_in_right, R.anim.slide_out_left);
         builder.setExitAnimations(LibraryActivity.this, android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 

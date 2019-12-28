@@ -23,7 +23,7 @@ public class ReproductionActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.toolbar_ic_up_arrow);
         }
 
         setUi();

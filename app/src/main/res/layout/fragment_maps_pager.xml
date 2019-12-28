@@ -59,19 +59,19 @@
                 <Button
                     android:id="@+id/web"
                     style="@style/MapsButtonStyle"
-                    android:drawableTop="@drawable/selector_web_site"
+                    android:drawableTop="@drawable/map_selector_web_site"
                     android:text="Веб-сайт" />
 
                 <Button
                     android:id="@+id/call"
                     style="@style/MapsButtonStyle"
-                    android:drawableTop="@drawable/map_sel_call"
+                    android:drawableTop="@drawable/map_ic_call"
                     android:text="Виклик" />
 
                 <Button
                     android:id="@+id/directions"
                     style="@style/MapsButtonStyle"
-                    android:drawableTop="@drawable/selector_direction"
+                    android:drawableTop="@drawable/map_selector_direction"
                     android:text="Маршрут" />
 
             </LinearLayout>

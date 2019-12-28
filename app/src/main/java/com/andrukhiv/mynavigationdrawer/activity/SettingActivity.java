@@ -17,7 +17,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.toolbar_ic_up_arrow);
 
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingFragment())

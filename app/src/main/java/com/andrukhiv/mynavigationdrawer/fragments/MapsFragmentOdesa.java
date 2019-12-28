@@ -247,7 +247,7 @@ public class MapsFragmentOdesa extends Fragment implements View.OnClickListener,
         builder.setShowTitle(true);
         // змінюю хрестик на стрілочку повернення додому
         builder.setCloseButtonIcon(BitmapFactory.decodeResource(
-                getResources(), R.drawable.ic_up_arrow_icon));
+                getResources(), R.drawable.toolbar_ic_up_arrow));
 
         // настроить анимацию начала и выхода
         builder.setStartAnimations(getContext(), R.anim.slide_in_right, R.anim.slide_out_left);
