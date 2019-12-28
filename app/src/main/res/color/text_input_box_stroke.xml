@@ -1,0 +1,18 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Задній колір підказки-->
+    <item
+        android:color="@android:color/transparent"
+        android:state_focused="false" />
+
+    <!--<item android:color="@color/colorApp" android:state_hovered="true" />-->
+
+    <!--Розділова лінія в активному стані-->
+    <item
+        android:color="@color/colorAccent"
+        android:state_focused="true" />
+    <!--Розділова лінія в нормальному стані-->
+    <item
+        android:color="@color/textColorSecondary" />
+
+</selector>

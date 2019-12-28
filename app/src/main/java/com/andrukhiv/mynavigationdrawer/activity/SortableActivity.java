@@ -50,11 +50,11 @@ public class SortableActivity extends AppCompatActivity {
         public int getSortStateViewResource(SortState state) {
             switch (state) {
                 case SORTABLE:
-                    return R.drawable.ic_sortable_arrow_defoult;
+                    return R.drawable.sortable_ic_arrow_defoult;
                 case SORTED_ASC:
-                    return R.drawable.ic_sortable_arrow_up;
+                    return R.drawable.sortable_ic_arrow_up;
                 case SORTED_DESC:
-                    return R.drawable.ic_sortable_arrow_down;
+                    return R.drawable.sortable_ic_arrow_down;
                 default:
                     return NO_IMAGE_RES;
             }

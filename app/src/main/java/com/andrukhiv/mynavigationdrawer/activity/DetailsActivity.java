@@ -12,14 +12,17 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.annotation.ColorInt;
 import androidx.browser.customtabs.CustomTabsIntent;
+
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,6 +32,7 @@ import android.view.animation.PathInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
@@ -41,7 +45,6 @@ import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
 
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -49,7 +52,7 @@ public class DetailsActivity extends AppCompatActivity {
     public SlidrConfig mConfig;
     private boolean isActive = false;
     private AlphaAnimation alphaAnimationShowIcon;
-
+    int onStartCount = 0;
     // Добавляємо константу EXTRA_GRAPES_ID
     public static final String EXTRA_GRAPES_ID = "grapesId";
 
@@ -58,17 +61,27 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.fragment_details);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         mGrapes = (SpecificationsModel) getIntent().getSerializableExtra(EXTRA_GRAPES_ID);
 
         // Включити кнопку Вверх на панелі дій.
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);// замените своим пользовательским значком
+        }
+
+        onStartCount = 1;
+        if (savedInstanceState == null) // 1st time
+        {
+            this.overridePendingTransition(R.anim.slide_in_bottom,
+                    R.anim.slide_in_bottom);
+        } else // уже создана, поэтому обратная анимация
+        {
+            onStartCount = 2;
         }
 
         CollapsingToolbarLayout mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
@@ -86,7 +99,7 @@ public class DetailsActivity extends AppCompatActivity {
 //                        .placeholder(R.drawable.placeholder)
 //                        .fallback(R.drawable.ic_520016)
 //                        .error(R.drawable.oops)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL))
+                .diskCacheStrategy(DiskCacheStrategy.ALL))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(photoLarge);
 
@@ -95,12 +108,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         TextView textLink = findViewById(R.id.text_link);
         textLink.setText(mGrapes.getLink());
-        View.OnClickListener clickLink = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCustomTab();
-            }
-        };
+        View.OnClickListener clickLink = v -> openCustomTab();
         textLink.setOnClickListener(clickLink);
 
         // Добавлення слайду для відміни Activity
@@ -133,7 +141,7 @@ public class DetailsActivity extends AppCompatActivity {
         set1.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mFab.setImageResource(isActive ? R.drawable.ic_favorite_passive : R.drawable.ic_favorite_active);
+                mFab.setImageResource(isActive ? R.drawable.detail_ic_favorite_def : R.drawable.detail_ic_favorite_act);
                 mFab.setBackgroundTintList(ColorStateList.valueOf(isActive ? colorPassive : colorActive));
                 isActive = !isActive;
             }
@@ -175,23 +183,28 @@ public class DetailsActivity extends AppCompatActivity {
         alphaAnimationShowIcon = new AlphaAnimation(0.2f, 1.0f);
         alphaAnimationShowIcon.setDuration(300);
 
-        mFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isActive) {
-                    mFab.setImageResource(R.drawable.ic_favorite_passive);
-                    mFab.startAnimation(alphaAnimationShowIcon);
-                    isActive = true;
-                    Snackbar.make(v, "Видалено з улюблених", Snackbar.LENGTH_LONG).show();
-                } else {
-                    mFab.setImageResource(R.drawable.ic_favorite_active);
-                    mFab.startAnimation(alphaAnimationShowIcon);
-                    isActive = false;
-                    Snackbar.make(v, "Добавлено до улюблених", Snackbar.LENGTH_LONG).show();
-                }
+        mFab.setOnClickListener(v -> {
+            if (isActive) {
+                mFab.setImageResource(R.drawable.detail_ic_favorite_def);
+                mFab.startAnimation(alphaAnimationShowIcon);
+                isActive = true;
 
-                set.start();
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Видалено з улюблених", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            } else {
+                mFab.setImageResource(R.drawable.detail_ic_favorite_act);
+                mFab.startAnimation(alphaAnimationShowIcon);
+                isActive = false;
+
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Добавлено до улюблених", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
+
+            set.start();
         });
     }
 
@@ -256,14 +269,24 @@ public class DetailsActivity extends AppCompatActivity {
 
 
     // Анімація завантаження картинки
-    public ViewPropertyTransition.Animator animationObject = new ViewPropertyTransition.Animator() {
-        @Override
-        public void animate(View view) {
-            view.setAlpha(0f);
+    public ViewPropertyTransition.Animator animationObject = view -> {
+        view.setAlpha(0f);
 
-            ObjectAnimator fadeAnim = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f);
-            fadeAnim.setDuration(2500);
-            fadeAnim.start();
-        }
+        ObjectAnimator fadeAnim = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f);
+        fadeAnim.setDuration(2500);
+        fadeAnim.start();
     };
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (onStartCount > 1) {
+            this.overridePendingTransition(R.anim.slide_in_bottom,
+                    R.anim.slide_in_bottom);
+
+        } else if (onStartCount == 1) {
+            onStartCount++;
+        }
+    }
 }

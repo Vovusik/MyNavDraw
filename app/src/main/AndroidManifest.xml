@@ -52,8 +52,13 @@
         </activity>
         <activity
             android:name=".activity.KitchenActivity"
-            android:label="@string/name_kitchen" />
-        <activity android:name=".activity.KitchenDetailsActivity" />
+            android:label="@string/name_kitchen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.KitchenDetailsActivity"
+            android:theme="@style/DetailTheme" >
+
+        </activity>
         <activity
             android:name=".activity.ReproductionActivity"
             android:label="@string/name_reproduction" />
@@ -65,6 +70,7 @@
             android:label="@string/name_region" />
         <activity
             android:name=".activity.LibraryActivity"
+            android:screenOrientation="portrait"
             android:label="@string/name_library" />
         <activity
             android:name=".activity.SortableActivity"
@@ -121,9 +127,31 @@
         <activity
             android:name=".activity.GalleryActivity"
             android:label="@string/name_gallery"
-            android:theme="@style/GalleryTheme"/>
+            android:theme="@style/GalleryTheme" />
+
+        <activity
+            android:name=".activity.LaboratoryActivity"
+            android:label="Лабораторія"
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/LaboratoryTheme" />
 
 
+        <activity
+            android:name=".activity.LaboratorySugarActivity"
+            android:label="Визначення цукру" />
+
+        <activity
+            android:name=".activity.LaboratoryAcidityActivity"
+            android:label="Визначення кислотності" />
+
+        <activity
+            android:name=".activity.LaboratoryTableActivity"
+            android:label="Таблиця цукристості" />
+
+        <activity
+            android:name=".activity.PreparatyActivity"
+            android:label="Засоби захисту" />
 
     </application>
 

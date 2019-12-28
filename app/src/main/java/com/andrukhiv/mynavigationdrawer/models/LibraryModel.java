@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class LibraryModel implements Serializable {
 
-    private long id;
+    private int id;
     private String image;
     private String title;
     private String author;
     private String link;
 
-    public LibraryModel(long id, String image, String title, String author, String link) {
+    public LibraryModel(int id, String image, String title, String author, String link) {
         this.id = id;
         this.image = image;
         this.title = title;
@@ -18,11 +18,11 @@ public class LibraryModel implements Serializable {
         this.link = link;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

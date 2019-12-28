@@ -21,6 +21,7 @@
     <string name="drawer_item_library" translatable="false">Бібліотека</string>
     <string name="drawer_item_favorite_varieties" translatable="false">Улюблені сорти</string>
     <string name="drawer_item_speсifications" translatable="false">Характеристики</string>
+    <string name="drawer_item_laboratory" translatable="false">Лабораторія</string>
     <string name="drawer_item_care_protection" translatable="false">Догляд та захист</string>
     <string name="drawer_item_structure_formation" translatable="false">Будова і формування</string>
     <string name="drawer_item_reproduction" translatable="false">Розмноження</string>
@@ -285,5 +286,74 @@
 
 
     <string name="image_description" translatable="false">Image</string>
+
+
+    <!--todo  LABORATORY-->
+
+    <string name="title_calculator" translatable="false">Розрахунок необхідної кількості цукру і води в суслі з винограду</string>
+
+
+    <string name="hint_volume_juice" translatable="false">Об’єм соку, л</string>
+    <string name="hint_sugar_juice" translatable="false">Кількість цукру в соці, г/л</string>
+    <string name="hint_acidity_juice" translatable="false">Кислотність соку, г/л</string>
+    <string name="hint_acidity_wine" translatable="false">Кислотність вина, г/л</string>
+    <string name="hint_alcohol_wine" translatable="false">Спиртуозність вина, % об</string>
+    <string name="hint_result_sugar" translatable="false">Кількість цукру, кг</string>
+    <string name="hint_result_water" translatable="false">Об’єм води, л</string>
+    <string name="hint_result_must" translatable="false">Об’єм сусла, л</string>
+
+    <string name="amount_sugar_added_wort" translatable="false">Кількість цукру, що вноситься в сусло</string>
+    <string name="amount_water_introduced_wort" translatable="false">Кількість води, що вноситься в сусло</string>
+
+    <string name="error_volume_juice" translatable="false">Значення має бути більше або дорівнює 1000</string>
+    <string name="error_sugar_juice" translatable="false">Значення має бути більше або дорівнює 63 і менше або дорівнює 293</string>
+    <string name="error_acidity_juice" translatable="false">Значення має бути більше або дорівнює 5 і менше або дорівнює 10</string>
+    <string name="error_strength_wine" translatable="false">Значення має бути більше або дорівнює 9 і менше або дорівнює 20</string>
+    <string name="error_acidity_wine" translatable="false">Значення має бути більше або дорівнює 4 і менше або дорівнює 6</string>
+    <string name="error_not_null" translatable="false">Неприпустиме значення</string>
+    <string name="error_invalid_data" translatable="false">"Показник кислотності вина не може перевищувати кислотності соку"</string>
+    <string name="error_invalid_toast" translatable="false">"Введено некоректні дані. Введіть правильні значення та спробуйте ще раз"</string>
+
+    <string name="error_null" translatable="false">Поле не може бути порожнім</string>
+    <string name="error_invalid_value" translatable="false">Введено неприпустиме значення</string>
+
+
+    <string name="helper_volume_juice" translatable="false">В домашніх умовах з ягід винограду можливо отримати 60-70%
+        чистого соку</string>
+    <string name="helper_sugar_juice" translatable="false">Нормативна кількість цукру у соці становить 63–293 г/л</string>
+    <string name="helper_acidity_juice" translatable="false">Середнє значення кислотності виноградного соку становить
+        5–10 г/л</string>
+    <string name="helper_acidity_wine" translatable="false">Збалансованими вважаються вина
+        з концентрацією кислоти 4-6 г/л</string>
+    <string name="helper_alcohol_wine" translatable="false">Кількість спирту у вині становить від 9 до 20 % об.
+        Найбільша міцність вина, яку можна отримати на природніх дріжджах не перевищує 12 % об</string>
+    <string name="helper_result_sugar" translatable="false">Кількість цукру, яку необхідно внести до соку</string>
+    <string name="helper_result_water" translatable="false">Об’єм води, який необхідно добавити до соку</string>
+    <string name="helper_result_must" translatable="false">Загальний об’єм сусла</string>
+
+    <string name="button_result" translatable="false">Рахувати</string>
+
+    <string name="specific_gravity_juice" translatable="false">Питома вага соку</string>
+    <string name="sugar_content_juice" translatable="false">Цукристість соку, %</string>
+    <string name="fortress_future_wine" translatable="false">міцність майбутнього вина, град</string>
+
+
+
+    <string name="search_query_hint" translatable="false">Пошук сорту винограда</string>
+
+
+
+    <!--todo  PREPARATY-->
+
+    <string name="spektr_dii" translatable="false">Спектр дії</string>
+    <string name="virobnyk" translatable="false">Виробник</string>
+    <string name="kratnist_zastosuvannya" translatable="false">Кратність застосування</string>
+    <string name="stroky_do_spogivannya" translatable="false">Строки до споживання</string>
+    <string name="diucha_rechovina" translatable="false">Діюча речовина</string>
+    <string name="nazva_preparatu" translatable="false">Назва препарату</string>
+
+
+
+
 
 </resources>

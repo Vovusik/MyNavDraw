@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nested_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="70dp"
+    android:clipToPadding="false"
+    android:isScrollContainer="true"
+    android:scrollbars="vertical">
+
+    <!-- app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="@string/title_calculator"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView style="@style/MyCardViewEditTextTheme">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_volume_juice"
+                style="@style/MyInputLayoutInputTheme"
+                android:hint="@string/hint_volume_juice"
+                app:helperText="@string/helper_volume_juice">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/volume_juice"
+                    style="@style/MyEditTextTheme" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView style="@style/MyCardViewEditTextTheme">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_sugar_juice"
+                style="@style/MyInputLayoutInputTheme"
+                android:hint="@string/hint_sugar_juice"
+                app:helperText="@string/helper_sugar_juice">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sugar_juice"
+                    style="@style/MyEditTextTheme" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView style="@style/MyCardViewEditTextTheme">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_acidity_juice"
+                style="@style/MyInputLayoutInputTheme"
+                android:hint="@string/hint_acidity_juice"
+                app:helperText="@string/helper_acidity_juice">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/acidity_juice"
+                    style="@style/MyEditTextTheme" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView style="@style/MyCardViewEditTextTheme">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_acidity_wine"
+                style="@style/MyInputLayoutInputTheme"
+                android:hint="@string/hint_acidity_wine"
+                app:helperText="@string/helper_acidity_wine">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/acidity_wine"
+                    style="@style/MyEditTextTheme" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView style="@style/MyCardViewEditTextTheme">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_strength_wine"
+                style="@style/MyInputLayoutInputTheme"
+                android:hint="@string/hint_alcohol_wine"
+                app:helperText="@string/helper_alcohol_wine">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/strength_wine"
+                    style="@style/MyEditTextTheme" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/result_view_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/rowBackground"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_result_sugar"
+                    style="@style/MyInputLayoutInputTheme"
+                    android:hint="@string/hint_result_sugar"
+                    android:padding="16dp"
+                    app:endIconDrawable="@null"
+                    app:endIconMode="none"
+                    app:helperText="@string/helper_result_sugar">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/resultSugar"
+                        style="@style/MyEditTextTheme"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_result_water"
+                    style="@style/MyInputLayoutInputTheme"
+                    android:hint="@string/hint_result_water"
+                    android:padding="16dp"
+                    app:endIconDrawable="@null"
+                    app:endIconMode="none"
+                    app:helperText="@string/helper_result_water">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/resultWater"
+                        style="@style/MyEditTextTheme"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_result_must"
+                    style="@style/MyInputLayoutInputTheme"
+                    android:hint="@string/hint_result_must"
+                    android:padding="16dp"
+                    app:endIconDrawable="@null"
+                    app:endIconMode="none"
+                    app:helperText="@string/helper_result_must">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/resultMust"
+                        style="@style/MyEditTextTheme"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textSize="25sp"
+                        android:maxLength="10"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>

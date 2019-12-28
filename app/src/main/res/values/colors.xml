@@ -5,6 +5,7 @@
     <color name="colorPrimary">#455a63</color>
     <color name="colorAccent">#009688</color>
     <color name="colorApp">#b31ac7</color>
+    <color name="colorError">@android:color/holo_red_dark</color>
 
     <color name="windowBackground">#FFE2E2E2</color>
     <color name="rowBackground">#F2F2F2</color>
@@ -12,31 +13,15 @@
     <color name="textColorPrimary">#000000</color>
     <color name="textColorSecondary">#727272</color>
 
-    <color name="primary">#3F51B5</color>
-    <color name="primary_dark">#303F9F</color>
-    <color name="accent">#ffffff</color>
-    <color name="fragment_bg">#e5e5e5</color>
-
-    <color name="desired_color">#ff0000</color>
-
-
-    <color name="tab_icon_and_text_selector_color">@android:color/white</color><!--default - ?android:textColorSecondary-->
-
-
-    <color name="tab_indicator">#ffffffff</color>
-    <color name="tab_pressed">#32ffffff</color>
-    <color name="tab_not_pressed">#00ffffff</color>
-
-
     <!--Колір прозорості заднього фону в DetailActivity при застосуванні ElasticDragDismissLayout -  -->
-    <color name="scrim">#66323232</color>
-
-    <!--Колір стрілочки у заголовку SortableActivity-->
-    <color name="colorPastColor">#acacac</color>
-    <color name="iconsTint">#FFFFFF</color>
-    <color name="colorWhite">#ffffff</color>
-
-
+    <color name="scrim_detail_activity">#66323232</color>
     <!--Колір прозорості заднього фону ToolbarMaps-->
-    <color name="scrimMaps">#1e000000</color>
+    <color name="scrim_maps_fragment">#1e000000</color>
+    <!--Колір стрілочки у заголовку SortableActivity-->
+    <color name="colorPastColor">@android:color/darker_gray</color>
+
+    <!--Колір затемнення картинки скролінгу в розділі "Кухня"-->
+    <color name="grayIconTint">#727272</color>
+
+
 </resources>

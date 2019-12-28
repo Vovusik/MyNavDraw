@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.andrukhiv.mynavigationdrawer.R;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static String TAG = "DbHelper"; // Тег только для окна LogCat
     private static String DB_PATH = ""; //путь назначения (местоположения) нашей базы данных на устройстве
-    private static String DB_NAME = "grapes.db";// Название базы данных
+    private static String DB_NAME = "gra.db";// Название базы данных
     private static final int DB_VERSION = 1;// Версия базы данных
     private SQLiteDatabase mDataBase;
     private final Context mContext;
@@ -61,6 +63,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     //Скопировать базу данных из assests
     private void copyDataBase() throws IOException {
+        // http://blog.harrix.org/article/6784
+        // InputStream mInput = mContext.getResources().openRawResource(R.raw.grapes);
         InputStream mInput = mContext.getAssets().open(DB_NAME);
         String outFileName = DB_PATH + DB_NAME;
         OutputStream mOutput = new FileOutputStream(outFileName);

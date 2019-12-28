@@ -1,44 +1,120 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
+import com.bumptech.glide.GenericTransitionOptions;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrPosition;
 
 
 public class KitchenDetailsActivity extends AppCompatActivity {
 
-    private KitchenModel kitchenModel;
-
+    private KitchenModel mGrapes;
     public static final String EXTRA_KITCHEN_ID = "kitchenId";
+    public SlidrConfig mConfig;
 
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_kitchen);
+        setContentView(R.layout.activity_kitchen_details);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
-        kitchenModel = (KitchenModel) getIntent().getSerializableExtra(EXTRA_KITCHEN_ID);
+        mGrapes = (KitchenModel) getIntent().getSerializableExtra(EXTRA_KITCHEN_ID);
 
-        Toolbar mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle(kitchenModel.getName());
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        // Включити кнопку Вверх на панелі дій.
+        setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);// замените своим пользовательским значком
         }
 
-        TextView mDescription = findViewById(R.id.text_description);
-        mDescription.setText(kitchenModel.getDescription());
+        CollapsingToolbarLayout mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        mCollapsingToolbar.setTitle(mGrapes.getName());
+
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+
+        ImageView photoCollapsing = findViewById(R.id.photo_large);
+                Glide
+                .with(this)
+                .load(mGrapes.getImageBackground())
+                .apply(new RequestOptions()
+//                        .placeholder(R.drawable.placeholder)
+//                        .fallback(R.drawable.ic_520016)
+//                        .error(R.drawable.oops)
+                .diskCacheStrategy(DiskCacheStrategy.ALL))
+                .transition(GenericTransitionOptions.with(animationObject))
+                .into(photoCollapsing);
+
+        TextView textDescription = findViewById(R.id.text_description);
+        textDescription.setText(mGrapes.getDescription());
+
+        TextView textComponents = findViewById(R.id.text_components);
+        textComponents.setText(mGrapes.getComponents());
+
+        TextView textRecipe = findViewById(R.id.text_recipe);
+        textRecipe.setText(mGrapes.getRecipe());
+
+        // Добавлення слайду для відміни Activity
+        slidrConfig();
     }
+
+    private void slidrConfig() {
+        mConfig = new SlidrConfig.Builder()
+                .position(SlidrPosition.TOP)
+                .sensitivity(0.5f)
+                .build();
+        Slidr.attach(this, mConfig);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Configuration configuration = getResources().getConfiguration();
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+            CollapsingToolbarLayout collapsing_toolbar_layout = findViewById(R.id.collapsing_toolbar);
+            collapsing_toolbar_layout.setExpandedTitleTextColor(ColorStateList.valueOf(Color.TRANSPARENT));
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+    }
+
+
+    // Анімація завантаження картинки
+    public ViewPropertyTransition.Animator animationObject = view -> {
+        view.setAlpha(0f);
+
+        ObjectAnimator fadeAnim = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f);
+        fadeAnim.setDuration(2500);
+        fadeAnim.start();
+    };
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.Utils;
+import com.andrukhiv.mynavigationdrawer.utils.MapsUtils;
 import com.andrukhiv.mynavigationdrawer.adapters.MapsAdapterOdesa;
 import com.andrukhiv.mynavigationdrawer.adapters.MapsAdapterTrans;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
@@ -72,8 +72,8 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
         mapFragment.getMapAsync(this);
 
         viewPager = findViewById(R.id.viewPager);
-        viewPager.setPageMargin(Utils.dp(this, 16));
-        Utils.setMargins(viewPager, 0, 0, 0, 0);
+        viewPager.setPageMargin(MapsUtils.dp(this, 16));
+        MapsUtils.setMargins(viewPager, 0, 0, 0, 0);
 
         // Добавляю спіннер у тулбар
         mSpinner = findViewById(R.id.spinner);
@@ -136,18 +136,18 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
     public void onMapViewPagerReady() {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             mvp.getMap().setPadding(
-                    Utils.getNavigationBarWidth(this),
-                    Utils.getNavigationBarWidth(this),
-                    Utils.getNavigationBarWidth(this),
+                    MapsUtils.getNavigationBarWidth(this),
+                    MapsUtils.getNavigationBarWidth(this),
+                    MapsUtils.getNavigationBarWidth(this),
                     viewPager.getHeight());
             mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             mvp.getMap().setPadding(
-                    Utils.getNavigationBarWidth(this),
-                    Utils.getNavigationBarWidth(this),
-                    Utils.getNavigationBarWidth(this),
-                    Utils.getNavigationBarWidth(this));
+                    MapsUtils.getNavigationBarWidth(this),
+                    MapsUtils.getNavigationBarWidth(this),
+                    MapsUtils.getNavigationBarWidth(this),
+                    MapsUtils.getNavigationBarWidth(this));
             mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
     }

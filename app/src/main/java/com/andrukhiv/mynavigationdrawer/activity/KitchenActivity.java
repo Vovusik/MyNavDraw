@@ -1,41 +1,99 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.os.Bundle;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.fragments.KitchenFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-public class KitchenActivity extends AppCompatActivity {
+import com.andrukhiv.mynavigationdrawer.KitchenView;
+import com.andrukhiv.mynavigationdrawer.R;
+import com.andrukhiv.mynavigationdrawer.adapters.KitchenAdapter;
+import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
+import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
+import com.yarolegovich.discretescrollview.DSVOrientation;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
+
+import java.util.List;
+
+public class KitchenActivity extends AppCompatActivity implements
+        DiscreteScrollView.ScrollStateChangeListener<KitchenAdapter.ViewHolder>,
+        DiscreteScrollView.OnItemChangedListener<KitchenAdapter.ViewHolder> {
+
+
+
+    DbAdapter mDbHelper;
+    private List<KitchenModel> recipe;
+    private KitchenView recipeView;
+    KitchenAdapter mAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kitchen);
 
-        Toolbar mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        //getSupportActionBar().setTitle(null);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);// замените своим пользовательским значком
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);
         }
 
-        if (savedInstanceState == null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager
-                    .beginTransaction();
+        recipeView = findViewById(R.id.forecast_view);
 
-            KitchenFragment myFragment = new KitchenFragment();
-            fragmentTransaction.add(R.id.container, myFragment);
-            fragmentTransaction.commit();
+        mDbHelper = DbAdapter.getInstance(getApplicationContext());
+        recipe = DbAdapter.getKitchen();
+
+        //recipe = KitchenData.get().getKitchen();
+
+        DiscreteScrollView glassPicker = findViewById(R.id.forecast_city_picker);
+        glassPicker.setSlideOnFling(false);
+        glassPicker.setAdapter(new KitchenAdapter(recipe));
+        glassPicker.addOnItemChangedListener(this);
+        glassPicker.setOrientation(DSVOrientation.HORIZONTAL);
+        glassPicker.addScrollStateChangeListener(this);
+        glassPicker.scrollToPosition(0);
+        glassPicker.setItemTransitionTimeMillis(150);
+        glassPicker.setItemTransformer(new ScaleTransformer.Builder()
+                .setMinScale(0.8f)
+                .build());
+
+        recipeView.setKitchen(recipe.get(0));
+    }
+
+
+    @Override
+    public void onCurrentItemChanged(@Nullable KitchenAdapter.ViewHolder holder, int position) {
+        //viewHolder никогда не будет нулевым, потому что мы никогда не удаляем элементы из списка адаптера
+        if (holder != null) {
+            recipeView.setKitchen(recipe.get(position));
+            holder.showText();
         }
+    }
+
+
+    @Override
+    public void onScrollStart(@NonNull KitchenAdapter.ViewHolder holder, int position) {
+        holder.hideText();
+    }
+
+
+    @Override
+    public void onScroll(
+            float position,
+            int currentIndex, int newIndex,
+            @Nullable KitchenAdapter.ViewHolder currentHolder,
+            @Nullable KitchenAdapter.ViewHolder newHolder) {
+    }
+
+
+    @Override
+    public void onScrollEnd(@NonNull KitchenAdapter.ViewHolder holder, int position) {
     }
 
     @Override
@@ -46,4 +104,25 @@ public class KitchenActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

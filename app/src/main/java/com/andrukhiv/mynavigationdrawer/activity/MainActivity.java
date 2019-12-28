@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.google.android.material.tabs.TabLayout;
@@ -17,9 +18,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.andrukhiv.mynavigationdrawer.AppRating;
 import com.andrukhiv.mynavigationdrawer.Constant;
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity
 
         setTab();
 
-        // завантажити фонового зображення навігаціонного меню
+        // завантажити фонового зображення навігаційного меню
         loadNavHeader();
 
         // todo - діалогове вікно «Оцінити цей додаток» - не слухається
@@ -102,7 +106,7 @@ public class MainActivity extends AppCompatActivity
 
         viewPager.setAdapter(tabAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -120,17 +124,20 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
 
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
             case R.id.nav_home:
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Ви знаходитесь на головній сторінці", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
                 break;
 
             case R.id.nav_alkcokitchen:
@@ -163,8 +170,19 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
+            case R.id.nav_laboratory:
+                intent = new Intent(MainActivity.this, LaboratoryActivity.class);
+                startActivity(intent);
+                break;
+
+
             case R.id.nav_filter:
                 intent = new Intent(MainActivity.this, SortableActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_preparaty:
+                intent = new Intent(MainActivity.this, PreparatyActivity.class);
                 startActivity(intent);
                 break;
 
@@ -246,7 +264,12 @@ public class MainActivity extends AppCompatActivity
                 .setPositiveButton("Так", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        Intent startMain = new Intent(Intent.ACTION_MAIN);
+                        startMain.addCategory(Intent.CATEGORY_HOME);
+                        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(startMain);
+
+                       // or finish();
                     }
                 })
                 .setNegativeButton("Ні", null)

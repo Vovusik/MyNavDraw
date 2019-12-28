@@ -3,6 +3,7 @@ package com.andrukhiv.mynavigationdrawer.models;
 import androidx.lifecycle.ViewModel;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class SpecificationsModel implements Serializable {
 
@@ -171,5 +172,38 @@ public class SpecificationsModel implements Serializable {
                 ", favorite=" + favorite +
                 '}';
     }
+
+
+
+
+
+//    public static ArrayList<SpecificationsModel> getGrapes() {
+//
+//        ArrayList<SpecificationsModel> singleHorizontals = new ArrayList<>();
+//
+//        singleHorizontals.add(new SpecificationsModel(
+//                1, "name 1", "sort", 1, "description 1", "https://goo.gl/S3SeS8", "https://goo.gl/S3SeS8", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                2, "name 2", "sort", 1, "description 2", "https://i.imgur.com/ZcLLrkY.jpg", "https://i.imgur.com/ZcLLrkY.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                3, "name 3", "sort", 1, "description 3", "https://i.imgur.com/ZcLLrkY.jpg", "https://i.imgur.com/ZcLLrkY.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                4, "name 4", "sort", 1, "description 4", "https://i.redd.it/k98uzl68eh501.jpg", "https://i.redd.it/k98uzl68eh501.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                5, "name 5", "sort", 1, "description 5", "https://i.redd.it/j6myfqglup501.jpg", "https://i.redd.it/j6myfqglup501.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                6, "name 6", "sort", 1, "description 6", "https://i.redd.it/obx4zydshg601.jpg", "https://i.redd.it/obx4zydshg601.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                7, "name 7", "sort", 1, "description 7", "https://i.redd.it/qn7f9oqu7o501.jpg", "https://i.redd.it/qn7f9oqu7o501.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                8, "name 8", "sort", 1, "description 8", "https://i.redd.it/0h2gm1ix6p501.jpg", "https://i.redd.it/0h2gm1ix6p501.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                9, "name 9", "sort", 1, "description 9", "https://i.redd.it/obx4zydshg601.jpg", "https://i.redd.it/obx4zydshg601.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//        singleHorizontals.add(new SpecificationsModel(
+//                10, "name 10", "sort", 1, "description 10", "https://i.imgur.com/ZcLLrkY.jpg", "https://i.imgur.com/ZcLLrkY.jpg", "link", "term", 21, "color", "growth", 2.5, 1));
+//
+//
+//        return singleHorizontals;
+//    }
 }
 

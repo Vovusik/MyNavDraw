@@ -32,29 +32,29 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
-    implementation 'androidx.browser:browser:1.2.0-alpha07'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.browser:browser:1.2.0-rc01'
 
-    testImplementation 'junit:junit:4.13-beta-3'
-    androidTestImplementation 'androidx.test:runner:1.3.0-alpha02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
+    testImplementation 'junit:junit:4.13-rc-2'
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha03'
 
     // Бібліотека підтримки появи діалогового вікна «Оцінити цей додаток» - RateThisApp - 3
     implementation 'io.github.kobakei:ratethisapp:1.2.0'
     // Бібліотека повернення до попереднього актівіті слайдом донизу VarietiesDetailsActivity
     implementation 'com.r0adkll:slidableactivity:2.1.0'
     // Бібліотека для підвантаження фото
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     // Бібліотека сортування
     implementation 'de.codecrafters.tableview:tableview:2.8.0'
     // Бібліотеки для використання у додатку сповіщень FirebaseNotifications
-    implementation 'com.google.firebase:firebase-core:17.2.0'
-    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-messaging:20.0.1'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     // Бібліотеки для застосування карт
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
@@ -62,7 +62,13 @@ dependencies {
     // Бібліотека роботи з дозволами
     implementation 'pub.devrel:easypermissions:1.2.0'
 
+    // Бібліотека прокручуваного списку елементів у розділах "Бібліотека" і Кухня"
+    implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
 
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-4'
+
+
+    implementation project(':libraryTableFixHeaders')
 }
 
 apply plugin: 'com.google.gms.google-services' // Notifications

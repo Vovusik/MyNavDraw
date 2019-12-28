@@ -7,13 +7,12 @@
     android:background="@color/rowBackground"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/frameViewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -29,8 +28,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|left"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
-                android:tint="@android:color/white" />
+                android:paddingLeft="16dp"
+                android:src="@drawable/bug_ic_arrows_left" />
 
             <ImageButton
                 android:id="@+id/right_nav"
@@ -38,9 +37,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|right"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
-                android:tint="@android:color/white"
-                tools:ignore="RtlHardcoded" />
+                android:paddingRight="16dp"
+                android:src="@drawable/bug_ic_arrows_right" />
 
             <LinearLayout
                 android:id="@+id/SliderDots"
@@ -52,13 +50,13 @@
 
         </FrameLayout>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textColor="@color/textColorSecondary" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.core.widget.NestedScrollView>

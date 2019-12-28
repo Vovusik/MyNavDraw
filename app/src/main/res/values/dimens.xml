@@ -53,4 +53,22 @@
     <dimen name="action_bar_size">48dp</dimen>
 
     <integer name="grid_span_count">2</integer>
+
+
+
+    <integer name="anim_duration_very_long">1500</integer>
+    <integer name="anim_duration_long">500</integer>
+    <integer name="anim_duration_medium">300</integer>
+
+
+<!--Preparaty-->
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_45dp">45dp</dimen>
+    <dimen name="_55dp">55dp</dimen>
+    <dimen name="_110dp">110dp</dimen>
+    <dimen name="_120dp">120dp</dimen>
+    <dimen name="_130dp">130dp</dimen>
+    <dimen name="_150dp">150dp</dimen>
+    <dimen name="_160dp">160dp</dimen>
+
 </resources>

@@ -1,11 +1,14 @@
 package com.andrukhiv.mynavigationdrawer.adapters;
 
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.andrukhiv.mynavigationdrawer.fragments.BugFragmentMildew;
 import com.andrukhiv.mynavigationdrawer.fragments.BugFragmentOidium;
+
 
 public class BugTabAdapter extends FragmentPagerAdapter {
 
@@ -16,6 +19,8 @@ public class BugTabAdapter extends FragmentPagerAdapter {
         this.allPagers = allPagers;
     }
 
+
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -28,8 +33,10 @@ public class BugTabAdapter extends FragmentPagerAdapter {
         }
     }
 
+
     @Override
     public int getCount() {
         return allPagers;
     }
+
 }

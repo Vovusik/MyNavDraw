@@ -1,15 +1,26 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
-import android.os.Bundle;
 
-import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.view.MenuItem;
+import androidx.viewpager.widget.ViewPager;
 
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.BugTabAdapter;
+import com.google.android.material.tabs.TabLayout;
+
+
+/* TODO
+    1. Добавить места (поправить BugModel)
+    2. Дописать адаптер (поправить BugPagerAdapter)
+    3. Добавить адаптер в BugActivity
+    4. Добавить выползание SnackBar с транспорантом
+        о том, что путешествие заказано, при нажатии на FAB
+ */
+
 
 public class BugActivity extends AppCompatActivity {
 
@@ -21,12 +32,13 @@ public class BugActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);
         }
+
         setUi();
     }
 
@@ -41,7 +53,7 @@ public class BugActivity extends AppCompatActivity {
 
         viewPager.setAdapter(tabAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());

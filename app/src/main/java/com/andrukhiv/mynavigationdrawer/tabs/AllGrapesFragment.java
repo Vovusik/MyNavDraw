@@ -1,5 +1,6 @@
 package com.andrukhiv.mynavigationdrawer.tabs;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
 import android.os.Bundle;
@@ -10,40 +11,34 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import androidx.appcompat.widget.SearchView;
-import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.andrukhiv.mynavigationdrawer.activity.DetailsActivity;
-import com.andrukhiv.mynavigationdrawer.adapters.RecyclerViewAdapter;
+import com.andrukhiv.mynavigationdrawer.adapters.RecyclerAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.andrukhiv.mynavigationdrawer.R;
 
-import java.util.Objects;
 
-public class AllGrapesFragment extends Fragment {
+public class AllGrapesFragment extends Fragment  implements SearchView.OnQueryTextListener {
 
-    // Требуемый пустой публичный конструктор
-    public AllGrapesFragment() {
+
+    static AllGrapesFragment newInstance() {
+        return new AllGrapesFragment();
     }
-
-    DbAdapter mDbHelper;
-
+    RecyclerAdapter mAdapter;
     protected static final String TAG = "AllGrapesFragment";
-
-    RecyclerView mRecyclerView;
-    private RecyclerViewAdapter mAdapter;
-    private ArrayList<SpecificationsModel> grapes;
-
+    ArrayList<SpecificationsModel> grapes;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,69 +46,69 @@ public class AllGrapesFragment extends Fragment {
     }
 
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view;
         view = inflater.inflate(R.layout.fragment_recycler_tabs, container, false);
         setHasOptionsMenu(true);
-        mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
 
-        // Щоб картки відображалися в табличному виді, використовуємо об'єкт GridLayoutManager.
-        // Кількість колонок в сітці залежить від розміру і орієнтації екрана
+        return view;
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(Objects.requireNonNull(view), savedInstanceState);
+
         int numColumns = getResources().getInteger(R.integer.search_results_columns);
-        mRecyclerView = view.findViewById(R.id.my_recycler_view);
+        RecyclerView mRecyclerView = view.findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), numColumns);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        grapes = mDbHelper.getAllGrapes();
 
-        // Передати масиви адаптера.
-        mAdapter = new RecyclerViewAdapter(grapes);
+        grapes = new ArrayList<>();
+
+        //grapes = SpecificationsModel.getGrapes();
+        grapes = DbAdapter.getAllGrapes();
+
+        mAdapter = new RecyclerAdapter(getActivity(), grapes);
+
         mRecyclerView.setAdapter(mAdapter);
 
-        return mRecyclerView;
+
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((RecyclerViewAdapter) mAdapter).setOnItemClickListener(new RecyclerViewAdapter
-                .MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Log.i(TAG, " Clicked on Item " + grapes.get(position));
-                Intent intent = new Intent(getActivity().getApplicationContext(), DetailsActivity.class);
-                intent.putExtra(DetailsActivity.EXTRA_GRAPES_ID, grapes.get(position));
-                startActivity(intent);
-            }
-        });
-    }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.search, menu);
 
         final MenuItem item = menu.findItem(R.id.action_search);
 
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(this);
+
+        searchView.setQueryHint("Пошук сорту винограда");
+
+
+        item.setOnActionExpandListener( new MenuItem.OnActionExpandListener() {
+
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public boolean onMenuItemActionExpand(MenuItem item) {
+
+                return true;
             }
 
             @Override
-            public boolean onQueryTextChange(String query) {
-                mAdapter.getFilter().filter(query);
-                return false;
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                mAdapter.setItems(grapes);
+                return true;
             }
         });
 
         ImageView searchIcon = searchView.findViewById(R.id.search_button);
-        searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
+        searchIcon.setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getActivity()), R.drawable.menu_ic_search));
 
         ImageView closeIcon = searchView.findViewById(R.id.search_close_btn);
         closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
@@ -125,25 +120,42 @@ public class AllGrapesFragment extends Fragment {
     }
 
 
-//    @Override
-//    public void onPrepareOptionsMenu(Menu menu) {
-//        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
-//
-//        ImageView searchIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_button);
-//        searchIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_search_icon));
-//
-//        ImageView closeIcon = searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
-//        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
-//
-//        // встановлюю ширину вікна пошуку на весь екран
-//        searchView.setMaxWidth(Integer.MAX_VALUE);
-//
-//        super.onPrepareOptionsMenu(menu);
-//    }
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+//        final List<Data> filteredModelList = filter(dabListItem, query);
+//        mAdapter.setItems(filteredModelList);
+//        mAdapter.notifyDataSetChanged();
+//        mRecyclerView.scrollToPosition(0);
+
+        return false;
+    }
+
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        final List<SpecificationsModel> filteredModelList = filter(grapes, newText);
+        // анімація безпосередньо при пошуку
+        mAdapter.animateTo(filteredModelList);
+        mAdapter.setItems(filteredModelList);
+        return true;
+    }
+
+
+    private List<SpecificationsModel> filter(List<SpecificationsModel> datas, String newText) {
+        newText = newText.toLowerCase().trim();
+
+        final List<SpecificationsModel> filteredModelList = new ArrayList<>();
+        for (SpecificationsModel data : datas) {
+
+            final String text = data.getName().toLowerCase().trim();
+            if (text.contains(newText)) {
+                filteredModelList.add(data);
+            }
+        }
+
+        return filteredModelList;
+    }
+
 
 }
-
-
-
-

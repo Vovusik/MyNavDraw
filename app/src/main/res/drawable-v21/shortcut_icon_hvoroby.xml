@@ -6,7 +6,7 @@
     android:viewportHeight="48">
 
     <path
-        android:fillColor="@color/fragment_bg"
+        android:fillColor="@color/windowBackground"
         android:pathData="M2,24c0,-12.15026 9.84974,-22 22,-22c12.15026,0 22,9.84974 22,22c0,12.15026 -9.84974,22 -22,22c-12.15026,0 -22,-9.84974 -22,-22z"
         android:strokeWidth="1"
         android:strokeMiterLimit="10" />

@@ -18,7 +18,7 @@
         android:id="@+id/toolbar_spinner_maps"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/scrimMaps">
+        android:background="@color/scrim_maps_fragment">
 
         <Spinner
             android:id="@+id/spinner"

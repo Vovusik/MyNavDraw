@@ -23,6 +23,7 @@ import com.andrukhiv.mynavigationdrawer.AppController;
 import com.andrukhiv.mynavigationdrawer.BuildConfig;
 import com.andrukhiv.mynavigationdrawer.LocaleHelper;
 import com.andrukhiv.mynavigationdrawer.R;
+import com.google.android.material.button.MaterialButton;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 

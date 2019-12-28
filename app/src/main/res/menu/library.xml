@@ -3,17 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:icon="@drawable/ic_folder"
-        android:title="PDF"
+        android:icon="@drawable/menu_ic_folder"
+        android:title="Download"
+
         app:showAsAction="always">
 
         <menu>
             <item
-                android:id="@+id/btnShowDwn"
+                android:id="@+id/button_show_download"
                 android:title="Завантажені документи" />
-            <!--<item-->
-                <!--android:id="@+id/pdfs"-->
-                <!--android:title="Останні документи (pdf)" />-->
+
         </menu>
 
     </item>

@@ -36,7 +36,7 @@ public class SortableGrapesTableView extends SortableTableView<SpecificationsMod
                 R.string.growth,
                 R.string.weight);
 
-        simpleTableHeaderAdapter.setTextColor(ContextCompat.getColor(context, R.color.colorWhite));
+        simpleTableHeaderAdapter.setTextColor(ContextCompat.getColor(context, android.R.color.white));
         setHeaderAdapter(simpleTableHeaderAdapter);
 
         simpleTableHeaderAdapter.setPaddings(20, 50, 0, 50);

@@ -5,10 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,61 +15,39 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.andrukhiv.mynavigationdrawer.BugParallaxPageTransformer;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.BugPagerAdapter;
-import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbHelper;
-import com.andrukhiv.mynavigationdrawer.models.BugModel;
 import com.andrukhiv.mynavigationdrawer.tables.BugTable;
 
-import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.andrukhiv.mynavigationdrawer.database.DbAdapter.getBugMildew;
 
+
 public class BugFragmentMildew extends Fragment implements View.OnClickListener {
 
-    ViewPager mViewPager;
-    DbAdapter mDbHelper;
-    ArrayList<BugModel> bugModels;
-    LinearLayout mSliderDotsPanel;
+    private ViewPager mViewPager;
+    private LinearLayout mSliderDotsPanel;
     private int mDotsCount;
     private ImageView[] mDots;
-    ImageView mLeftButton, mRightButton;
+    private ImageView mLeftButton, mRightButton;
+    private Timer swipeTimer;
+    private BugPagerAdapter mPagerAdapter;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_bug, container, false);
-
-        mLeftButton = (ImageButton) view.findViewById(R.id.left_nav);
-        mLeftButton.setOnClickListener(this);
-        mRightButton = (ImageButton) view.findViewById(R.id.right_nav);
-        mRightButton.setOnClickListener(this);
-
-        mLeftButton.setVisibility(View.GONE);
-
-        mViewPager = view.findViewById(R.id.viewPager);
-
-        mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
-        bugModels = getBugMildew();
-
-        BugPagerAdapter adapter = new BugPagerAdapter(getFragmentManager(), getBugMildew());
-        mViewPager.setAdapter(adapter);
-
-        BugParallaxPageTransformer pageTransformer = new BugParallaxPageTransformer();
-
-        BugParallaxPageTransformer.ParallaxTransformInformation transformInformation = new BugParallaxPageTransformer
-                .ParallaxTransformInformation(R.id.imageView, 2, 2);
-        pageTransformer.addViewToParallax(transformInformation);
-
-        mViewPager.setPageTransformer(true, pageTransformer);
-
-        mSliderDotsPanel = view.findViewById(R.id.SliderDots);
-        mDotsCount = adapter.getCount();
 
         SQLiteOpenHelper bugDbHelper = new DbHelper(getContext());
 
@@ -102,10 +77,53 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
             toast.show();
         }
 
+        mViewPager = view.findViewById(R.id.viewPager);
+        mPagerAdapter = new BugPagerAdapter(getFragmentManager(), getBugMildew());
+        mViewPager.setAdapter(mPagerAdapter);
+
+        BugParallaxPageTransformer pageTransformer = new BugParallaxPageTransformer();
+        BugParallaxPageTransformer.ParallaxTransformInformation transformInformation = new BugParallaxPageTransformer
+                .ParallaxTransformInformation(R.id.imageView, 2, 2);
+        pageTransformer.addViewToParallax(transformInformation);
+        mViewPager.setPageTransformer(true, pageTransformer);
+
+        mLeftButton = (ImageButton) view.findViewById(R.id.left_nav);
+        mLeftButton.setOnClickListener(this);
+        mRightButton = (ImageButton) view.findViewById(R.id.right_nav);
+        mRightButton.setOnClickListener(this);
+        mLeftButton.setVisibility(View.GONE);
+
+        mSliderDotsPanel = view.findViewById(R.id.SliderDots);
+        mDotsCount = mPagerAdapter.getCount();
+
         sliderDot();
+
+        autoStartViewPager();
 
         return view;
     }
+
+
+    private void autoStartViewPager() {
+
+        final Handler handler = new Handler();
+        final Runnable Update = () -> {
+            if (mViewPager.getCurrentItem() < mPagerAdapter.getCount() - 1) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+            } else {
+                mViewPager.setCurrentItem(0);
+            }
+        };
+
+        swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 3000, 5000);
+    }
+
 
     private void sliderDot() {
 
@@ -114,8 +132,8 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
         for (int i = 0; i < mDotsCount; i++) {
 
             mDots[i] = new ImageView(getContext());
-            mDots[i].setImageDrawable(ContextCompat.getDrawable(getContext(),
-                    R.drawable.defaulte_dot));
+            mDots[i].setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getContext()),
+                    R.drawable.bug_dot_def));
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -126,24 +144,18 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
             mSliderDotsPanel.addView(mDots[i], params);
         }
 
-        mDots[0].setImageDrawable(ContextCompat.getDrawable(getContext(),
-                R.drawable.active_dot));
+        mDots[0].setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getContext()),
+                R.drawable.bug_dot_act));
 
-        mLeftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isFirstPage()) {
-                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
-                }
+        mLeftButton.setOnClickListener(v -> {
+            if (!isFirstPage()) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
             }
         });
 
-        mRightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isLastPage()) {
-                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
-                }
+        mRightButton.setOnClickListener(v -> {
+            if (!isLastPage()) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
             }
         });
 
@@ -156,12 +168,12 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
             public void onPageSelected(int position) {
 
                 for (int i = 0; i < mDotsCount; i++) {
-                    mDots[i].setImageDrawable(ContextCompat.getDrawable(getContext(),
-                            R.drawable.defaulte_dot));
+                    mDots[i].setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getContext()),
+                            R.drawable.bug_dot_def));
                 }
 
-                mDots[position].setImageDrawable(ContextCompat.getDrawable(getContext(),
-                        R.drawable.active_dot));
+                mDots[position].setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getContext()),
+                        R.drawable.bug_dot_act));
 
                 handleVisibility();
             }
@@ -171,6 +183,7 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
             }
         });
     }
+
 
     @Override
     public void onClick(View v) {
@@ -184,6 +197,7 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
                 break;
         }
     }
+
 
     private void handleVisibility() {
         if (isFirstPage()) {
@@ -199,11 +213,21 @@ public class BugFragmentMildew extends Fragment implements View.OnClickListener 
         }
     }
 
+
     private boolean isFirstPage() {
         return mViewPager.getCurrentItem() == 0;
     }
 
+
     private boolean isLastPage() {
-        return mViewPager.getCurrentItem() == mViewPager.getAdapter().getCount() - 1;
+        return mViewPager.getCurrentItem() == Objects.requireNonNull(mViewPager.getAdapter()).getCount() - 1;
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        swipeTimer.cancel();
     }
 }

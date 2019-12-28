@@ -1,72 +1,112 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
+
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.andrukhiv.mynavigationdrawer.adapters.LibraryRecyclerViewAdapter;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.andrukhiv.mynavigationdrawer.R;
+import com.andrukhiv.mynavigationdrawer.adapters.LibraryAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.yarolegovich.discretescrollview.DSVOrientation;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class LibraryActivity extends AppCompatActivity {
+public class LibraryActivity extends AppCompatActivity
+        implements DiscreteScrollView.OnItemChangedListener,
+        View.OnClickListener {
 
     DbAdapter mDbHelper;
+    private List<LibraryModel> data;
+    private TextView textTitle;
+    private TextView textAuthor;
+    private InfiniteScrollAdapter infiniteAdapter;
+    FloatingActionButton buttonRead;
+    private DiscreteScrollView itemPicker;
 
-    private static final int REQUEST_OPEN = 1337;
-    private RecyclerView.Adapter mAdapter;
-    private ArrayList<LibraryModel> libraryModels;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_arrow_icon);
         }
 
+        textTitle = findViewById(R.id.text_title);
+        textAuthor = findViewById(R.id.text_author);
+        buttonRead = findViewById(R.id.button_read);
+        itemPicker = findViewById(R.id.item_picker);
+
+//        DB shop = DB.get();
+//        data = shop.getLibrary();
+
         mDbHelper = DbAdapter.getInstance(getApplicationContext());
+        data = DbAdapter.getLibrary();
 
-        RecyclerView mRecyclerView = findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        libraryModels = mDbHelper.getLibrary();
 
-        mAdapter = new LibraryRecyclerViewAdapter(libraryModels);
-        mRecyclerView.setAdapter(mAdapter);
+        infiniteAdapter = InfiniteScrollAdapter.wrap(new LibraryAdapter(data));
+        itemPicker.setOrientation(DSVOrientation.HORIZONTAL);
+        itemPicker.addOnItemChangedListener(this);
+        itemPicker.setAdapter(infiniteAdapter);
+        itemPicker.setItemTransitionTimeMillis(150);
+        itemPicker.setItemTransformer(new ScaleTransformer.Builder()
+                .setMinScale(0.8f)
+                .build());
+
+        onItemChanged(data.get(0));
+
+        buttonRead.setOnClickListener(this);
+    }
+
+
+    private void onItemChanged(LibraryModel item) {
+        textTitle.setText(item.getTitle());
+        textAuthor.setText(item.getAuthor());
     }
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        ((LibraryRecyclerViewAdapter) mAdapter).setOnItemClickListener(new LibraryRecyclerViewAdapter
-                .MyClickListener() {
-            @Override
-            public void onItemClick(int position, View view) {
-                openCustomTab(position);
-            }
-        });
+    public void onClick(View v) {
+        if (v.getId() == R.id.button_read) {
+            int realPosition = infiniteAdapter.getRealPosition(itemPicker.getCurrentItem());
+            LibraryModel current = data.get(realPosition);
+
+            openCustomTab(current.getId());
+
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Відкривається книга: " +
+                            data.get(realPosition).getTitle(), Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
 
@@ -83,7 +123,7 @@ public class LibraryActivity extends AppCompatActivity {
 
         CustomTabsIntent customTabsIntent = builder.build();
         try {
-            customTabsIntent.launchUrl(LibraryActivity.this, Uri.parse(libraryModels.get(position).getLink()));
+            customTabsIntent.launchUrl(LibraryActivity.this, Uri.parse(data.get(position).getLink()));
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -99,57 +139,31 @@ public class LibraryActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.btnShowDwn) {
-            show();
-//        } else if (item.getItemId() == R.id.pdfs) {
-//            open();
-        } else if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
+        switch (item.getItemId()) {
+            case R.id.button_show_download:
+                show();
+                break;
+            case android.R.id.home:
+                // onBackPressed();
+                finish();
+//                Toast.makeText(this, "Повернення до головного меню", Toast.LENGTH_SHORT)
+//                        .show();
+//                break;
         }
         return (super.onOptionsItemSelected(item));
     }
-
-
-//    private void open() {
-//        Intent i = new Intent()
-//                .setType("application/library")
-//                .setAction(Intent.ACTION_OPEN_DOCUMENT)
-//                .addCategory(Intent.CATEGORY_OPENABLE);
-//        startActivityForResult(i, REQUEST_OPEN);
-//    }
-
-//    private void openDownloadsPage(Context context) {
-//        Intent pageView = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
-//        pageView.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        context.startActivity(pageView);
-//    }
-
-
-//    @Keep
-//    @AfterPermissionGranted(REQUEST_PERMISSION)
-//    private void navigateToPlayer() {
-//        if (EasyPermissions.hasPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-//            Intent intent = new Intent(this, MusicPlayerActivity.class);
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            EasyPermissions.requestPermissions(this, getString(R.string.read_permission_rational), REQUEST_PERMISSION, Manifest.permission.READ_EXTERNAL_STORAGE);
-//        }
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//
-//        // Forward results to EasyPermissions
-//        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-//    }
 
 
     private void show() {
         Intent showDwn = new Intent();
         showDwn.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
         startActivity(showDwn);
+    }
+
+
+    @Override
+    public void onCurrentItemChanged(@Nullable RecyclerView.ViewHolder viewHolder, int position) {
+        int positionInDataSet = infiniteAdapter.getRealPosition(position);
+        onItemChanged(data.get(positionInDataSet));
     }
 }

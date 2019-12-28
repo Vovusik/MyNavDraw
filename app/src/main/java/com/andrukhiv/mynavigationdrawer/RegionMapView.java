@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.andrukhiv.mynavigationdrawer.models.RegionModel;
+import com.andrukhiv.mynavigationdrawer.utils.RegionColorUtils;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
