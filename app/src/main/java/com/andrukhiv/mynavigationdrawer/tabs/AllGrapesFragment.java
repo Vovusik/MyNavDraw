@@ -33,12 +33,11 @@ import com.andrukhiv.mynavigationdrawer.R;
 public class AllGrapesFragment extends Fragment  implements SearchView.OnQueryTextListener {
 
 
-    static AllGrapesFragment newInstance() {
-        return new AllGrapesFragment();
-    }
-    RecyclerAdapter mAdapter;
+    private RecyclerAdapter mAdapter;
     protected static final String TAG = "AllGrapesFragment";
-    ArrayList<SpecificationsModel> grapes;
+
+    //grapes = SpecificationsModel.getGrapes();
+    private ArrayList<SpecificationsModel> grapes = DbAdapter.getAllGrapes();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +68,6 @@ public class AllGrapesFragment extends Fragment  implements SearchView.OnQueryTe
 
         grapes = new ArrayList<>();
 
-        //grapes = SpecificationsModel.getGrapes();
         grapes = DbAdapter.getAllGrapes();
 
         mAdapter = new RecyclerAdapter(getActivity(), grapes);
@@ -111,7 +109,7 @@ public class AllGrapesFragment extends Fragment  implements SearchView.OnQueryTe
         searchIcon.setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getActivity()), R.drawable.menu_ic_search));
 
         ImageView closeIcon = searchView.findViewById(R.id.search_close_btn);
-        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
+        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.toolbar_ic_close));
 
         // встановлюю ширину вікна пошуку на весь екран
         searchView.setMaxWidth(Integer.MAX_VALUE);

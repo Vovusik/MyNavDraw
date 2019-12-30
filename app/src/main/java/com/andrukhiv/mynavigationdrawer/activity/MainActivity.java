@@ -1,6 +1,6 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
-import android.content.DialogInterface;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -9,6 +9,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.bumptech.glide.GenericTransitionOptions;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
@@ -31,6 +36,8 @@ import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.MainPagerAdapter;
 import com.bumptech.glide.Glide;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_ANDROID;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_WEB;
@@ -40,7 +47,7 @@ import static com.andrukhiv.mynavigationdrawer.Constant.URL_NAV_HEADER;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private DrawerLayout mDrawer;
+    public static DrawerLayout mDrawer;
     private Intent intent;
     private ImageView imgNavHeaderBg;
 
@@ -74,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         // завантажити фонового зображення навігаційного меню
         loadNavHeader();
 
-        // todo - діалогове вікно «Оцінити цей додаток» - не слухається
+        // Todo - діалогове вікно «Оцінити цей додаток» - не слухається
         AppRating.app_launched(this);
 
         // Підключення бібліотеки появи діалогового вікна «Оцінити цей додаток» - RateThisApp
@@ -90,7 +97,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void loadNavHeader() {
-        Glide.with(this).load(URL_NAV_HEADER).into(imgNavHeaderBg);
+        Glide.with(this)
+                .load(URL_NAV_HEADER)
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .skipMemoryCache(true)
+                        .transform(new BlurTransformation(1, 1))
+                )
+                .thumbnail(0.5f)
+                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+                .transition(GenericTransitionOptions.with(animationObject))
+                .into(imgNavHeaderBg);
     }
 
 
@@ -174,7 +191,6 @@ public class MainActivity extends AppCompatActivity
                 intent = new Intent(MainActivity.this, LaboratoryActivity.class);
                 startActivity(intent);
                 break;
-
 
             case R.id.nav_filter:
                 intent = new Intent(MainActivity.this, SortableActivity.class);
@@ -261,18 +277,24 @@ public class MainActivity extends AppCompatActivity
                 //.setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Ви хочете вийти ?")
                 .setMessage("Ви впевнені, що хочете вийти з цього додатку ?")
-                .setPositiveButton("Так", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent startMain = new Intent(Intent.ACTION_MAIN);
-                        startMain.addCategory(Intent.CATEGORY_HOME);
-                        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(startMain);
+                .setPositiveButton("Так", (dialog, which) -> {
+                    Intent startMain = new Intent(Intent.ACTION_MAIN);
+                    startMain.addCategory(Intent.CATEGORY_HOME);
+                    startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(startMain);
 
-                       // or finish();
-                    }
+                   // or finish();
                 })
                 .setNegativeButton("Ні", null)
                 .show();
     }
+
+
+    // Анімація завантаження картинки Glide
+    private ViewPropertyTransition.Animator animationObject = view -> {
+        view.setAlpha(0f);
+        ObjectAnimator fadeAnim = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f);
+        fadeAnim.setDuration(2500);
+        fadeAnim.start();
+    };
 }

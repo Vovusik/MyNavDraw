@@ -15,21 +15,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
 import com.andrukhiv.mynavigationdrawer.BugParallaxPageTransformer;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.BugPagerAdapter;
-import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbHelper;
-import com.andrukhiv.mynavigationdrawer.models.BugModel;
 import com.andrukhiv.mynavigationdrawer.tables.BugTable;
-
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -40,8 +34,6 @@ import static com.andrukhiv.mynavigationdrawer.database.DbAdapter.getBugOidium;
 public class BugFragmentOidium extends Fragment implements View.OnClickListener {
 
     private ViewPager mViewPager;
-    private DbAdapter mDbHelper;
-    private ArrayList<BugModel> bugModels;
     private LinearLayout mSliderDotsPanel;
     private int mDotsCount;
     private ImageView[] mDots;
@@ -54,9 +46,6 @@ public class BugFragmentOidium extends Fragment implements View.OnClickListener 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bug, container, false);
-
-        mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
-        bugModels = getBugOidium();
 
         SQLiteOpenHelper bugDbHelper = new DbHelper(getContext());
 
@@ -116,13 +105,11 @@ public class BugFragmentOidium extends Fragment implements View.OnClickListener 
     private void autoStartViewPager() {
 
         final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (mViewPager.getCurrentItem() < mPagerAdapter.getCount() - 1) {
-                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
-                } else {
-                    mViewPager.setCurrentItem(0);
-                }
+        final Runnable Update = () -> {
+            if (mViewPager.getCurrentItem() < mPagerAdapter.getCount() - 1) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+            } else {
+                mViewPager.setCurrentItem(0);
             }
         };
 
@@ -158,21 +145,15 @@ public class BugFragmentOidium extends Fragment implements View.OnClickListener 
         mDots[0].setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getContext()),
                 R.drawable.bug_dot_act));
 
-        mLeftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isFirstPage()) {
-                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
-                }
+        mLeftButton.setOnClickListener(v -> {
+            if (!isFirstPage()) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
             }
         });
 
-        mRightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isLastPage()) {
-                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
-                }
+        mRightButton.setOnClickListener(v -> {
+            if (!isLastPage()) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
             }
         });
 

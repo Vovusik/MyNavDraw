@@ -23,12 +23,10 @@ public class KitchenActivity extends AppCompatActivity implements
         DiscreteScrollView.ScrollStateChangeListener<KitchenAdapter.ViewHolder>,
         DiscreteScrollView.OnItemChangedListener<KitchenAdapter.ViewHolder> {
 
-
-
     DbAdapter mDbHelper;
     private List<KitchenModel> recipe;
     private KitchenView recipeView;
-    KitchenAdapter mAdapter;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,6 +94,7 @@ public class KitchenActivity extends AppCompatActivity implements
     public void onScrollEnd(@NonNull KitchenAdapter.ViewHolder holder, int position) {
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -104,9 +103,6 @@ public class KitchenActivity extends AppCompatActivity implements
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }
 
 

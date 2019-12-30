@@ -1,5 +1,6 @@
 package com.andrukhiv.mynavigationdrawer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
@@ -61,6 +62,7 @@ public class PreperatyViewGroup extends FrameLayout
         vg_root.setBackgroundResource(R.color.colorPrimary);
     }
 
+    @SuppressLint("RtlHardcoded")
     @Override
     public void bindFirstBody(PreparatyModel item, int row) {
         textView.setText(item.data[0]);

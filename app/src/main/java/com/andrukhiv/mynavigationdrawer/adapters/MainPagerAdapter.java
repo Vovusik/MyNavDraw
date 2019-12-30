@@ -1,5 +1,6 @@
 package com.andrukhiv.mynavigationdrawer.adapters;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -14,7 +15,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     private int allPagers;
 
     public MainPagerAdapter(FragmentManager fm, int allPagers) {
-        super(fm);
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.allPagers = allPagers;
     }
 

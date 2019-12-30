@@ -35,11 +35,12 @@ public class SortableActivity extends AppCompatActivity {
 
             grapesTableView.setHeaderBackgroundColor(getResources().getColor(R.color.colorPrimary));
         }
+        assert grapesTableView != null;
         grapesTableView.setHeaderSortStateViewProvider(new MySortStateViewProvider());
         grapesTableView.setSaveEnabled( true );
 
         mDbHelper = DbAdapter.getInstance(getApplicationContext());
-        sortable = mDbHelper.getAllGrapes();
+        sortable = DbAdapter.getAllGrapes();
     }
 
     private static class MySortStateViewProvider implements SortStateViewProvider {

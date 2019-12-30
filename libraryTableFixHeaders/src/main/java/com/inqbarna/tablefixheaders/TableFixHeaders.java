@@ -255,7 +255,7 @@ public class TableFixHeaders extends ViewGroup {
 		scrollBounds();
 
 		/*
-		 * TODO Improve the algorithm. Think big diagonal movements. If we are
+		 * Улучшить алгоритм. Думайте большие диагональные движения. If we are
 		 * in the top left corner and scrollBy to the opposite corner. We will
 		 * have created the views from the top right corner on the X part and we
 		 * will have eliminated to generate the right at the Y.

@@ -25,10 +25,6 @@ public class LocaleHelper {
         return setLocale(context, lang);
     }
 
-    public static String getLanguage(Context context) {
-        return getPersistedData(context, Locale.getDefault().getLanguage());
-    }
-
     public static Context setLocale(Context context, String language) {
         persist(context, language);
 

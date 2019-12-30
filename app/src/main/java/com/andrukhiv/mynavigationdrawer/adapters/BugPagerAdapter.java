@@ -1,5 +1,6 @@
 package com.andrukhiv.mynavigationdrawer.adapters;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,16 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.BugModel;
+import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.bumptech.glide.signature.ObjectKey;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
 public class BugPagerAdapter extends PagerAdapter {
@@ -63,11 +69,13 @@ public class BugPagerAdapter extends PagerAdapter {
                 .with(context)
                 .load(pictureUrl)
                 .apply(new RequestOptions()
-                        .fitCenter()
-                        .centerCrop()
-
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .skipMemoryCache(true)
+                        .transform(new BlurTransformation(1, 1))
                 )
-                //.apply(requestOptions)
+                .thumbnail(0.5f)
+                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+                .transition(GenericTransitionOptions.with(animationObject))
                 .into(picture)
         ;
 
@@ -89,4 +97,14 @@ public class BugPagerAdapter extends PagerAdapter {
     public boolean isViewFromObject(View view, @NonNull Object object) {
         return view.equals(object);
     }
+
+
+    // Анімація завантаження картинки Glide
+    private ViewPropertyTransition.Animator animationObject = view -> {
+        view.setAlpha(0f);
+
+        ObjectAnimator fadeAnim = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f);
+        fadeAnim.setDuration(2500);
+        fadeAnim.start();
+    };
 }

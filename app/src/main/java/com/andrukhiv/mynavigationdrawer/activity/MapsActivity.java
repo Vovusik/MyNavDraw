@@ -3,10 +3,12 @@ package com.andrukhiv.mynavigationdrawer.activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,9 +27,12 @@ import com.github.nitrico.mapviewpager.MapViewPager;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MapsActivity extends AppCompatActivity implements MapViewPager.Callback, OnMapReadyCallback {
 
@@ -57,7 +62,7 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
         mToolbarActivity = findViewById(R.id.toolbar_spinner_maps);
         setSupportActionBar(mToolbarActivity);
         // Прибрав назву заголовку з тулбара
-        getSupportActionBar().setTitle(null);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(null);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,7 +74,9 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
         mapsModelsOdesa = DbAdapter.getMapsOdesa();
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
 
         viewPager = findViewById(R.id.viewPager);
         viewPager.setPageMargin(MapsUtils.dp(this, 16));
@@ -83,7 +90,7 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
 
     private void spinnerRegionToolbar() {
 
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(MapsActivity.this,
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(MapsActivity.this,
                 R.layout.item_spinner,
                 getResources().getStringArray(R.array.region));
         mAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
@@ -104,7 +111,6 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -141,8 +147,7 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
                     MapsUtils.getNavigationBarWidth(this),
                     viewPager.getHeight());
             mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        }
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             mvp.getMap().setPadding(
                     MapsUtils.getNavigationBarWidth(this),
                     MapsUtils.getNavigationBarWidth(this),
@@ -150,7 +155,27 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
                     MapsUtils.getNavigationBarWidth(this));
             mvp.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
+
+        // Встановлення маркера власного кольору
+        mvp.getMarker(1)
+                .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+        //.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.toolbar_ic_up_arrow));
+        mvp.getMarker(0)
+                .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+
+        // Зміна відтінку маркера, який не перебуває у фокусі
+        mvp.getViewPager().addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                for (int i = 0; i < mvp.getMarkers().size(); i++) {
+                    Marker marker = mvp.getMarker(i);
+                    if (i == position) marker.setAlpha(1f);
+                    else marker.setAlpha(0.5f);
+                }
+            }
+        });
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -175,6 +200,8 @@ public class MapsActivity extends AppCompatActivity implements MapViewPager.Call
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Не могу найти стиль. Ошибка:", e);
         }
+
+
     }
 
     @Override

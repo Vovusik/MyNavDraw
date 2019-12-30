@@ -175,7 +175,7 @@ public abstract  class PreparatyAdapterFactory<
      * <li>1 = Header (row 0)</li>
      * <li>2 = First body (column 0)</li>
      * <li>3 = Body (cell from 1,1 to N,N</li>
-     * <li>4 = Section row (separator between rows)</li>
+     * <li>4 = Sect. row (separator between rows)</li>
      * </ul>
      */
     @Override
@@ -193,7 +193,7 @@ public abstract  class PreparatyAdapterFactory<
      * <li>1 = Header (row 0)</li>
      * <li>2 = First body (column 0)</li>
      * <li>3 = Body (cell from 1,1 to N,N</li>
-     * <li>4 = Section row (separator between rows)</li>
+     * <li>4 = Sect. row (separator between rows)</li>
      * </ul>
      */
     @Override

@@ -39,11 +39,6 @@ public class DbAdapter {
     private static SQLiteDatabase mDb;
     private DbHelper mDbHelper;
 
-    public static final int MODE_ALL = 0;
-    public static final int MODE_TABLE = 1;
-    public static final int MODE_WINE = 2;
-    public static final int MIN_SEEDLESS = 3;
-
     @SuppressLint("StaticFieldLeak")
     private static DbAdapter sInstance;
 
@@ -62,23 +57,21 @@ public class DbAdapter {
 
 
     public DbAdapter(Context context) {
-        Context mContext = context;
-        mDbHelper = new DbHelper(mContext);
+        mDbHelper = new DbHelper(context);
     }
 
 
-    public DbAdapter createDatabase() throws SQLException {
+    public void createDatabase() throws SQLException {
         try {
             mDbHelper.createDataBase();
         } catch (IOException mIOException) {
             Log.e(TAG, mIOException.toString() + "  UnableToCreateDatabase");
             throw new Error("UnableToCreateDatabase");
         }
-        return this;
     }
 
 
-    public DbAdapter open() throws SQLException {
+    public void open() throws SQLException {
         try {
             mDbHelper.openDataBase();
             mDbHelper.close();
@@ -87,8 +80,9 @@ public class DbAdapter {
             Log.e(TAG, "open >>" + mSQLException.toString());
             throw mSQLException;
         }
-        return this;
     }
+
+
 
 
     public void close() {
@@ -401,7 +395,7 @@ public class DbAdapter {
     public ArrayList<LaboratoryModel> getLaboratoryInstruction() {
 
         ArrayList<LaboratoryModel> result = new ArrayList<>();
-        String sql = "SELECT * FROM " + LaboratoryInstruction.LABORATORY_NAME_TABLE;
+        String sql = "SELECT * FROM " + LaboratoryInstruction.LABORATORY_INSTRUCTION_NAME_TABLE;
         Cursor cursor = mDb.rawQuery(sql, null);
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
@@ -477,6 +471,7 @@ public class DbAdapter {
                 ));
             }
         }
+        assert cursor != null;
         cursor.close();
         return result;
     }

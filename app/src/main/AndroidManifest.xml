@@ -7,10 +7,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Приложение сможет получать доступ к точному местоположению - малювати маршрут в Винний тур -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!--
-   Позволяет приложению инициировать телефонный звонок без прохождения через пользовательский
-   интерфейс Dialer для подтверждения пользователем вызова - телефонувати в Винний тур
-    -->
+   <!--Позволяет приложению инициировать телефонный звонок без прохождения через пользовательский
+   интерфейс Dialer для подтверждения пользователем вызова - телефонувати в Винний тур-->
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- MAPS -->
@@ -19,6 +17,8 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
+
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -52,7 +52,7 @@
         </activity>
         <activity
             android:name=".activity.KitchenActivity"
-            android:label="@string/name_kitchen"
+            android:label="@string/drawer_item_alco_kitchen"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.KitchenDetailsActivity"
@@ -61,20 +61,20 @@
         </activity>
         <activity
             android:name=".activity.ReproductionActivity"
-            android:label="@string/name_reproduction" />
+            android:label="@string/drawer_item_reproduction" />
         <activity
             android:name=".activity.BudovaActivity"
-            android:label="@string/name_formation" />
+            android:label="@string/drawer_item_structure_formation" />
         <activity
             android:name=".activity.RegionActivity"
-            android:label="@string/name_region" />
+            android:label="@string/drawer_item_summ_temperature" />
         <activity
             android:name=".activity.LibraryActivity"
             android:screenOrientation="portrait"
-            android:label="@string/name_library" />
+            android:label="@string/drawer_item_library" />
         <activity
             android:name=".activity.SortableActivity"
-            android:label="@string/name_specification"
+            android:label="@string/drawer_item_speсifications"
             android:screenOrientation="sensorLandscape" />
 
         <service android:name=".MyFirebaseMessagingService">
@@ -109,6 +109,7 @@
         <activity
             android:name=".activity.SettingActivity"
             android:parentActivityName=".activity.MainActivity"
+            android:label="@string/drawer_item_settings"
             android:theme="@style/Theme.Preference" />
         <activity android:name=".activity.MapsActivity" />
 
@@ -122,16 +123,16 @@
 
         <activity
             android:name=".activity.BugActivity"
-            android:label="@string/name_bug" />
+            android:label="@string/drawer_item_bug" />
 
         <activity
             android:name=".activity.GalleryActivity"
-            android:label="@string/name_gallery"
+            android:label="@string/drawer_item_gallery"
             android:theme="@style/GalleryTheme" />
 
         <activity
             android:name=".activity.LaboratoryActivity"
-            android:label="Лабораторія"
+            android:label="@string/drawer_item_laboratory"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LaboratoryTheme" />
@@ -139,19 +140,19 @@
 
         <activity
             android:name=".activity.LaboratorySugarActivity"
-            android:label="Визначення цукру" />
+            android:label="@string/label_sugar" />
 
         <activity
             android:name=".activity.LaboratoryAcidityActivity"
-            android:label="Визначення кислотності" />
+            android:label="@string/label_acidity" />
 
         <activity
             android:name=".activity.LaboratoryTableActivity"
-            android:label="Таблиця цукристості" />
+            android:label="@string/label_table" />
 
         <activity
             android:name=".activity.PreparatyActivity"
-            android:label="Засоби захисту" />
+            android:label="@string/drawer_item_preparaty" />
 
     </application>
 

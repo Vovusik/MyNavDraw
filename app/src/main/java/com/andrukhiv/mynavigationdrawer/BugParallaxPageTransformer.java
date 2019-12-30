@@ -14,15 +14,10 @@ public class BugParallaxPageTransformer implements ViewPager.PageTransformer {
     public BugParallaxPageTransformer() {
     }
 
-    public BugParallaxPageTransformer(List<ParallaxTransformInformation> viewsToParallax) {
-        mViewsToParallax = viewsToParallax;
-    }
-
-    public BugParallaxPageTransformer addViewToParallax(ParallaxTransformInformation viewInfo) {
+    public void addViewToParallax(ParallaxTransformInformation viewInfo) {
         if (mViewsToParallax != null) {
             mViewsToParallax.add(viewInfo);
         }
-        return this;
     }
 
     public void transformPage(View view, float position) {
@@ -69,9 +64,9 @@ public class BugParallaxPageTransformer implements ViewPager.PageTransformer {
 
         static final float PARALLAX_EFFECT_DEFAULT = -101.1986f;
 
-        int resource = -1;
-        float parallaxEnterEffect = 1f;
-        float parallaxExitEffect = 1f;
+        int resource;
+        float parallaxEnterEffect;
+        float parallaxExitEffect;
 
         public ParallaxTransformInformation(int resource, float parallaxEnterEffect,
                                             float parallaxExitEffect) {

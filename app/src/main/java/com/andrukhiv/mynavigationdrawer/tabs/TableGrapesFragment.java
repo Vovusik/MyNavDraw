@@ -110,7 +110,7 @@ public class TableGrapesFragment extends Fragment  implements SearchView.OnQuery
         searchIcon.setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getActivity()), R.drawable.menu_ic_search));
 
         ImageView closeIcon = searchView.findViewById(R.id.search_close_btn);
-        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_close_icon));
+        closeIcon.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.toolbar_ic_close));
 
         // встановлюю ширину вікна пошуку на весь екран
         searchView.setMaxWidth(Integer.MAX_VALUE);

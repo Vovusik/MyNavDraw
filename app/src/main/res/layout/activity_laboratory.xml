@@ -42,7 +42,7 @@
         android:background="@color/windowBackground"
         android:paddingHorizontal="16dp"
         android:paddingVertical="6dp">
-
+        <!--Fixme-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonResult"
             android:layout_width="match_parent"

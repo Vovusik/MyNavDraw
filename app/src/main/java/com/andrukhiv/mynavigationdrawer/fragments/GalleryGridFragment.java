@@ -63,6 +63,7 @@ public class GalleryGridFragment extends Fragment {
           int oldBottom) {
         recyclerView.removeOnLayoutChangeListener(this);
         final RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        assert layoutManager != null;
         View viewAtPosition = layoutManager.findViewByPosition(GalleryActivity.currentPosition);
         // Scroll to position if the view for the current position is null (not currently part of
         // layout manager children), or it's not completely visible.
@@ -90,7 +91,7 @@ public class GalleryGridFragment extends Fragment {
             // Locate the ViewHolder for the clicked position.
             RecyclerView.ViewHolder selectedViewHolder = recyclerView
                 .findViewHolderForAdapterPosition(GalleryActivity.currentPosition);
-            if (selectedViewHolder == null || selectedViewHolder.itemView == null) {
+            if (selectedViewHolder == null) {
               return;
             }
 

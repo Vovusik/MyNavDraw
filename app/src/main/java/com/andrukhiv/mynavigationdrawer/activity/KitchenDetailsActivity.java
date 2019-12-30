@@ -21,15 +21,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 
 public class KitchenDetailsActivity extends AppCompatActivity {
 
-    private KitchenModel mGrapes;
     public static final String EXTRA_KITCHEN_ID = "kitchenId";
     public SlidrConfig mConfig;
 
@@ -41,7 +43,7 @@ public class KitchenDetailsActivity extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
-        mGrapes = (KitchenModel) getIntent().getSerializableExtra(EXTRA_KITCHEN_ID);
+        KitchenModel mGrapes = (KitchenModel) getIntent().getSerializableExtra(EXTRA_KITCHEN_ID);
 
         // Включити кнопку Вверх на панелі дій.
         setSupportActionBar(findViewById(R.id.toolbar));
@@ -51,20 +53,23 @@ public class KitchenDetailsActivity extends AppCompatActivity {
         }
 
         CollapsingToolbarLayout mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        assert mGrapes != null;
         mCollapsingToolbar.setTitle(mGrapes.getName());
 
         ProgressBar progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(ProgressBar.VISIBLE);
 
         ImageView photoCollapsing = findViewById(R.id.photo_large);
-                Glide
+        Glide
                 .with(this)
                 .load(mGrapes.getImageBackground())
                 .apply(new RequestOptions()
-//                        .placeholder(R.drawable.placeholder)
-//                        .fallback(R.drawable.ic_520016)
-//                        .error(R.drawable.oops)
-                .diskCacheStrategy(DiskCacheStrategy.ALL))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .skipMemoryCache(true)
+                        .transform(new BlurTransformation(1, 1))
+                )
+                .thumbnail(0.5f)
+                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(photoCollapsing);
 

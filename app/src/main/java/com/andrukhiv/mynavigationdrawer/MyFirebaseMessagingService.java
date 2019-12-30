@@ -76,7 +76,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Если ключ CalendarActivity имеет значение True, а затем, когда пользователь нажимает
         // на уведомление, в приложении CalendarActivity будет открыто.
         // Если ключ CalendarActivity имеет значение False, тогда, когда пользователь нажимает
-        // на уведомление, в приложении будет открыто todo: CalendarActivity.
+        // на уведомление, в приложении будет открыто - CalendarActivity.
         String TrueOrFlase = remoteMessage.getData().get("RegionActivity");
 
         // Чтобы получить растровое изображение из полученного URL-адреса
@@ -107,6 +107,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+        assert notificationManager != null;
         notificationManager.notify(1 /* Идентификатор уведомления - канал */, notificationBuilder.build());
     }
 
@@ -118,11 +119,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(input);
-            return bitmap;
+            return BitmapFactory.decodeStream(input);
 
         } catch (Exception e) {
-            // TODO Автоматически генерируемый блок catch
             e.printStackTrace();
             return null;
         }

@@ -65,7 +65,7 @@
                 <Button
                     android:id="@+id/call"
                     style="@style/MapsButtonStyle"
-                    android:drawableTop="@drawable/map_ic_call"
+                    android:drawableTop="@drawable/map_selector_call"
                     android:text="Виклик" />
 
                 <Button

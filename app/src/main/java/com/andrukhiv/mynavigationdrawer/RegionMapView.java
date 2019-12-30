@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.andrukhiv.mynavigationdrawer.models.RegionModel;
 import com.andrukhiv.mynavigationdrawer.utils.RegionColorUtils;
 
@@ -30,8 +32,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class RegionMapView extends View {
 
-    private final String TAG = "MapView";
-
     public Context mContext;
 
     private Paint mPaint;
@@ -39,9 +39,6 @@ public class RegionMapView extends View {
     private int mapRes = -1;
 
     private List<RegionModel> itemList;
-
-    private int minWidth = 200;
-    private int minHeight = 200;
 
     // Вибрана область
     private RegionModel selectItem;
@@ -126,6 +123,7 @@ public class RegionMapView extends View {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         handleTouch(event.getX(), event.getY());
@@ -182,6 +180,7 @@ public class RegionMapView extends View {
                     String name = element.getAttribute("android:name");
                     String temperature = element.getAttribute("android:temperature");
                     String pathData = element.getAttribute("android:pathData");
+                    String TAG = "MapView";
                     Log.i(TAG, "id: " + id);
                     Log.i(TAG, "name: " + name);
                     Log.i(TAG, "temperature: " + temperature);
@@ -191,6 +190,7 @@ public class RegionMapView extends View {
                     Path path = RegionPathParser.createPathFromPathData(pathData);
 
                     RectF rectF = new RectF();
+                    assert path != null;
                     path.computeBounds(rectF, true);
 
                     left = left == -1 ? rectF.left : Math.min(rectF.left, left);
@@ -222,7 +222,7 @@ public class RegionMapView extends View {
     @SuppressLint("HandlerLeak")
     Handler mHandler = new Handler() {
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(@NonNull Message msg) {
             if (itemList == null) {
                 return;
             }

@@ -10,37 +10,37 @@ import java.util.Comparator;
 // Для того, щоб таблиця сортується по колонці, все, що потрібно зробити, це реалізувати
 // компаратор і встановити його в конкретній колонці:
 
-public final class SortableComparators {
+final class SortableComparators {
 
     private SortableComparators() {
     }
 
-    public static Comparator<SpecificationsModel> getGrapesNameComparator() {
+    static Comparator<SpecificationsModel> getGrapesNameComparator() {
         return new GrapesNameComparator();
     }
 
-    public static Comparator<SpecificationsModel> getGrapesSortyComparator() {
+    static Comparator<SpecificationsModel> getGrapesSortyComparator() {
         return new GrapesSortyComparator();
     }
 
-    public static Comparator<SpecificationsModel> getGrapesTermComparator() {
+    static Comparator<SpecificationsModel> getGrapesTermComparator() {
         return new GrapesTermComparator();
     }
 
-    public static Comparator<SpecificationsModel> getGrapesFrostComparator() {
+    static Comparator<SpecificationsModel> getGrapesFrostComparator() {
         return new GrapesFrostComparator();
     }
 
 
-    public static Comparator<SpecificationsModel> getGrapesColorComparator() {
+    static Comparator<SpecificationsModel> getGrapesColorComparator() {
         return new GrapesColorComparator();
     }
 
-    public static Comparator<SpecificationsModel> getGrapesGrowthComparator() {
+    static Comparator<SpecificationsModel> getGrapesGrowthComparator() {
         return new GrapesGrowthComparator();
     }
 
-    public static Comparator<SpecificationsModel> getGrapesWeightComparator() {
+    static Comparator<SpecificationsModel> getGrapesWeightComparator() {
         return new WeightComparator();
     }
 
@@ -74,9 +74,7 @@ public final class SortableComparators {
 
         @Override
         public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
-            if (grapes1.getFrost() < grapes2.getFrost()) return -1;
-            if (grapes1.getFrost() > grapes2.getFrost()) return 1;
-            return 0;
+            return Integer.compare(grapes1.getFrost(), grapes2.getFrost());
         }
     }
 
@@ -100,9 +98,7 @@ public final class SortableComparators {
 
         @Override
         public int compare(final SpecificationsModel grapes1, final SpecificationsModel grapes2) {
-            if (grapes1.getWeight() < grapes2.getWeight()) return -1;
-            if (grapes1.getWeight() > grapes2.getWeight()) return 1;
-            return 0;
+            return Double.compare(grapes1.getWeight(), grapes2.getWeight());
         }
     }
 }

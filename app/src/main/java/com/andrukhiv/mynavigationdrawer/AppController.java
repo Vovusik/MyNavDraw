@@ -5,11 +5,16 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
+import com.andrukhiv.mynavigationdrawer.database.DbHelper;
+
+import java.io.IOException;
 
 
 public class AppController extends Application {
@@ -39,7 +44,7 @@ public class AppController extends Application {
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
     }
 
-    // todo: перевірку працездатності Notification не зміг, так як консоль firebase 1 год. відправляла сповіщення
+    // Todo: перевірку працездатності Notification не зміг, так як консоль firebase 1 год. відправляла сповіщення
     private void createChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

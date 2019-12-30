@@ -23,7 +23,6 @@ import com.andrukhiv.mynavigationdrawer.AppController;
 import com.andrukhiv.mynavigationdrawer.BuildConfig;
 import com.andrukhiv.mynavigationdrawer.LocaleHelper;
 import com.andrukhiv.mynavigationdrawer.R;
-import com.google.android.material.button.MaterialButton;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -34,10 +33,10 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if (null != mActionBar) {
-            mActionBar.setTitle(R.string.action_settings);
-        }
+//        ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+//        if (null != mActionBar) {
+//            mActionBar.setTitle(R.string.action_settings);
+//        }
 
         // Загрузите настройки из XML-ресурса
         addPreferencesFromResource(R.xml.preferences);
@@ -133,7 +132,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
 
         final Dialog dialog = new Dialog(context, R.style.DialogFullscreenWithTitle);
         dialog.setTitle(getString(R.string.title_licenses));
-        dialog.setContentView(R.layout.dialog_source_licenses);
+        dialog.setContentView(R.layout.licenses_dialog);
 
         final WebView webView = dialog.findViewById(R.id.web_source_licenses);
 

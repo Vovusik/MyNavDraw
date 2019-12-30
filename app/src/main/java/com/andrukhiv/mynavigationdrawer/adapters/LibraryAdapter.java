@@ -15,9 +15,13 @@ import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.bumptech.glide.signature.ObjectKey;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
 public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.ViewHolder> {
@@ -46,7 +50,13 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Glide.with(holder.itemView.getContext())
                 .load(data.get(position).getImage())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .skipMemoryCache(true)
+                        .transform(new BlurTransformation(1, 1))
+                )
+                .thumbnail(0.5f)
+                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(holder.image);
     }

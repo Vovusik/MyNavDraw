@@ -13,15 +13,6 @@ import com.andrukhiv.mynavigationdrawer.adapters.BugTabAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 
-/* TODO
-    1. Добавить места (поправить BugModel)
-    2. Дописать адаптер (поправить BugPagerAdapter)
-    3. Добавить адаптер в BugActivity
-    4. Добавить выползание SnackBar с транспорантом
-        о том, что путешествие заказано, при нажатии на FAB
- */
-
-
 public class BugActivity extends AppCompatActivity {
 
     @Override

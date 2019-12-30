@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,9 +23,14 @@ import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.bumptech.glide.signature.ObjectKey;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
@@ -41,6 +47,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
     class RecyclerViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
+
         RecyclerViewHolder(View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.card_academy);
@@ -51,7 +58,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View view = mInflater.inflate(R.layout.activity_card, parent, false);
+        final View view = mInflater.inflate(R.layout.item_main_card, parent, false);
         return new RecyclerViewHolder(view);
     }
 
@@ -65,14 +72,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         ImageView photoSmall = cardView.findViewById(R.id.photo_small);
 
 
-
-
         textName.setText(data.getName());
+
+        RequestOptions requestOptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.NONE) // потому что имя файла всегда одинаково
+                .skipMemoryCache(true);
+
         Glide
                 .with(cardView.getContext())
                 .load(data.getPhotoSmall())
+                //.apply(requestOptions)
+                .apply(new RequestOptions()
+//                        .placeholder(R.drawable.placeholder)
+//                        .fallback(R.drawable.ic_520016)
+//                        .error(R.drawable.oops)
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .skipMemoryCache(true)
+                                .transform(new BlurTransformation(1,1))
+                )
                 .thumbnail(0.5f)// зменшив розмір попередного перегляду фото у 2 рази
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                // Todo: Glide
+                //.signature(new ObjectKey(Long.toString(System.currentTimeMillis())))
+                // .signature(new ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000))) // 1 day
+                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000))) // 10 min
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(photoSmall);
 
@@ -84,18 +106,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             bundle.putSerializable(DetailsActivity.EXTRA_GRAPES_ID, mItemList.get(position));
             intent.putExtras(bundle);
             context.startActivity(intent);
-           });
+        });
 
 
         // Анімація при завантаженні CardView
         Animation animation = AnimationUtils.loadAnimation(cardView.getContext(), android.R.anim.slide_in_left);
         holder.itemView.startAnimation(animation);
 
-        if (position > Previusposition)
-        {
-            AnimationUtil.animate(holder,true);
+        if (position > Previusposition) {
+            AnimationUtil.animate(holder, true);
         } else {
-            AnimationUtil.animate(holder,false);
+            AnimationUtil.animate(holder, false);
         }
         Previusposition = position;
     }
@@ -121,7 +142,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         fadeAnim.setDuration(2500);
         fadeAnim.start();
     };
-
 
 
     public void animateTo(List<SpecificationsModel> models) {

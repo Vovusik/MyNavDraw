@@ -38,7 +38,7 @@ public class PreparatyHeader {
 
     private List<String> getHeader() {
 
-        final String headers[] = {
+        final String[] headers = {
                 (String) context.getResources().getText(R.string.spektr_dii),
                 (String) context.getResources().getText(R.string.virobnyk),
                 (String) context.getResources().getText(R.string.kratnist_zastosuvannya),

@@ -30,12 +30,12 @@ public class LaboratorySugarActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_laboratory_information);
+        setContentView(R.layout.activity_laboratory_inf);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.toolbar_ic_up_arrow);
@@ -48,7 +48,7 @@ public class LaboratorySugarActivity extends AppCompatActivity {
 
         try {
             SQLiteDatabase db = laboratoryInstructionDatabaseHelper.getReadableDatabase();
-            Cursor cursor = db.query(LaboratoryInstruction.LABORATORY_NAME_TABLE,
+            Cursor cursor = db.query(LaboratoryInstruction.LABORATORY_INSTRUCTION_NAME_TABLE,
                     new String[]{
                             LaboratoryInstruction.LABORATORY_COLUMN_NAME,
                             LaboratoryInstruction.LABORATORY_COLUMN_INSTRUCTION

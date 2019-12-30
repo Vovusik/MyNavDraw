@@ -19,10 +19,6 @@ public class BugModel {
         return imageId;
     }
 
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-
     public String getDescription() {
         return description;
     }

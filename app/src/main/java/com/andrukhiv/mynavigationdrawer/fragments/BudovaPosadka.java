@@ -18,6 +18,8 @@ import com.andrukhiv.mynavigationdrawer.database.DbHelper;
 import com.andrukhiv.mynavigationdrawer.tables.FormationTable;
 import com.bumptech.glide.Glide;
 
+import java.util.Objects;
+
 
 public class BudovaPosadka extends Fragment {
 
@@ -54,7 +56,7 @@ public class BudovaPosadka extends Fragment {
                 String description_1 = cursor.getString(7);
 
                 ImageView photo1 = rootView.findViewById(R.id.imageView_1);
-                Glide.with(getContext()).load(photo_1).into(photo1);
+                Glide.with(Objects.requireNonNull(getContext())).load(photo_1).into(photo1);
 
                 TextView description1 = rootView.findViewById(R.id.textView_1);
                 description1.setText(description_1);

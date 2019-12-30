@@ -66,7 +66,7 @@ public class SortableGrapesTableView extends SortableTableView<SpecificationsMod
         tableColumnWeightModel.setColumnWeight(5, 2);
         tableColumnWeightModel.setColumnWeight(6, 2);
 
-        setColumnModel(tableColumnWeightModel);;
+        setColumnModel(tableColumnWeightModel);
 
 
         /*final TableColumnDpWidthModel tableColumnDpWidthModel = new TableColumnDpWidthModel(context, 7, 600);

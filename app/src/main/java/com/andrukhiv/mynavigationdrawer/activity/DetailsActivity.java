@@ -16,6 +16,7 @@ import android.os.Bundle;
 import androidx.annotation.ColorInt;
 import androidx.browser.customtabs.CustomTabsIntent;
 
+import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -45,6 +46,8 @@ import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -61,7 +64,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_details);
+        setContentView(R.layout.activity_details);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
@@ -91,15 +94,17 @@ public class DetailsActivity extends AppCompatActivity {
         progressBar.setVisibility(ProgressBar.VISIBLE);
 
         ImageView photoLarge = findViewById(R.id.photo_large);
-        // Picasso.get().load(mGrapes.getPhotoLarge()).error(R.drawable.oops).into(photoLarge);
+
         Glide
                 .with(this)
                 .load(mGrapes.getPhotoLarge())
                 .apply(new RequestOptions()
-//                        .placeholder(R.drawable.placeholder)
-//                        .fallback(R.drawable.ic_520016)
-//                        .error(R.drawable.oops)
-                .diskCacheStrategy(DiskCacheStrategy.ALL))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .skipMemoryCache(true)
+                        .transform(new BlurTransformation(1, 1))
+                )
+                .thumbnail(0.5f)
+                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(photoLarge);
 

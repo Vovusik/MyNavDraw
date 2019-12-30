@@ -13,21 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbHelper;
-import com.andrukhiv.mynavigationdrawer.models.ReproductionModel;
 import com.andrukhiv.mynavigationdrawer.tables.ReproductionTable;
-
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class ReproductionChubuk extends Fragment {
 
     public ReproductionChubuk() {
     }
-
-    DbAdapter mDbHelper;
-    ArrayList<ReproductionModel> reproduction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,8 +27,8 @@ public class ReproductionChubuk extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_nested_scroll_tab, container, false);
 
-        mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
-        reproduction = mDbHelper.getReproduction();
+//        DbAdapter mDbHelper = DbAdapter.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext());
+       // ArrayList<ReproductionModel> reproduction = mDbHelper.getReproduction();
 
         SQLiteOpenHelper reproductionDatabaseHelper = new DbHelper(getContext());
 

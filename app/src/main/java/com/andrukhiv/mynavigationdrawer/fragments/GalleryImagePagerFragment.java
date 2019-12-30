@@ -16,22 +16,19 @@
 
 package com.andrukhiv.mynavigationdrawer.fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import androidx.fragment.app.Fragment;
 import androidx.core.app.SharedElementCallback;
 import androidx.viewpager.widget.ViewPager;
+
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
 
 import com.andrukhiv.mynavigationdrawer.activity.GalleryActivity;
 import com.andrukhiv.mynavigationdrawer.GalleryDepthPageTransformer;
@@ -40,6 +37,7 @@ import com.andrukhiv.mynavigationdrawer.adapters.GalleryImagePagerAdapter;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Фрагмент для отображения пейджера изображений.
@@ -47,7 +45,6 @@ import java.util.Map;
 public class GalleryImagePagerFragment extends Fragment {
 
     private ViewPager viewPager;
-    private FloatingActionButton mFabWallpaper;
 
     @Nullable
     @Override
@@ -62,7 +59,6 @@ public class GalleryImagePagerFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 GalleryActivity.currentPosition = position;
-                //animateFab(position);
             }
         });
         viewPager.setPageTransformer(true, new GalleryDepthPageTransformer());
@@ -73,43 +69,8 @@ public class GalleryImagePagerFragment extends Fragment {
         if (savedInstanceState == null) {
             postponeEnterTransition();
         }
-
-        mFabWallpaper = viewPager.findViewById(R.id.fab_wallpaper);
-
         return viewPager;
     }
-
-    protected void animateFab(final int position) {
-        mFabWallpaper.clearAnimation();
-        // Масштабирование анимации
-        ScaleAnimation shrink = new ScaleAnimation(1f, 0.2f, 1f, 0.2f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        shrink.setDuration(150);     // продолжительность анимации в миллисекундах
-        shrink.setInterpolator(new DecelerateInterpolator());
-
-        shrink.setAnimationListener(new Animation.AnimationListener() {
-
-            @Override
-            public void onAnimationStart(Animation animation) {
-            }
-
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                // Масштабирование анимации
-                ScaleAnimation expand = new ScaleAnimation(0.2f, 1f, 0.2f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                expand.setDuration(100);     // продолжительность анимации в миллисекундах
-                expand.setInterpolator(new AccelerateInterpolator());
-                mFabWallpaper.startAnimation(expand);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        mFabWallpaper.startAnimation(shrink);
-    }
-
 
     /**
      * Подготавливает переход общего элемента из фрагмента сетки и обратно.
@@ -129,7 +90,7 @@ public class GalleryImagePagerFragment extends Fragment {
                         // visible). To locate the fragment, call instantiateItem with the selection position.
                         // At this stage, the method will simply return the fragment at the position and will
                         // not create a new one.
-                        Fragment currentFragment = (Fragment) viewPager.getAdapter()
+                        Fragment currentFragment = (Fragment) Objects.requireNonNull(viewPager.getAdapter())
                                 .instantiateItem(viewPager, GalleryActivity.currentPosition);
                         View view = currentFragment.getView();
                         if (view == null) {

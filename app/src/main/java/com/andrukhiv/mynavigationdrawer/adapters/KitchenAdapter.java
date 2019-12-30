@@ -23,10 +23,14 @@ import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.bumptech.glide.signature.ObjectKey;
 
 import java.util.List;
 import java.util.Objects;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
 public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.ViewHolder> {
@@ -60,7 +64,13 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.ViewHold
         holder.textView.setText(forecast.getName());
         Glide.with(holder.itemView.getContext())
                 .load(forecast.getImageGlassIcon())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .skipMemoryCache(true)
+                        .transform(new BlurTransformation(1, 1))
+                )
+                .thumbnail(0.5f)
+                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(holder.imageView);
         holder.textView.setText(forecast.getName());
@@ -91,19 +101,25 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.ViewHold
             float scale = (parentHeight - textView.getHeight()) / (float) imageView.getHeight();
             imageView.setPivotX(imageView.getWidth() * 0.5f);
             imageView.setPivotY(0);
-            imageView.animate().scaleX(scale)
+            imageView
+                    .animate()
+                    .scaleX(scale)
                     .withEndAction(() -> {
                         textView.setVisibility(View.VISIBLE);
                         imageView.setColorFilter(Color.WHITE);
                     })
-                    .scaleY(scale).setDuration(200)
+                    .scaleY(scale)
+                    .setDuration(200)
                     .start();
         }
 
         public void hideText() {
             imageView.setColorFilter(ContextCompat.getColor(imageView.getContext(), R.color.grayIconTint));
             textView.setVisibility(View.INVISIBLE);
-            imageView.animate().scaleX(1f).scaleY(1f)
+            imageView
+                    .animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
                     .setDuration(200)
                     .start();
         }

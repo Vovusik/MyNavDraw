@@ -18,6 +18,8 @@ import com.andrukhiv.mynavigationdrawer.database.DbHelper;
 import com.andrukhiv.mynavigationdrawer.tables.FormationTable;
 import com.bumptech.glide.Glide;
 
+import java.util.Objects;
+
 
 public class BudovaGuyot extends Fragment {
 
@@ -64,7 +66,7 @@ public class BudovaGuyot extends Fragment {
                 String description_6 = cursor.getString(12);
 
                 ImageView photo1 = rootView.findViewById(R.id.imageView_1);
-                Glide.with(getContext()).load(photo_1).into(photo1);
+                Glide.with(Objects.requireNonNull(getContext())).load(photo_1).into(photo1);
                 ImageView photo2 = rootView.findViewById(R.id.imageView_2);
                 Glide.with(getContext()).load(photo_2).into(photo2);
                 ImageView photo3 = rootView.findViewById(R.id.imageView_3);

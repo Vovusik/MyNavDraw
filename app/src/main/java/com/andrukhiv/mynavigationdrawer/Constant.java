@@ -1,14 +1,12 @@
 package com.andrukhiv.mynavigationdrawer;
 
-import android.net.Uri;
-
 public class Constant {
 
     public static String EMAIL = "vovaandrukhiv@gmail.com";
     public final static String APP_PACKAGE_NAME = "com.eajy.materialdesigndemo";
     public final static String GOOGLE_PLAY_MARKET_ANDROID = "market://details?id=";
     public final static String GOOGLE_PLAY_MARKET_WEB = "https://play.google.com/store/apps/details?id=";
-    public static String DEVELOPER_BY = "Розробник Володимир Андрухів";
+    private static String DEVELOPER_BY = "Розробник Володимир Андрухів";
     public static String SHARE_CONTENT = "Додаток, який допомагає вирощуванню та догляду винограду," +
             " виноробству, а також відвідуванню дегустаційних залів Закарпаття:\n\n" +
             GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME + "\n\n" + DEVELOPER_BY;

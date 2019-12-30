@@ -27,6 +27,7 @@ import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.MapsAdapterOdesa;
 
 import java.util.List;
+import java.util.Objects;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -37,7 +38,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  */
 public class MapsFragmentOdesa extends Fragment implements View.OnClickListener, EasyPermissions.PermissionCallbacks {
 
-    TextView mTitle, mDescription, mAddress;
+    private TextView mTitle, mDescription, mAddress;
     // ImageView mImage;
     private int index;
 
@@ -131,12 +132,12 @@ public class MapsFragmentOdesa extends Fragment implements View.OnClickListener,
     // Используется для проверки наличия у приложения необходимых разрешений.
     // Этот метод может принимать любое количество разрешений в качестве последнего аргумента.
     private boolean hasCallPermissions() {
-        return EasyPermissions.hasPermissions(getContext(), CALL);
+        return EasyPermissions.hasPermissions(Objects.requireNonNull(getContext()), CALL);
     }
 
 
     private boolean hasLocationPermissions() {
-        return EasyPermissions.hasPermissions(getContext(), LOCATION);
+        return EasyPermissions.hasPermissions(Objects.requireNonNull(getContext()), LOCATION);
     }
 
 
@@ -150,7 +151,7 @@ public class MapsFragmentOdesa extends Fragment implements View.OnClickListener,
     // как все его разрешения были предоставлены. Это также может быть достигнуто путем добавления
     // логики onPermissionsGrantedобратного вызова.
     @AfterPermissionGranted(RC_CALL)
-    public void callTask() {
+    private void callTask() {
         if (hasCallPermissions()) {
             Toast.makeText(getContext(), R.string.hasPermissions, Toast.LENGTH_SHORT).show();
             callPhone();
@@ -161,7 +162,7 @@ public class MapsFragmentOdesa extends Fragment implements View.OnClickListener,
 
 
     @AfterPermissionGranted(RC_LOCATION)
-    public void locationTask() {
+    private void locationTask() {
         if (hasLocationPermissions()) {
             Toast.makeText(getContext(), R.string.hasPermissions, Toast.LENGTH_LONG).show();
             locationDirections();
@@ -174,7 +175,7 @@ public class MapsFragmentOdesa extends Fragment implements View.OnClickListener,
     private void callPhone() {
         Uri call = Uri.parse("tel:" + MapsAdapterOdesa.getTextPhone(index));
         Intent callIntent = new Intent(Intent.ACTION_DIAL, call);
-        if (ActivityCompat.checkSelfPermission(getContext(),
+        if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getContext()),
                 Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -186,7 +187,7 @@ public class MapsFragmentOdesa extends Fragment implements View.OnClickListener,
         Uri location = Uri.parse(MapsAdapterOdesa.getNavigationPosition(index));
         Intent locationIntent = new Intent(Intent.ACTION_VIEW, location);
         locationIntent.setPackage("com.google.android.apps.maps");
-        if (ActivityCompat.checkSelfPermission(getContext(),
+        if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getContext()),
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -239,7 +240,7 @@ public class MapsFragmentOdesa extends Fragment implements View.OnClickListener,
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
 
         // установить цвета панели инструментов
-        builder.setToolbarColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        builder.setToolbarColor(ContextCompat.getColor(Objects.requireNonNull(getContext()), R.color.colorPrimary));
         builder.setSecondaryToolbarColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
         // поширити додаток
         builder.addDefaultShareMenuItem();

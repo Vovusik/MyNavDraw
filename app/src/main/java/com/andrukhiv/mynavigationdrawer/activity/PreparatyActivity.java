@@ -32,27 +32,26 @@ public class PreparatyActivity extends AppCompatActivity {
         tableFixHeaders = findViewById(R.id.tablefixheaders);
         preparatyFixHeaders = new PreparatyFixHeaders(this);
 
-        createTable(PreparatyFixHeaders.ORIGINAL);
+        createTable();
 
         mDbHelper = DbAdapter.getInstance(getApplicationContext());
         preparaty = DbAdapter.getPreparaty();
     }
 
 
-    private void createTable(int type) {
-        tableFixHeaders.setAdapter(preparatyFixHeaders.getAdapter(type));
+    private void createTable() {
+        tableFixHeaders.setAdapter(preparatyFixHeaders.getAdapter());
     }
 
 
     public class PreparatyFixHeaders {
-        public static final int ORIGINAL = 0;
         private Context context;
 
-        public PreparatyFixHeaders(Context context) {
+        PreparatyFixHeaders(Context context) {
             this.context = context;
         }
 
-        public BaseTableAdapter getAdapter(int type) {
+        BaseTableAdapter getAdapter() {
             return new PreparatyHeader(context).getInstance();
         }
     }

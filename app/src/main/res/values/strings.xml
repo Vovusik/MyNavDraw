@@ -1,58 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sommelier</string>
-    <string name="name_kitchen" translatable="false">Алкокухня</string>
-    <string name="name_reproduction" translatable="false">Розмноження</string>
-    <string name="name_formation" translatable="false">Будова і формування</string>
-    <string name="name_region" translatable="false">Сума активних температур</string>
-    <string name="name_library" translatable="false">Бібліотека</string>
-    <string name="name_specification" translatable="false">Характеристики</string>
-    <string name="name_bug" translatable="false">Хвороби і шкідники</string>
-    <string name="name_gallery" translatable="false">Галерея</string>
 
-
-    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
-    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
-
-    <!--Заповнення меню NavigationDrawer-->
-    <string name="drawer_item_home">Головна</string>
-    <string name="drawer_item_wine_tour" translatable="false">Винний тур</string>
-    <string name="drawer_item_academy" translatable="false">Академія вина</string>
-    <string name="drawer_item_alco_kitchen" translatable="false">АлкоКухня</string>
-    <string name="drawer_item_library" translatable="false">Бібліотека</string>
-    <string name="drawer_item_favorite_varieties" translatable="false">Улюблені сорти</string>
-    <string name="drawer_item_speсifications" translatable="false">Характеристики</string>
-    <string name="drawer_item_laboratory" translatable="false">Лабораторія</string>
-    <string name="drawer_item_care_protection" translatable="false">Догляд та захист</string>
-    <string name="drawer_item_structure_formation" translatable="false">Будова і формування</string>
-    <string name="drawer_item_reproduction" translatable="false">Розмноження</string>
-    <string name="drawer_item_diseases_pests" translatable="false">Хвороби і шкідники</string>
-    <string name="drawer_item_calendar" translatable="false">Календар робіт і подій</string>
-    <string name="drawer_item_temperature" translatable="false">Термін дозрівання</string>
-    <string name="drawer_item_summ_temperature" translatable="false">Сума активних температур</string>
-    <string name="drawer_item_preparaty" translatable="false">Засоби захисту</string>
-    <string name="drawer_item_miscellaneous" translatable="false">Різне</string>
-    <string name="drawer_item_rating" translatable="false">Оцінити в Google Play</string>
-    <string name="drawer_item_share" translatable="false">Поширити застосунок</string>
-    <string name="drawer_item_communication" translatable="false">Написати листа</string>
-    <string name="drawer_item_gallery" translatable="false">Галерея</string>
-    <string name="drawer_item_settings" translatable="false">Налаштування</string>
-    <string name="drawer_item_about" translatable="false">Про застосунок</string>
-    <string name="drawer_item_section_header_security" translatable="false">Догляд і захист</string>
-    <string name="drawer_item_call_in_call" translatable="false">Зворотній зв’язок</string>
-
-
-    <string name="drawer_item_section_header_about" translatable="false">Про застосунок</string>
-    <string name="drawer_item_licence" translatable="false">Ліцензії відкритого коду</string>
-    <string name="drawer_item_change_theme" translatable="false">Змінити тему</string>
-
-
-    <!--Найменування табів-->
+    <!--Section: Name TabsMain-->
     <string name="tab_item_home" translatable="false">Усі сорти</string>
     <string name="tab_item_table" translatable="false">Столові</string>
     <string name="tab_item_seedless" translatable="false">Киш миш</string>
     <string name="tab_item_wine" translatable="false">Технічні</string>
 
-
+    <!--Section: Shortcut-->
     <string name="shortcut_long_label_hvoroby" translatable="false">Хвороби і шкідники</string>
     <string name="shortcut_short_label_hvoroby" translatable="false">Хвороби</string>
     <string name="shortcut_long_label_formuvannya" translatable="false">Будова і формування</string>
@@ -62,41 +17,40 @@
     <string name="shortcut_long_label_maps" translatable="false">Винний тур</string>
     <string name="shortcut_short_label_maps" translatable="false">Винний тур</string>
 
+    <!--Section: Drawer-->
+    <string name="drawer_item_home">Головна</string>
+    <string name="drawer_item_wine_tour" translatable="false">Винний тур</string>
+<!--    <string name="drawer_item_academy" translatable="false">Академія вина</string>-->
+    <string name="drawer_item_alco_kitchen" translatable="false">АлкоКухня</string>
+    <string name="drawer_item_library" translatable="false">Бібліотека</string>
+    <string name="drawer_item_favorite_varieties" translatable="false">Улюблені сорти</string>
+    <string name="drawer_item_speсifications" translatable="false">Характеристики</string>
+    <string name="drawer_item_laboratory" translatable="false">Лабораторія</string>
+    <string name="drawer_item_care_protection" translatable="false">Догляд та захист</string>
+    <string name="drawer_item_structure_formation" translatable="false">Будова і формування</string>
+    <string name="drawer_item_reproduction" translatable="false">Розмноження</string>
+    <string name="drawer_item_bug" translatable="false">Хвороби і шкідники</string>
+    <string name="drawer_item_calendar" translatable="false">Календар робіт і подій</string>
+<!--    <string name="drawer_item_temperature" translatable="false">Термін дозрівання</string>-->
+    <string name="drawer_item_summ_temperature" translatable="false">Сума активних температур</string>
+    <string name="drawer_item_preparaty" translatable="false">Засоби захисту</string>
+    <string name="drawer_item_miscellaneous" translatable="false">Різне</string>
+    <string name="drawer_item_rating" translatable="false">Оцінити в Google Play</string>
+    <string name="drawer_item_share" translatable="false">Поширити застосунок</string>
+    <string name="drawer_item_communication" translatable="false">Написати листа</string>
+    <string name="drawer_item_gallery" translatable="false">Галерея</string>
+    <string name="drawer_item_settings" translatable="false">Налаштування</string>
+<!--    <string name="drawer_item_about" translatable="false">Про застосунок</string>-->
+    <string name="drawer_item_section_header_security" translatable="false">Догляд і захист</string>
+    <string name="drawer_item_call_in_call" translatable="false">Зворотній зв’язок</string>
 
     <string name="message_subject" translatable="false">Стосовно додатку GRAPES.</string>
     <string name="message_text" translatable="false">Привіт,</string>
 
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
-    <!--Найменування табів AlcoKitchen-->
-    <string name="tab_kitchen_vermut" translatable="false">Вермут</string>
-    <string name="tab_kitchen_wine" translatable="false">Вино</string>
-    <string name="tab_kitchen_wine_white" translatable="false">Вино Біле</string>
-    <string name="tab_kitchen_kagor" translatable="false">Вино Кагор</string>
-    <string name="tab_kitchen_wine_suhe" translatable="false">Вино Сухе</string>
-    <string name="tab_kitchen_izabella" translatable="false">Вино Ізабелла</string>
-    <string name="tab_kitchen_glintvein" translatable="false">Глінтвейн</string>
-    <string name="tab_kitchen_grappa" translatable="false">Граппа</string>
-    <string name="tab_kitchen_kizlyarka" translatable="false">Кізлярка</string>
-    <string name="tab_kitchen_konyak" translatable="false">Коньяк</string>
-    <string name="tab_kitchen_liker" translatable="false">Лікер</string>
-    <string name="tab_kitchen_martini" translatable="false">Мартіні</string>
-    <string name="tab_kitchen_oruho" translatable="false">Орухо</string>
-    <string name="tab_kitchen_pisko" translatable="false">Піско</string>
-    <string name="tab_kitchen_portvein" translatable="false">Портвейн</string>
-    <string name="tab_kitchen_sangriya" translatable="false">Сангрія</string>
-    <string name="tab_kitchen_juice" translatable="false">Сік</string>
-    <string name="tab_kitchen_chacha" translatable="false">Чача</string>
-    <string name="tab_kitchen_shampanske" translatable="false">Шампанське</string>
-    <string name="tab_kitchen_izum" translatable="false">Ізюм</string>
-    <string name="tab_kitchen_churchhela" translatable="false">Чурчхела</string>
-    <string name="tab_kitchen_otset" translatable="false">Оцет</string>
-    <string name="tab_kitchen_bochka" translatable="false">Бочка</string>
-    <string name="tab_kitchen_kislotnist" translatable="false">Кислотність</string>
-    <string name="tab_kitchen_osvitlennya" translatable="false">Освітлення</string>
-    <string name="tab_kitchen_girkota" translatable="false">Гіркота</string>
-
-
-    <!--Найменування табів AlcoKitchen-->
+    <!--Section: Reproduction-->
     <string name="tab_reproduction_chubuk" translatable="false">Чубук</string>
     <string name="tab_reproduction_desktop_vaccine" translatable="false">Настільне щеплення</string>
 
@@ -107,63 +61,128 @@
     <string name="tab_formuvannya_viyalo" translatable="false">Віяло</string>
     <string name="tab_formuvannya_cordon" translatable="false">Кордон</string>
 
-    <!--Найзви колонок у таблиці-->
+    <!--Section: Sortable-->
     <string name="name" translatable="false">НАЗВА</string>
     <string name="sort" translatable="false">ГРУПА</string>
     <string name="term" translatable="false">СТРОК</string>
     <string name="frost" translatable="false">МОРОЗ</string>
     <string name="color" translatable="false">КОЛІР</string>
     <string name="growth" translatable="false">РІСТ</string>
-    <string name="weight"  translatable="false">ВАГА</string>
+    <string name="weight" translatable="false">ВАГА</string>
 
-
-    <!--Категорія загальних налаштувань-->
+    <!--Section: Settings-->
     <string name="category_title_general">Загальні налаштування</string>
-    <string name="title_theme">Тема додатку</string>
-
-    <string name="title_language">Мова додатку</string>
-
-    <!--Категорія сповіщень-->
+    <string name="category_title_about">Про додаток</string>
     <string name="category_title_notifications">Налаштування сповіщень</string>
 
+    <string name="title_language">Мова додатку</string>
+    <string name="title_theme">Тема додатку</string>
+    <string name="title_licenses">Ліцензії відкритого коду</string>
+    <string name="title_version">Версія</string>
     <string name="title_notifications_new_message_ringtone">Виберіть мелодію сповіщення</string>
     <string name="title_notifications_new_message">Нове сповіщення про повідомлення</string>
     <string name="title_vibrate">Вібрація</string>
-    <string name="summary_vibrate">Вібрація при отриманні сповіщень</string>
-    <string name="pref_ringtone_silent">Без звуку</string>
-
-    <!--Категорія Про додаток-->
-    <string name="category_title_about">Про додаток</string>
 
     <string name="summary_description">Новий опис можливостей додатку</string>
-    <string name="title_licenses">Ліцензії відкритого коду</string>
-    <string name="button_licenses">Закрити</string>
     <string name="summary_licenses">Деталі ліцензії з відкритим кодом</string>
-    <string name="title_version">Версія</string>
     <string name="summary_version">1.0</string>
-    <string name="action_settings">Settings</string>
+    <string name="summary_vibrate">Вібрація при отриманні сповіщень</string>
+    <string name="button_licenses">Закрити</string>
+    <string name="pref_ringtone_silent">Без звуку</string>
 
-
-    <!-- Заповнення діалогового вікна спінера MapsActivity-->
+    <!-- Section: Maps Dialog-->
     <string-array name="region">
         <item>Закарпаття</item>
         <item>Одеса</item>
     </string-array>
 
-    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-
+    <!-- Section: Permissions-->
     <string name="hasPermissions" translatable="false">Разрешение было успешно выполнено</string>
     <string name="rationale_call" translatable="false">Разрешение на вызов отклонено</string>
     <string name="rationale_location" translatable="false">Это приложение нуждается в доступе к вашему местоположению, чтобы узнать, где вы.</string>
-
     <string name="returned_from_app_settings_to_activity" translatable="false">
         Возврат из настроек приложения в MainActivity со следующими разрешениями:
         \n\nPhone: %s
         \nLocation: %s
     </string>
-    <string name="yes" translatable="false">Yes</string>
-    <string name="no" translatable="false">No</string>
-    //
+    <string name="yes" translatable="false">Так</string>
+    <string name="no" translatable="false">Ні</string>
+
+    <!-- Section: Bug-->
+    <string name="tab_name_mildiu" translatable="false">Мілдью</string>
+    <string name="tab_name_oidium" translatable="false">Оїдіум</string>
+
+    <!-- Section: Gallery-->
+    <string name="image_description" translatable="false">Image</string>
+
+    <!-- Section: Laboratory-->
+    <string name="title_calculator" translatable="false">Розрахунок необхідної кількості цукру і води в суслі з винограду</string>
+
+    <string name="hint_volume_juice" translatable="false">Об’єм соку, л</string>
+    <string name="hint_sugar_juice" translatable="false">Кількість цукру в соці, г/л</string>
+    <string name="hint_acidity_juice" translatable="false">Кислотність соку, г/л</string>
+    <string name="hint_acidity_wine" translatable="false">Кислотність вина, г/л</string>
+    <string name="hint_alcohol_wine" translatable="false">Спиртуозність вина, % об</string>
+    <string name="hint_result_sugar" translatable="false">Кількість цукру, кг</string>
+    <string name="hint_result_water" translatable="false">Об’єм води, л</string>
+    <string name="hint_result_must" translatable="false">Об’єм сусла, л</string>
+
+    <string name="amount_sugar_added_wort" translatable="false">Кількість цукру, що вноситься в сусло</string>
+    <string name="amount_water_introduced_wort" translatable="false">Кількість води, що вноситься в сусло</string>
+
+    <string name="error_volume_juice" translatable="false">Значення має бути більше або дорівнює 1000</string>
+    <string name="error_sugar_juice" translatable="false">Значення має бути більше або дорівнює 63 і менше або дорівнює 293</string>
+    <string name="error_acidity_juice" translatable="false">Значення має бути більше або дорівнює 5 і менше або дорівнює 10</string>
+    <string name="error_strength_wine" translatable="false">Значення має бути більше або дорівнює 9 і менше або дорівнює 20</string>
+    <string name="error_acidity_wine" translatable="false">Значення має бути більше або дорівнює 4 і менше або дорівнює 6</string>
+    <string name="error_not_null" translatable="false">Неприпустиме значення</string>
+    <string name="error_invalid_data" translatable="false">"Показник кислотності вина не може перевищувати кислотності соку"</string>
+    <string name="error_invalid_toast" translatable="false">"Введено некоректні дані. Введіть правильні значення та спробуйте ще раз"</string>
+    <string name="error_null" translatable="false">Поле не може бути порожнім</string>
+    <string name="error_invalid_value" translatable="false">Введено неприпустиме значення</string>
+
+    <string name="helper_volume_juice" translatable="false">В домашніх умовах з ягід винограду можливо отримати 60-70%
+        чистого соку</string>
+    <string name="helper_sugar_juice" translatable="false">Нормативна кількість цукру у соці становить 63–293 г/л</string>
+    <string name="helper_acidity_juice" translatable="false">Середнє значення кислотності виноградного соку становить
+        5–10 г/л</string>
+    <string name="helper_acidity_wine" translatable="false">Збалансованими вважаються вина
+        з концентрацією кислоти 4-6 г/л</string>
+    <string name="helper_alcohol_wine" translatable="false">Кількість спирту у вині становить від 9 до 20 % об.
+        Найбільша міцність вина, яку можна отримати на природніх дріжджах не перевищує 12 % об</string>
+    <string name="helper_result_sugar" translatable="false">Кількість цукру, яку необхідно внести до соку</string>
+    <string name="helper_result_water" translatable="false">Об’єм води, який необхідно добавити до соку</string>
+    <string name="helper_result_must" translatable="false">Загальний об’єм сусла</string>
+
+    <string name="button_result" translatable="false">Рахувати</string>
+
+    <string name="specific_gravity_juice" translatable="false">Питома вага соку</string>
+    <string name="sugar_content_juice" translatable="false">Цукристість соку, %</string>
+    <string name="fortress_future_wine" translatable="false">міцність майбутнього вина, град</string>
+    <string name="label_table" translatable="false">Таблиця цукристості</string>
+    <string name="label_acidity" translatable="false">Визначення кислотності</string>
+    <string name="label_sugar" translatable="false">Визначення цукру</string>
+
+
+
+
+
+
+
+
+    <!-- Section: Search-->
+    <string name="search_query_hint" translatable="false">Пошук сорту винограда</string>
+
+    <!-- Section: Preparaty-->
+    <string name="spektr_dii" translatable="false">Спектр дії</string>
+    <string name="virobnyk" translatable="false">Виробник</string>
+    <string name="kratnist_zastosuvannya" translatable="false">Кратність застосування</string>
+    <string name="stroky_do_spogivannya" translatable="false">Строки до споживання</string>
+    <string name="diucha_rechovina" translatable="false">Діюча речовина</string>
+    <string name="nazva_preparatu" translatable="false">Назва препарату</string>
+
+
+
     <!--<string name="name_kitchen">Алкокухня</string>-->
     <!--<string name="name_reproduction">Розмноження</string>-->
     <!--<string name="name_formation">Будова і формування</string>-->
@@ -275,85 +294,39 @@
     <!--<string name="color">Колір</string>-->
     <!--<string name="growth">Ріст</string>-->
     <!--<string name="weight">Вага</string>-->
-    //
 
 
-    <string name="favorite" translatable="false">Favorite</string>
-
-
-    <string name="tab_name_mildiu" translatable="false">Мілдью</string>
-    <string name="tab_name_oidium" translatable="false">Оїдіум</string>
-
-
-    <string name="image_description" translatable="false">Image</string>
-
-
-    <!--todo  LABORATORY-->
-
-    <string name="title_calculator" translatable="false">Розрахунок необхідної кількості цукру і води в суслі з винограду</string>
-
-
-    <string name="hint_volume_juice" translatable="false">Об’єм соку, л</string>
-    <string name="hint_sugar_juice" translatable="false">Кількість цукру в соці, г/л</string>
-    <string name="hint_acidity_juice" translatable="false">Кислотність соку, г/л</string>
-    <string name="hint_acidity_wine" translatable="false">Кислотність вина, г/л</string>
-    <string name="hint_alcohol_wine" translatable="false">Спиртуозність вина, % об</string>
-    <string name="hint_result_sugar" translatable="false">Кількість цукру, кг</string>
-    <string name="hint_result_water" translatable="false">Об’єм води, л</string>
-    <string name="hint_result_must" translatable="false">Об’єм сусла, л</string>
-
-    <string name="amount_sugar_added_wort" translatable="false">Кількість цукру, що вноситься в сусло</string>
-    <string name="amount_water_introduced_wort" translatable="false">Кількість води, що вноситься в сусло</string>
-
-    <string name="error_volume_juice" translatable="false">Значення має бути більше або дорівнює 1000</string>
-    <string name="error_sugar_juice" translatable="false">Значення має бути більше або дорівнює 63 і менше або дорівнює 293</string>
-    <string name="error_acidity_juice" translatable="false">Значення має бути більше або дорівнює 5 і менше або дорівнює 10</string>
-    <string name="error_strength_wine" translatable="false">Значення має бути більше або дорівнює 9 і менше або дорівнює 20</string>
-    <string name="error_acidity_wine" translatable="false">Значення має бути більше або дорівнює 4 і менше або дорівнює 6</string>
-    <string name="error_not_null" translatable="false">Неприпустиме значення</string>
-    <string name="error_invalid_data" translatable="false">"Показник кислотності вина не може перевищувати кислотності соку"</string>
-    <string name="error_invalid_toast" translatable="false">"Введено некоректні дані. Введіть правильні значення та спробуйте ще раз"</string>
-
-    <string name="error_null" translatable="false">Поле не може бути порожнім</string>
-    <string name="error_invalid_value" translatable="false">Введено неприпустиме значення</string>
-
-
-    <string name="helper_volume_juice" translatable="false">В домашніх умовах з ягід винограду можливо отримати 60-70%
-        чистого соку</string>
-    <string name="helper_sugar_juice" translatable="false">Нормативна кількість цукру у соці становить 63–293 г/л</string>
-    <string name="helper_acidity_juice" translatable="false">Середнє значення кислотності виноградного соку становить
-        5–10 г/л</string>
-    <string name="helper_acidity_wine" translatable="false">Збалансованими вважаються вина
-        з концентрацією кислоти 4-6 г/л</string>
-    <string name="helper_alcohol_wine" translatable="false">Кількість спирту у вині становить від 9 до 20 % об.
-        Найбільша міцність вина, яку можна отримати на природніх дріжджах не перевищує 12 % об</string>
-    <string name="helper_result_sugar" translatable="false">Кількість цукру, яку необхідно внести до соку</string>
-    <string name="helper_result_water" translatable="false">Об’єм води, який необхідно добавити до соку</string>
-    <string name="helper_result_must" translatable="false">Загальний об’єм сусла</string>
-
-    <string name="button_result" translatable="false">Рахувати</string>
-
-    <string name="specific_gravity_juice" translatable="false">Питома вага соку</string>
-    <string name="sugar_content_juice" translatable="false">Цукристість соку, %</string>
-    <string name="fortress_future_wine" translatable="false">міцність майбутнього вина, град</string>
+    <!--   // <string name="favorite" translatable="false">Favorite</string>-->
 
 
 
-    <string name="search_query_hint" translatable="false">Пошук сорту винограда</string>
-
-
-
-    <!--todo  PREPARATY-->
-
-    <string name="spektr_dii" translatable="false">Спектр дії</string>
-    <string name="virobnyk" translatable="false">Виробник</string>
-    <string name="kratnist_zastosuvannya" translatable="false">Кратність застосування</string>
-    <string name="stroky_do_spogivannya" translatable="false">Строки до споживання</string>
-    <string name="diucha_rechovina" translatable="false">Діюча речовина</string>
-    <string name="nazva_preparatu" translatable="false">Назва препарату</string>
-
-
-
+    <!--    &lt;!&ndash;Найменування табів AlcoKitchen&ndash;&gt;-->
+    <!--    <string name="tab_kitchen_vermut" translatable="false">Вермут</string>-->
+    <!--    <string name="tab_kitchen_wine" translatable="false">Вино</string>-->
+    <!--    <string name="tab_kitchen_wine_white" translatable="false">Вино Біле</string>-->
+    <!--    <string name="tab_kitchen_kagor" translatable="false">Вино Кагор</string>-->
+    <!--    <string name="tab_kitchen_wine_suhe" translatable="false">Вино Сухе</string>-->
+    <!--    <string name="tab_kitchen_izabella" translatable="false">Вино Ізабелла</string>-->
+    <!--    <string name="tab_kitchen_glintvein" translatable="false">Глінтвейн</string>-->
+    <!--    <string name="tab_kitchen_grappa" translatable="false">Граппа</string>-->
+    <!--    <string name="tab_kitchen_kizlyarka" translatable="false">Кізлярка</string>-->
+    <!--    <string name="tab_kitchen_konyak" translatable="false">Коньяк</string>-->
+    <!--    <string name="tab_kitchen_liker" translatable="false">Лікер</string>-->
+    <!--    <string name="tab_kitchen_martini" translatable="false">Мартіні</string>-->
+    <!--    <string name="tab_kitchen_oruho" translatable="false">Орухо</string>-->
+    <!--    <string name="tab_kitchen_pisko" translatable="false">Піско</string>-->
+    <!--    <string name="tab_kitchen_portvein" translatable="false">Портвейн</string>-->
+    <!--    <string name="tab_kitchen_sangriya" translatable="false">Сангрія</string>-->
+    <!--    <string name="tab_kitchen_juice" translatable="false">Сік</string>-->
+    <!--    <string name="tab_kitchen_chacha" translatable="false">Чача</string>-->
+    <!--    <string name="tab_kitchen_shampanske" translatable="false">Шампанське</string>-->
+    <!--    <string name="tab_kitchen_izum" translatable="false">Ізюм</string>-->
+    <!--    <string name="tab_kitchen_churchhela" translatable="false">Чурчхела</string>-->
+    <!--    <string name="tab_kitchen_otset" translatable="false">Оцет</string>-->
+    <!--    <string name="tab_kitchen_bochka" translatable="false">Бочка</string>-->
+    <!--    <string name="tab_kitchen_kislotnist" translatable="false">Кислотність</string>-->
+    <!--    <string name="tab_kitchen_osvitlennya" translatable="false">Освітлення</string>-->
+    <!--    <string name="tab_kitchen_girkota" translatable="false">Гіркота</string>-->
 
 
 </resources>
