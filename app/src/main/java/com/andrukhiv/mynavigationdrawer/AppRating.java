@@ -49,7 +49,7 @@ public class AppRating {
 
         Dialog dialog;
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.MyAlertDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialogTheme);
 
         String message = "Якщо Вам подобається додаток "
                 + APP_TITLE

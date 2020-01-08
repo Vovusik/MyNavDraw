@@ -35,7 +35,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static String TAG = "DbHelper"; // Тег только для окна LogCat
     protected static String DB_PATH = ""; //путь назначения (местоположения) нашей базы данных на устройстве
-    protected static String DB_NAME = "grapes_v1.db";// Название базы данных
+    protected static String DB_NAME = "g_v4.db";// Название базы данных
     private static final int DB_VERSION = 1;// Версия базы данных
     private SQLiteDatabase mDataBase;
     private final Context mContext;
@@ -116,7 +116,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-       // onUpgrade(sqLiteDatabase, 0, DB_VERSION);
 
     }
 
@@ -128,77 +127,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public final void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        try {
-//            for (int version = oldVersion + 1; version <= newVersion; version++) {
-//                migrate(db, version);
-//            }
-//        } catch (IOException exception) {
-//            throw new IllegalStateException("Failed to migrate the database", exception);
-//        }
+                db.execSQL(  "DROP TABLE IF EXISTS " + SPECIFICATIONS_TABLE);
+        //db.execSQL(  "DROP TABLE IF EXISTS " + MATCH_TABLE);
+        onCreate(db);
     }
-
-//    private void migrate(SQLiteDatabase db, int version) throws IOException {
-//        db.beginTransaction();
-//        try {
-//            // открытый скрипт миграции
-//            ScriptParser parser = new ScriptParser(mContext.getAssets().open("db/migrate_" + version + ".db"));
-//            try {
-//                String statement;
-//                while ((statement = parser.next()) != null) {
-//                    db.execSQL(statement);
-//                }
-//            } finally {
-//                parser.close();
-//            }
-//
-//            db.setVersion(version);
-//            db.setTransactionSuccessful();
-//        } finally {
-//            db.endTransaction();
-//        }
-//
-//
-//
-//
-//
-//
-//
-//
-//    }
-//    private class ScriptParser {
-//
-//        private StringBuilder builder;
-//        private BufferedReader reader;
-//
-//        private ScriptParser(InputStream input) {
-//            builder = new StringBuilder();
-//            reader = new BufferedReader(new InputStreamReader(input));
-//        }
-//
-//        private String next() throws IOException {
-//            builder.setLength(0);
-//            boolean ignoreLine = true;
-//
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String trimmedLine = line.trim();
-//                if (trimmedLine.startsWith("--")) {
-//                    if (!ignoreLine) {
-//                        break;
-//                    }
-//                } else if (trimmedLine.length() > 0) {
-//                    ignoreLine = false;
-//                    builder.append(line).append('\n');
-//                }
-//            }
-//
-//            return builder.length() != 0 ? builder.toString() : null;
-//        }
-//
-//        private void close() throws IOException {
-//            reader.close();
-//        }
-//
-//    }
-
 }

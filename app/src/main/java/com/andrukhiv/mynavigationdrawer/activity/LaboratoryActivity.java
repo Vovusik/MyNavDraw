@@ -1,6 +1,8 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.andrukhiv.mynavigationdrawer.R;
 import com.google.android.material.textfield.TextInputLayout;
+
 
 
 public class LaboratoryActivity extends AppCompatActivity implements View.OnClickListener {
@@ -56,6 +59,23 @@ public class LaboratoryActivity extends AppCompatActivity implements View.OnClic
 
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+
+
+//        if(bundle.getBoolean(SHOW_KEYBOARD)){
+//            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+//                    .showSoftInput(newEquationText,0);
+//            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+//        }
+//        else{
+//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,
+//                    WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+//        }
+
 
         setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
@@ -317,7 +337,6 @@ public class LaboratoryActivity extends AppCompatActivity implements View.OnClic
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
-
     }
 
 
@@ -401,10 +420,44 @@ public class LaboratoryActivity extends AppCompatActivity implements View.OnClic
     private void hideKeyboard(View v) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         assert inputMethodManager != null;
-        inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+        //inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+        //inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
+        inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+
     }
+//    public void setKeyboardVisibility(boolean show) {
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        if(show){
+//            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+//        } else {
+//            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+//        }
+//    }
+    private void toggleKeyboard(){
 
-
+//        if(keypadPager.getVisibility() == View.VISIBLE){
+//            Intent i = new Intent(this, MainActivity.class);
+//            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//            Bundle state = new Bundle();
+//            onSaveInstanceState(state);
+//            state.putBoolean(SHOW_KEYBOARD, true);
+//            i.putExtras(state);
+//
+//            startActivity(i);
+//        }
+//        else{
+//            Intent i = new Intent(this, MainActivity.class);
+//            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//            Bundle state = new Bundle();
+//            onSaveInstanceState(state);
+//            state.putBoolean(SHOW_KEYBOARD, false);
+//            i.putExtras(state);
+//
+//            startActivity(i);
+//        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.laboratory, menu);

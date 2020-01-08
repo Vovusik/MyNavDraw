@@ -46,8 +46,8 @@ public class GalleryGridFragment extends Fragment {
   }
 
   /**
-   * Scrolls the recycler view to show the last viewed item in the grid. This is important when
-   * navigating back from the grid.
+   * Прокручивает вид переработчика, чтобы показать последний просмотренный элемент в сетке.
+   * Это важно когда навигация назад из сетки.
    */
   private void scrollToPosition() {
     recyclerView.addOnLayoutChangeListener(new OnLayoutChangeListener() {

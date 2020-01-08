@@ -1,6 +1,8 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.animation.ObjectAnimator;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -15,8 +17,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
 import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -24,6 +26,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,16 +34,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.andrukhiv.mynavigationdrawer.AppRating;
-import com.andrukhiv.mynavigationdrawer.Constant;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.MainPagerAdapter;
 import com.bumptech.glide.Glide;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
-import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
-import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_ANDROID;
-import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_WEB;
 import static com.andrukhiv.mynavigationdrawer.Constant.URL_NAV_HEADER;
 
 
@@ -48,8 +49,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static DrawerLayout mDrawer;
-    private Intent intent;
     private ImageView imgNavHeaderBg;
+//    public static final int NOTIFICATION_ID = 888;
+//    private static final String TAG = "MainActivity";
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -94,7 +96,34 @@ public class MainActivity extends AppCompatActivity
 //        RateThisApp.init(config);
 //        // Если условие выполнено, будет показано диалоговое окно «Оценить это приложение»
 //        RateThisApp.showRateDialogIfNeeded(this, R.style.MyAlertDialogStyle);
+
+        createChannel(); // Створюю канал для Notification
+
+//        if (getIntent().getExtras() != null) {
+//            for (String key : getIntent().getExtras().keySet()) {
+//                String value = getIntent().getExtras().getString(key);
+//                Log.d(TAG, "Key: " + key + " Value: " + value);
+//            }
+//        }
+
+        //subscribeToPushService();
     }
+
+//    private void subscribeToPushService() {
+//        FirebaseMessaging.getInstance().subscribeToTopic("news");
+//
+//        Log.d("AndroidBash", "Subscribed");
+//        Toast.makeText(MainActivity.this, "Subscribed", Toast.LENGTH_SHORT).show();
+//
+//        String token = FirebaseInstanceId.getInstance().getToken();
+//
+//        // Log and toast
+//        assert token != null;
+//        Log.d("AndroidBash", token);
+//        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+//    }
+
+
 
     private void loadNavHeader() {
         Glide.with(this)
@@ -140,11 +169,10 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
-
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -202,11 +230,15 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
-            case R.id.nav_settings:
-                intent = new Intent(MainActivity.this, SettingActivity.class);
+//            case R.id.nav_settings:
+//                intent = new Intent(MainActivity.this, SettingActivity.class);
+//                startActivity(intent);
+//                break;
+
+            case R.id.nav_settingss:
+                intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 break;
-
             case R.id.nav_marker:
                 intent = new Intent(MainActivity.this, MapsActivity.class);
                 startActivity(intent);
@@ -217,17 +249,17 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
-            case R.id.nav_star:
-                rate();
-                break;
-
-            case R.id.nav_share:
-                share();
-                break;
-
-            case R.id.nav_email:
-                email();
-                break;
+//            case R.id.nav_star:
+//                rate();
+//                break;
+//
+//            case R.id.nav_share:
+//                share();
+//                break;
+//
+//            case R.id.nav_email:
+//                email();
+//                break;
         }
 
         mDrawer.closeDrawer(GravityCompat.START);
@@ -235,59 +267,59 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void rate() {
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
-        } catch (android.content.ActivityNotFoundException anfe) {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
-        }
-    }
+//    public void rate() {
+//        try {
+//            startActivity(new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
+//        } catch (android.content.ActivityNotFoundException anfe) {
+//            startActivity(new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
+//        }
+//    }
+//
+//
+//    public void share() {
+//        intent = new Intent(Intent.ACTION_SEND);
+//        intent.putExtra(Intent.EXTRA_TEXT, Constant.SHARE_CONTENT);
+//        intent.setType("text/plain");
+//        startActivity(intent);
+//    }
+//
+//
+//    public void email() {
+//        String to = Constant.EMAIL;// Адресат повідомлення
+//        String subject = getString(R.string.message_subject); // Тема повідомлення
+//        String body = getString(R.string.message_text); // Текст повідомлення
+//
+//        intent = new Intent(Intent.ACTION_SEND);
+//        intent.setType("message/rfc822");
+//        String[] toArr = new String[]{to};
+//        intent.putExtra(Intent.EXTRA_EMAIL, toArr);
+//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+//        intent.putExtra(Intent.EXTRA_TEXT, body);
+//        startActivity(intent);
+//    }
 
 
-    public void share() {
-        intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT, Constant.SHARE_CONTENT);
-        intent.setType("text/plain");
-        startActivity(intent);
-    }
-
-
-    public void email() {
-        String to = Constant.EMAIL;// Адресат повідомлення
-        String subject = getString(R.string.message_subject); // Тема повідомлення
-        String body = getString(R.string.message_text); // Текст повідомлення
-
-        intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("message/rfc822");
-        String[] toArr = new String[]{to};
-        intent.putExtra(Intent.EXTRA_EMAIL, toArr);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, body);
-        startActivity(intent);
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        // Поява діалогового вікна для підтвердження виходу з додатку
-        new AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
-                //.setIcon(R.drawable.dialog_icon_logo)
-                //.setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Ви хочете вийти ?")
-                .setMessage("Ви впевнені, що хочете вийти з цього додатку ?")
-                .setPositiveButton("Так", (dialog, which) -> {
-                    Intent startMain = new Intent(Intent.ACTION_MAIN);
-                    startMain.addCategory(Intent.CATEGORY_HOME);
-                    startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(startMain);
-
-                   // or finish();
-                })
-                .setNegativeButton("Ні", null)
-                .show();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        // Поява діалогового вікна для підтвердження виходу з додатку
+//        new androidx.appcompat.app.AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
+//                //.setIcon(R.drawable.dialog_icon_logo)
+//                //.setIcon(android.R.drawable.ic_dialog_alert)
+//                .setTitle("Ви хочете вийти ?")
+//                .setMessage("Ви впевнені, що хочете вийти з цього додатку ?")
+//                .setPositiveButton("Так", (dialog, which) -> {
+//                    Intent startMain = new Intent(Intent.ACTION_MAIN);
+//                    startMain.addCategory(Intent.CATEGORY_HOME);
+//                    startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(startMain);
+//
+//                   // or finish();
+//                })
+//                .setNegativeButton("Ні", null)
+//                .show();
+//    }
 
 
     // Анімація завантаження картинки Glide
@@ -297,4 +329,23 @@ public class MainActivity extends AppCompatActivity
         fadeAnim.setDuration(2500);
         fadeAnim.start();
     };
+
+    private void createChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create channel to show notifications.
+            String channelId = getString(R.string.default_notification_channel_id);
+            String channelName = getString(R.string.default_notification_channel_name);
+            NotificationManager notificationManager =
+                    getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(new NotificationChannel(
+                        channelId,
+                        channelName,
+                        NotificationManager.IMPORTANCE_LOW));
+            }
+        }
+    }
+
+
+
 }

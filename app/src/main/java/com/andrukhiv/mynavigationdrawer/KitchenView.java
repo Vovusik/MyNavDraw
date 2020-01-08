@@ -48,7 +48,7 @@ public class KitchenView extends LinearLayout {
         Glide.with(getContext())
                 .load(kitchen.getImageBackground())
                 .centerCrop()
-                .placeholder(R.drawable.gradient_placeholder)
+                .placeholder(R.drawable.kitchen_gradient_placeholder)
                 .apply(new RequestOptions()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .skipMemoryCache(true)

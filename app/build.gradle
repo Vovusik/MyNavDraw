@@ -45,7 +45,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.browser:browser:1.2.0'
-
+    implementation "androidx.preference:preference:1.1.0"
 
 
     // Бібліотека підтримки появи діалогового вікна «Оцінити цей додаток» - RateThisApp - 3
@@ -74,6 +74,8 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:3.3.0'
 
     //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-4'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services' // Notifications

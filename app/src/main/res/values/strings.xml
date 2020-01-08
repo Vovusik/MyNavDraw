@@ -1,6 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sommelier</string>
 
+    <string name="default_notification_channel_id" translatable="false">Message</string>
+    <string name="default_notification_channel_name" translatable="false">title</string>
+
+    <string name="reply_label" translatable="false">Reply</string>
+
+
+
+
+
+
+
+
+
+
+
+
     <!--Section: Name TabsMain-->
     <string name="tab_item_home" translatable="false">Усі сорти</string>
     <string name="tab_item_table" translatable="false">Столові</string>
@@ -71,19 +87,22 @@
     <string name="weight" translatable="false">ВАГА</string>
 
     <!--Section: Settings-->
-    <string name="category_title_general">Загальні налаштування</string>
+    <string name="category_title_general">Налаштування</string>
     <string name="category_title_about">Про додаток</string>
     <string name="category_title_notifications">Налаштування сповіщень</string>
 
     <string name="title_language">Мова додатку</string>
-    <string name="title_theme">Тема додатку</string>
+    <string name="title_theme">Вибрати тему</string>
     <string name="title_licenses">Ліцензії відкритого коду</string>
     <string name="title_version">Версія</string>
     <string name="title_notifications_new_message_ringtone">Виберіть мелодію сповіщення</string>
     <string name="title_notifications_new_message">Нове сповіщення про повідомлення</string>
     <string name="title_vibrate">Вібрація</string>
 
-    <string name="summary_description">Новий опис можливостей додатку</string>
+    <string name="summary_description">Lorem ipsum dolor sit amet, dolor at ligula faucibus imperdiet libero, phasellus nulla sollicitudin in, libero nec venenatis, luctus pretium imperdiet volutpat sit atque. Porttitor ligula vitae ultrices eleifend, felis suscipit iaculis turpis, pellentesque magna sem non. Vehicula quis commodo, tincidunt eu id morbi ut nullam. Enim ipsum vestibulum, semper etiam, amet vivamus mauris, aliquam at maecenas phasellus in aliquet, suspendisse varius. Eros sapien, vulputate porta, elit suspendisse, magna a ante wisi, ligula feugiat vel vel suspendisse lacus ipsum. At varius vestibulum volutpat fringilla consectetuer. Vulputate cursus mollis senectus dapibus amet, mauris sapien diam sed sodales, velit neque justo sit et. Vehicula diam sit pellentesque blandit dolore semper, a proin mi quisque eget vitae, tempus nisl, cum varius gravida urna condimentum nunc. Dignissimos adipiscing bibendum eget pretium bibendum justo, sit orci eros erat ligula litora. Id volutpat lacus urna aperiam porttitor aptent, metus auctor montes ut, lectus sed. Ut enim fringilla nec elementum, tortor vestibulum erat. Pede volutpat.
+    Lorem ipsum dolor sit amet, dolor at ligula faucibus imperdiet libero, phasellus nulla sollicitudin in, libero nec venenatis, luctus pretium imperdiet volutpat sit atque. Porttitor ligula vitae ultrices eleifend, felis suscipit iaculis turpis, pellentesque magna sem non. Vehicula quis commodo, tincidunt eu id morbi ut nullam. Enim ipsum vestibulum, semper etiam, amet vivamus mauris, aliquam at maecenas phasellus in aliquet, suspendisse varius. Eros sapien, vulputate porta, elit suspendisse, magna a ante wisi, ligula feugiat vel vel suspendisse lacus ipsum. At varius vestibulum volutpat fringilla consectetuer. Vulputate cursus mollis senectus dapibus amet, mauris sapien diam sed sodales, velit neque justo sit et. Vehicula diam sit pellentesque blandit dolore semper, a proin mi quisque eget vitae, tempus nisl, cum varius gravida urna condimentum nunc. Dignissimos adipiscing bibendum eget pretium bibendum justo, sit orci eros erat ligula litora. Id volutpat lacus urna aperiam porttitor aptent, metus auctor montes ut, lectus sed. Ut enim fringilla nec elementum, tortor vestibulum erat. Pede volutpat.
+        Lorem ipsum dolor sit amet, dolor at ligula faucibus imperdiet libero, phasellus nulla sollicitudin in, libero nec venenatis, luctus pretium imperdiet volutpat sit atque. Porttitor ligula vitae ultrices eleifend, felis suscipit iaculis turpis, pellentesque magna sem non. Vehicula quis commodo, tincidunt eu id morbi ut nullam. Enim ipsum vestibulum, semper etiam, amet vivamus mauris, aliquam at maecenas phasellus in aliquet, suspendisse varius. Eros sapien, vulputate porta, elit suspendisse, magna a ante wisi, ligula feugiat vel vel suspendisse lacus ipsum. At varius vestibulum volutpat fringilla consectetuer. Vulputate cursus mollis senectus dapibus amet, mauris sapien diam sed sodales, velit neque justo sit et. Vehicula diam sit pellentesque blandit dolore semper, a proin mi quisque eget vitae, tempus nisl, cum varius gravida urna condimentum nunc. Dignissimos adipiscing bibendum eget pretium bibendum justo, sit orci eros erat ligula litora. Id volutpat lacus urna aperiam porttitor aptent, metus auctor montes ut, lectus sed. Ut enim fringilla nec elementum, tortor vestibulum erat. Pede volutpat.
+    </string>
     <string name="summary_licenses">Деталі ліцензії з відкритим кодом</string>
     <string name="summary_version">1.0</string>
     <string name="summary_vibrate">Вібрація при отриманні сповіщень</string>
@@ -183,6 +202,11 @@
 
 
 
+
+
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ...
+    </string>
     <!--<string name="name_kitchen">Алкокухня</string>-->
     <!--<string name="name_reproduction">Розмноження</string>-->
     <!--<string name="name_formation">Будова і формування</string>-->

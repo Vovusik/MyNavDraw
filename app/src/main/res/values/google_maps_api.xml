@@ -2,18 +2,22 @@
     <!--
     Todo: Перед запуском приложения необходим ключ API Карт Google.
 
-    To get one, follow this link, follow the directions and press "Create" at the end:
+    Чтобы получить его, перейдите по этой ссылке, следуйте инструкциям и нажмите «Создать» в конце:
 
     https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=3D:5A:43:5E:64:B3:D4:1C:CB:DB:72:E0:A8:E2:28:98:25:53:6D:7E%3Bcom.andrukhiv.vinograd
 
-    You can also add your credentials to an existing key, using this line:
+    Вы также можете добавить свои учетные данные в существующий ключ, используя эту строку:
     3D:5A:43:5E:64:B3:D4:1C:CB:DB:72:E0:A8:E2:28:98:25:53:6D:7E;com.andrukhiv.vinograd
 
-    Alternatively, follow the directions here:
+    Кроме того, следуйте инструкциям здесь:
     https://developers.google.com/maps/documentation/android/start#get-key
 
-    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
-    string in this file.
+    Получив ключ (начинается с «AIza»), замените «google_maps_key»
+    Строка в этом файле.
     -->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBBopcBQeY1mLgXP-PW1wICmIaY85RHOlA</string>
+    <string name="google_maps_key">AIzaSyDGtkAY4so2YQh4I2PIy29WDftaA9zifx0</string>
+
+    <!--<string name="google_maps_key">AIzaSyBBopcBQeY1mLgXP-PW1wICmIaY85RHOlA</string> - Vinograd-->
+
+
 </resources>

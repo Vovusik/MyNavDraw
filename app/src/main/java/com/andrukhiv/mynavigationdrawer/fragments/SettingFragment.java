@@ -23,11 +23,29 @@ import com.andrukhiv.mynavigationdrawer.AppController;
 import com.andrukhiv.mynavigationdrawer.BuildConfig;
 import com.andrukhiv.mynavigationdrawer.LocaleHelper;
 import com.andrukhiv.mynavigationdrawer.R;
+import com.andrukhiv.mynavigationdrawer.ThemeHelper;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     public static boolean onBackButtonRecreateView = false;
 
+//    @Override
+//    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+//
+//        setPreferencesFromResource(R.xml.preferences, rootKey);
+//        setHasOptionsMenu(true);
+//
+//
+//        androidx.preference.ListPreference themePreference = findPreference("theme");
+//        if (themePreference != null) {
+//            themePreference.setOnPreferenceChangeListener(
+//                    (preference, newValue) -> {
+//                        String themeOption = (String) newValue;
+//                        ThemeHelper.applyTheme(themeOption);
+//                        return true;
+//                    });
+//        }
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

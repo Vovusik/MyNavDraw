@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Приложение сможет получать доступ к точному местоположению - малювати маршрут в Винний тур -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-   <!--Позволяет приложению инициировать телефонный звонок без прохождения через пользовательский
-   интерфейс Dialer для подтверждения пользователем вызова - телефонувати в Винний тур-->
+    <!--Позволяет приложению инициировать телефонный звонок без прохождения через пользовательский
+    интерфейс Dialer для подтверждения пользователем вызова - телефонувати в Винний тур-->
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- MAPS -->
@@ -34,11 +34,10 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Підтримка ярликів швидкого доступу до розділів додатку -->
+                    <!-- Підтримка ярликів швидкого доступу до розділів додатку -->
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
@@ -56,8 +55,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.KitchenDetailsActivity"
-            android:theme="@style/DetailTheme" >
-
+            android:theme="@style/DetailTheme">
         </activity>
         <activity
             android:name=".activity.ReproductionActivity"
@@ -67,28 +65,28 @@
             android:label="@string/drawer_item_structure_formation" />
         <activity
             android:name=".activity.RegionActivity"
-            android:label="@string/drawer_item_summ_temperature" />
+            android:label="@string/drawer_item_summ_temperature" >
+        </activity>
         <activity
             android:name=".activity.LibraryActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/drawer_item_library" />
+            android:label="@string/drawer_item_library"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SortableActivity"
             android:label="@string/drawer_item_speсifications"
             android:screenOrientation="sensorLandscape" />
 
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
         <!-- Для використання сповіщеннь Firebase -->
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name=".NotificationMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
+<!--        <service android:name=".BigPictureSocialIntentService">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
         <!--
          Встановити спеціальний значок за замовчуванням. Це використовується, коли для вхідних
          повідомлень не встановлено піктограму. Див. README (https://goo.gl/l4GJaQ) для
@@ -106,11 +104,18 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
 
+<!--        <activity-->
+<!--            android:name=".activity.SettingActivity"-->
+<!--            android:label="@string/drawer_item_settings"-->
+<!--            android:parentActivityName=".activity.MainActivity"-->
+<!--            android:theme="@style/Theme.Preferences" />-->
+
         <activity
-            android:name=".activity.SettingActivity"
-            android:parentActivityName=".activity.MainActivity"
+            android:name=".activity.SettingsActivity"
             android:label="@string/drawer_item_settings"
-            android:theme="@style/Theme.Preference" />
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Theme.Preferences" />
+
         <activity android:name=".activity.MapsActivity" />
 
         <!-- MAPS -->
@@ -128,6 +133,7 @@
         <activity
             android:name=".activity.GalleryActivity"
             android:label="@string/drawer_item_gallery"
+            android:screenOrientation="portrait"
             android:theme="@style/GalleryTheme" />
 
         <activity
@@ -135,8 +141,8 @@
             android:label="@string/drawer_item_laboratory"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/LaboratoryTheme" />
-
+            android:theme="@style/LaboratoryTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
 
         <activity
             android:name=".activity.LaboratorySugarActivity"
@@ -153,7 +159,6 @@
         <activity
             android:name=".activity.PreparatyActivity"
             android:label="@string/drawer_item_preparaty" />
-
     </application>
 
 </manifest>

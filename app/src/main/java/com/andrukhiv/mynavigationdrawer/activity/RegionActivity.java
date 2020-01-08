@@ -1,6 +1,8 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -30,6 +32,12 @@ public class RegionActivity extends AppCompatActivity {
         }
 
         initView();
+
+//        // Отменить уведомление Notification
+//        NotificationManager notificationManager =
+//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//        notificationManager.cancel(MainActivity.NOTIFICATION_ID);
     }
 
 

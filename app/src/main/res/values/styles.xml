@@ -42,14 +42,6 @@
     </style>
 
 
-    <!-- Стиль для діалогів «Рейтингу» та «Підтвердження виходу з додатку» -->
-    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
-        <item name="android:background">@color/windowBackground</item>
-    </style>
-
-
     <!-- Стиль для  SplashScreen -->
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_screen_background</item>
@@ -82,48 +74,65 @@
         <item name="android:background">@color/windowBackground</item>
     </style>
 
-    <!--&lt;!&ndash;Стиль для тексту TextView&ndash;&gt;-->
-    <!--<style name="TextViewScroll">-->
-    <!--<item name="android:layout_width">match_parent</item>-->
-    <!--<item name="android:layout_height">wrap_content</item>-->
-    <!--<item name="android:layout_margin">16dp</item>-->
-    <!--<item name="android:lineSpacingExtra">4dp</item>-->
-    <!--<item name="android:textColor">@color/textColorSecondary</item>-->
-    <!--<item name="android:textSize">16sp</item>-->
-    <!--</style>-->
-
-
-    <!--Стиль для ImageView-->
-    <!--<style name="FormationImageView">-->
-        <!--<item name="android:layout_width">match_parent</item>-->
-        <!--<item name="android:layout_height">wrap_content</item>-->
-        <!--<item name="android:adjustViewBounds">true</item>-->
-        <!--<item name="android:scaleType">fitStart</item>-->
-
-    <!--</style>-->
-
-    <!--Стиль для тексту TextView-->
-    <!--<style name="FormationTextView">-->
-        <!--<item name="android:layout_width">match_parent</item>-->
-        <!--<item name="android:layout_height">wrap_content</item>-->
-        <!--<item name="android:textColor">@color/textColorSecondary</item>-->
-        <!--<item name="android:paddingTop">16dp</item>-->
-        <!--<item name="android:lineSpacingExtra">4dp</item>-->
-    <!--</style>-->
 
     <!-- Стиль для "Актівіті Налаштування" -->
-    <style name="Theme.Preference" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="Theme.Preferences" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:windowBackground">@color/rowBackground</item>
-        <item name="android:alertDialogTheme">@style/MyAlertDialogStyle</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
-        <!--Розділові лінії-->
-        <!--<item name="android:divider">@null</item>-->
-        <!--<item name="android:dividerHeight">2dp</item>-->
+        <item name="android:windowBackground">@color/rowBackground</item>
+
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
     </style>
+
+
+    <!-- Стиль для "Діалогів" -->
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogTitleTextStyle">@style/TitleTextStyle</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/BodyTextStyle</item>
+        <item name="materialAlertDialogTitleIconStyle">@style/IconTitleStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="dialogCornerRadius">16dp</item>
+        <!--Задній фон діалогу-->
+        <item name="android:background">@color/windowBackground</item>
+        <!--Колір пустих кружечків - залишаю без кольору,
+        так як не знаю кольору "BodyTextStyle"-->
+        <!--<item name="android:textColorSecondary">@android:color/transparent</item>-->
+        <!--Колір заповнених кружечків-->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TitleTextStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!--FixMe Не працює-->
+    <style name="BodyTextStyle" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textColor">#43A047</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="IconTitleStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Icon">
+        <item name="iconTint">#ad1457</item>
+    </style>
+    <!--Не використовую-->
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">#d81b60</item>
+        <item name="rippleColor">#ad1457</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
 
     <!-- Стиль для діалогу "Ліцензії з відкритим кодом" -->
     <style name="DialogFullscreenWithTitle" parent="@android:style/Theme.Material.Light.DialogWhenLarge">
@@ -133,8 +142,8 @@
         <item name="android:background">@color/windowBackground</item>
         <item name="android:colorPrimaryDark">@color/windowBackground</item>
         <item name="android:colorPrimary">@color/colorPrimary</item>
-
     </style>
+
 
     <!--Тема для розділу "Галерея"-->
     <style name="GalleryTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -144,23 +153,8 @@
     </style>
 
 
-<!--    <style name="PrimaryText" parent="TextAppearance.AppCompat.Body1">-->
-<!--        <item name="android:textColor">@color/textColorPrimary</item>-->
-<!--        <item name="android:textSize">24sp</item>-->
-<!--        <item name="android:padding">8dp</item>-->
-<!--        <item name="android:fontFamily">@font/raleway_medium</item>-->
-<!--    </style>-->
-
-<!--    <style name="SecondaryText" parent="TextAppearance.AppCompat.Body2">-->
-<!--        <item name="android:textColor">@color/textColorSecondary</item>-->
-<!--        <item name="android:textSize">19sp</item>-->
-<!--        <item name="android:padding">8dp</item>-->
-<!--        <item name="android:fontFamily">@font/raleway_regular</item>-->
-<!--    </style>-->
-
-
+    <!-- Стиль для "Кнопок у MapsActivity" -->
     <style name="MapsButtonStyle">
-
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">6dp</item>
@@ -176,9 +170,8 @@
     </style>
 
 
-
+    <!-- Стиль для "NavigationDrawer" -->
     <style name="NavigationDrawerStyle">
-
         <item name="android:textSize">14sp</item><!-- размер текста в меню-->
         <!-- размер пункта в меню-->
         <item name="android:listPreferredItemHeightSmall">40dp</item>
@@ -192,14 +185,13 @@
     </style>
 
 
-
-
     <!--Тема розділу LABORATORY-->
     <style name="LaboratoryTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
 
     <!--Тема для InputLayout розділу LABORATORY-->
     <style name="MyInputLayoutInputTheme" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -229,6 +221,7 @@
         <item name="errorTextColor">@color/colorError</item>
     </style>
 
+
     <!--Тема для EditText розділу LABORATORY-->
     <style name="MyEditTextTheme">
         <item name="android:layout_width">match_parent</item>
@@ -242,6 +235,7 @@
         <item name="android:maxLength">5</item>
     </style>
 
+
     <!--Тема для EditText (результат) розділу LABORATORY-->
     <style name="MyCardViewEditTextTheme">
         <item name="android:layout_width">match_parent</item>
@@ -249,6 +243,7 @@
         <item name="android:layout_marginBottom">16dp</item>
         <item name="cardCornerRadius">4dp</item>
     </style>
+
 
     <!--Тема для строк таблиці розділу LABORATORY-->
     <style name="MyTableTextRowStyle">
@@ -260,6 +255,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:layout_weight">1</item>
     </style>
+
 
     <!--Тема для заголовку таблиці розділу LABORATORY-->
     <style name="MyTableTextHeaderStyle">
@@ -274,17 +270,16 @@
     </style>
     <!--<item name="android:singleLine">true</item>-->
 
-
-
-
-
-
-
-
-
-
-
-
-
+<!---->
+    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
 </resources>

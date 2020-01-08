@@ -20,7 +20,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/scrim_maps_fragment">
 
-        <Spinner
+        <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,11 +28,11 @@
             android:layout_gravity="end"
             android:layout_margin="10dp"
             android:spinnerMode="dialog"
-            android:theme="@style/MyAlertDialogStyle"/>
+            android:theme="@style/AlertDialogTheme"/>
 
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -53,6 +53,6 @@
             android:paddingLeft="25dp"
             android:paddingRight="25dp"/>
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </FrameLayout>
