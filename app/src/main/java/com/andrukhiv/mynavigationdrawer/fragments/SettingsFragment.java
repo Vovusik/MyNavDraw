@@ -3,37 +3,33 @@ package com.andrukhiv.mynavigationdrawer.fragments;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
+import android.view.Gravity;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.andrukhiv.mynavigationdrawer.AppController;
 import com.andrukhiv.mynavigationdrawer.BuildConfig;
 import com.andrukhiv.mynavigationdrawer.Constant;
-import com.andrukhiv.mynavigationdrawer.LocaleHelper;
-import com.andrukhiv.mynavigationdrawer.MyBottomSheetDialogFragment;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.ThemeHelper;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_ANDROID;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_WEB;
 
-public class SettingsFragment extends PreferenceFragmentCompat {
+public class  SettingsFragment extends PreferenceFragmentCompat {
 
     private Intent intent;
     public static BottomSheetDialogFragment myBottomSheet;
@@ -85,14 +81,23 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
 
     private void rate(FragmentActivity activity) {
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
-        } catch (android.content.ActivityNotFoundException anfe) {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
-        }
+//        try {
+//            startActivity(new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
+//        } catch (android.content.ActivityNotFoundException anfe) {
+//            startActivity(new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
+//        }
 
+        Toast toast;
+        toast = Toast.makeText(activity,
+                "Перехід на сторінку у Google Play", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+        TextView toastMessage = toast.getView().findViewById(android.R.id.message);
+        toastMessage.setTextColor(Color.WHITE);
+        toast.show();
     }
 
     private void share(FragmentActivity activity) {
@@ -118,7 +123,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private void information(FragmentActivity activity) {
         FragmentManager fm = getChildFragmentManager();
-        myBottomSheet = MyBottomSheetDialogFragment.newInstance("Modal Bottom Sheet");
+        myBottomSheet = FragmentSettingsBottomSheetDialog.newInstance("Modal Bottom Sheet");
         myBottomSheet.show(fm, myBottomSheet.getTag());
     }
 
@@ -147,5 +152,4 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         dialog.show();
     }
-
 }

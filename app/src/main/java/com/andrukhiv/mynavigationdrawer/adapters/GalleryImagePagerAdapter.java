@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.andrukhiv.mynavigationdrawer.fragments.GalleryImageFragment;
 
-import static com.andrukhiv.mynavigationdrawer.adapters.GalleryImageData.IMAGE_DRAWABLES;
+import static com.andrukhiv.mynavigationdrawer.database.GalleryImageData.IMAGE_DRAWABLES;
 
 public class GalleryImagePagerAdapter extends FragmentStatePagerAdapter {
 

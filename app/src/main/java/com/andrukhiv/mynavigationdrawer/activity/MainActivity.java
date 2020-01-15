@@ -129,12 +129,20 @@ public class MainActivity extends AppCompatActivity
         Glide.with(this)
                 .load(URL_NAV_HEADER)
                 .apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .skipMemoryCache(true)
-                        .transform(new BlurTransformation(1, 1))
+                        //.diskCacheStrategy(DiskCacheStrategy.ALL)
+                        //.placeholder(R.drawable.placeholder)
+                        //.fallback(R.drawable.ic_520016)
+                        //.error(R.drawable.oops)
+
+                        //.skipMemoryCache(true)
+                        .transform(new BlurTransformation(1, 1)
+
+
+
+                        )
                 )
                 .thumbnail(0.5f)
-                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+                //.signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(imgNavHeaderBg);
     }

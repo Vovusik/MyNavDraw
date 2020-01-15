@@ -74,11 +74,11 @@ public class GalleryImageFragment extends Fragment {
 //                        .placeholder(R.drawable.placeholder)
 //                        .fallback(R.drawable.ic_520016)
 //                        .error(R.drawable.oops)
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .skipMemoryCache(true)
+                              //  .diskCacheStrategy(DiskCacheStrategy.ALL)
+                              //  .skipMemoryCache(true)
                 )
                 .thumbnail(0.5f)// зменшив розмір попередного перегляду фото у 2 рази
-                .signature(new ObjectKey(Long.toString(System.currentTimeMillis())))
+               // .signature(new ObjectKey(Long.toString(System.currentTimeMillis())))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(new SimpleTarget<Bitmap>() {
 
@@ -129,7 +129,7 @@ public class GalleryImageFragment extends Fragment {
                         .transform(new BlurTransformation(1, 1))
                 )
                 .thumbnail(0.5f)
-                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+               // .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into((ImageView) view.findViewById(R.id.image));
         return view;

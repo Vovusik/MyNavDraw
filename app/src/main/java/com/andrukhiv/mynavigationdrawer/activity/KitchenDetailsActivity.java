@@ -64,12 +64,12 @@ public class KitchenDetailsActivity extends AppCompatActivity {
                 .with(this)
                 .load(mGrapes.getImageBackground())
                 .apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .skipMemoryCache(true)
+                        //.diskCacheStrategy(DiskCacheStrategy.ALL)
+                        //.skipMemoryCache(true)
                         .transform(new BlurTransformation(1, 1))
                 )
                 .thumbnail(0.5f)
-                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+                //.signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(photoCollapsing);
 

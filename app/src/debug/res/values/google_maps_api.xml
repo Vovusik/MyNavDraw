@@ -1,0 +1,18 @@
+<resources>
+    <!--
+    TODO: Перед запуском приложения вам необходим ключ API Карт Google.
+
+    Смотрите эту страницу для получения дополнительной информации:
+    https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+    Как только у вас есть ваш ключ (он начинается с «AIza»), замените «google_maps_key»
+    Строка в этом файле.
+
+    Note: Этот ресурс используется для цели сборки отладки. Обновите этот файл,
+    если вы просто хотите запустить демо-приложение.
+    -->
+
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+<!--         AIzaSyBqkebeCcr0spXNdqsk93vqYHswuHOFmKs-->
+    </string>
+</resources>

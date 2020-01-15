@@ -6,7 +6,7 @@ android {
         applicationId "com.andrukhiv.mynavigationdrawer"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
+        versionCode 4
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //Если вы используете SupportRSBlurTransformation

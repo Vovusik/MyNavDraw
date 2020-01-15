@@ -18,9 +18,10 @@
 <resources>
 
     <string-array name="themeListArray">
-        <item>Light</item>
-        <item>Dark</item>
-        <item>System default</item>
+        <item>Світла</item>
+        <item>Темна</item>
+        <item>За замовчуванням системи</item>
+
     </string-array>
 
     <string-array name="themeEntryArray">

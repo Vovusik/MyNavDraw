@@ -65,12 +65,12 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.ViewHold
         Glide.with(holder.itemView.getContext())
                 .load(forecast.getImageGlassIcon())
                 .apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .skipMemoryCache(true)
+                       // .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        //.skipMemoryCache(true)
                         .transform(new BlurTransformation(1, 1))
                 )
                 .thumbnail(0.5f)
-                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+                //.signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(holder.imageView);
         holder.textView.setText(forecast.getName());

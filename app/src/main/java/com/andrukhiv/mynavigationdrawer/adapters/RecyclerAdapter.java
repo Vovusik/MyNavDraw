@@ -86,15 +86,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 //                        .placeholder(R.drawable.placeholder)
 //                        .fallback(R.drawable.ic_520016)
 //                        .error(R.drawable.oops)
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .skipMemoryCache(true)
+                                //.diskCacheStrategy(DiskCacheStrategy.ALL)
+                              //  .skipMemoryCache(true)
                                 .transform(new BlurTransformation(1,1))
                 )
                 .thumbnail(0.5f)// зменшив розмір попередного перегляду фото у 2 рази
                 // Todo: Glide
                 //.signature(new ObjectKey(Long.toString(System.currentTimeMillis())))
                 // .signature(new ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000))) // 1 day
-                .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000))) // 10 min
+                //.signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000))) // 10 min
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(photoSmall);
 

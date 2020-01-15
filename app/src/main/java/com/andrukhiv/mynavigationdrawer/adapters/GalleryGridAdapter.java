@@ -28,6 +28,7 @@ import android.widget.ImageView;
 
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.activity.GalleryActivity;
+import com.andrukhiv.mynavigationdrawer.database.GalleryImageData;
 import com.andrukhiv.mynavigationdrawer.fragments.GalleryImagePagerFragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -36,7 +37,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-import static com.andrukhiv.mynavigationdrawer.adapters.GalleryImageData.IMAGE_DRAWABLES;
+import static com.andrukhiv.mynavigationdrawer.database.GalleryImageData.IMAGE_DRAWABLES;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 

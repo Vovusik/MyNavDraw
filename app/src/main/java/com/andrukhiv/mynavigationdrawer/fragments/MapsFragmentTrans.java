@@ -192,7 +192,7 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        startActivity(locationIntent);
+         startActivity(locationIntent);
     }
 
 

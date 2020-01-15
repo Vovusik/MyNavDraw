@@ -35,7 +35,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static String TAG = "DbHelper"; // Тег только для окна LogCat
     protected static String DB_PATH = ""; //путь назначения (местоположения) нашей базы данных на устройстве
-    protected static String DB_NAME = "g_v4.db";// Название базы данных
+    protected static String DB_NAME = "som_v2.db";// Название базы данных
     private static final int DB_VERSION = 1;// Версия базы данных
     private SQLiteDatabase mDataBase;
     private final Context mContext;
