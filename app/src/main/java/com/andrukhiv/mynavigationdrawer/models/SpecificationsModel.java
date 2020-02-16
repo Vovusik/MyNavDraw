@@ -1,13 +1,10 @@
 package com.andrukhiv.mynavigationdrawer.models;
 
-import androidx.lifecycle.ViewModel;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class SpecificationsModel implements Serializable {
 
-    private long id;
+    private int id;
     private String name;
     private String sort;
     private int sort_int;
@@ -30,7 +27,7 @@ public class SpecificationsModel implements Serializable {
         this.link = link;
     }
 
-    public SpecificationsModel(long id, String name, String sort, int sort_int, String description, String photoSmall, String photoLarge, String link, String term, int frost, String color, String growth, double weight, int favorite) {
+    public SpecificationsModel(int id, String name, String sort, int sort_int, String description, String photoSmall, String photoLarge, String link, String term, int frost, String color, String growth, double weight, int favorite) {
 
         this.id = id;
         this.name = name;
@@ -49,11 +46,11 @@ public class SpecificationsModel implements Serializable {
     }
 
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

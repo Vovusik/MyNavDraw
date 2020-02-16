@@ -94,6 +94,4 @@ public class Budova extends Fragment {
         fadeAnim.setDuration(2500);
         fadeAnim.start();
     };
-
-
 }

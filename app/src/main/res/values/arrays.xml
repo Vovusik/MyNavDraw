@@ -15,16 +15,6 @@
 
 
 
-    <string-array name="entries_values_language" translatable="false">
-        <item>uk</item>
-        <item>ru</item>
-        <item>en</item>
-    </string-array>
 
-    <string-array name="entries_language">
-        <item>Українська</item>
-        <item>Російська</item>
-        <item>Англійська</item>
-    </string-array>
 
 </resources>

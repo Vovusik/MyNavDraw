@@ -42,26 +42,4 @@ public class BugModel {
     public void setCategory_id(int category_id) {
         this.category_id = category_id;
     }
-
-
-
-
-
-//    static ArrayList<BugModel> getBugMildew() {
-//
-//        ArrayList<BugModel> places = new ArrayList<>();
-//
-//        places.add(new BugModel("http://media.globalchampionstour.com/cache/750x429/assets/monaco_2016.jpg", "Монако", "В Столице суверенного княжества Монако живет больше миллионеров, чем настройщиков роялей", 1));
-//        places.add(new BugModel("http://www.pragueczechtravel.com/images/prague_banner.jpg", "Прага", "Культурная столица восточной европы - город, который хорош в любое время года", 1));
-//
-//
-//        return places;
-//    }
-
-
-
-
-
-
-
 }

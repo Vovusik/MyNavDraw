@@ -3,11 +3,9 @@ package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
-
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.BugTabAdapter;
 import com.google.android.material.tabs.TabLayout;

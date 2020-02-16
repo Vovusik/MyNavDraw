@@ -13,6 +13,6 @@
     -->
 
     <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
-<!--         AIzaSyBqkebeCcr0spXNdqsk93vqYHswuHOFmKs-->
+         AIzaSyBqkebeCcr0spXNdqsk93vqYHswuHOFmKs
     </string>
 </resources>

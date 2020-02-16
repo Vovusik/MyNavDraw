@@ -74,30 +74,30 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
 
     @Override
     public View getLongPressCellView(int rowIndex, int columnIndex, ViewGroup parentView) {
-        final SpecificationsModel grapes = getRowData(rowIndex);
-        View renderedView = null;
+//        final SpecificationsModel grapes = getRowData(rowIndex);
+//        View renderedView = null;
+//
+//        switch (columnIndex) {
+//            case 1:
+//                renderedView = renderSorty(grapes);
+//                //renderedView = renderEditableGrapesName(grapes);
+//                break;
+//            default:
+//                renderedView = getDefaultCellView(rowIndex, columnIndex, parentView);
+//        }
 
-        switch (columnIndex) {
-            case 1:
-                renderedView = renderSorty(grapes);
-                //renderedView = renderEditableGrapesName(grapes);
-                break;
-            default:
-                renderedView = getDefaultCellView(rowIndex, columnIndex, parentView);
-        }
-
-        return renderedView;
+        return null;
     }
 
-    private View renderEditableGrapesName(final SpecificationsModel grapes) {
-        final EditText editText = new EditText(getContext());
-        editText.setText(grapes.getName());
-        editText.setPadding(20, 40, 20, 40);
-        editText.setTextSize(TEXT_SIZE);
-        editText.setSingleLine();
-        editText.addTextChangedListener(new GrapesNameUpdater(grapes));
-        return editText;
-    }
+//    private View renderEditableGrapesName(final SpecificationsModel grapes) {
+//        final EditText editText = new EditText(getContext());
+//        editText.setText(grapes.getName());
+//        editText.setPadding(20, 40, 20, 40);
+//        editText.setTextSize(TEXT_SIZE);
+//        editText.setSingleLine();
+//        editText.addTextChangedListener(new GrapesNameUpdater(grapes));
+//        return editText;
+//    }
 
     private View renderGrapesName(final SpecificationsModel grapes) {
         return renderString(grapes.getName());
@@ -110,7 +110,7 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
     private View renderString(final String value) {
         final TextView textView = new TextView(getContext());
         textView.setText(value);
-        textView.setPadding(20, 40, 20, 40);
+        textView.setPadding(20, 0, 20, 0);
         textView.setTextSize(TEXT_SIZE);
         textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColorSecondary));
         return textView;
@@ -125,7 +125,7 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
 
         final TextView textView = new TextView(getContext());
         textView.setText(frostString);
-        textView.setPadding(20, 40, 20, 40);
+        textView.setPadding(20, 60, 20, 60);
         textView.setTextSize(TEXT_SIZE);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColorSecondary));
@@ -133,7 +133,7 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
         if (grapes.getFrost() < 22) {
             textView.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
         } else if (grapes.getFrost() > 27) {
-            textView.setTextColor(0xFFFF000D);
+            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.colorError));
         }
 
         return textView;
@@ -152,35 +152,35 @@ public class SortableTableDataAdapter extends LongPressAwareTableDataAdapter<Spe
 
         final TextView textView = new TextView(getContext());
         textView.setText(weightString);
-        textView.setPadding(20, 40, 20, 40);
+        textView.setPadding(20, 0, 20, 0);
         textView.setTextSize(TEXT_SIZE);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColorSecondary));
         return textView;
     }
 
-    private static class GrapesNameUpdater implements TextWatcher {
-
-        private SpecificationsModel grapesToUpdate;
-
-        public GrapesNameUpdater(SpecificationsModel grapesToUpdate) {
-            this.grapesToUpdate = grapesToUpdate;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            // no used
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // not used
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            grapesToUpdate.setName(s.toString());
-        }
-    }
+//    private static class GrapesNameUpdater implements TextWatcher {
+//
+//        private SpecificationsModel grapesToUpdate;
+//
+//        public GrapesNameUpdater(SpecificationsModel grapesToUpdate) {
+//            this.grapesToUpdate = grapesToUpdate;
+//        }
+//
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            // no used
+//        }
+//
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            // not used
+//        }
+//
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//            grapesToUpdate.setName(s.toString());
+//        }
+//    }
 }
 

@@ -23,7 +23,7 @@ public class MapsAdapterTrans extends MapViewPager.Adapter {
     public static ArrayList<String> TEXT_WEB = new ArrayList<>();
     public static ArrayList<String> TEXT_PHONE = new ArrayList<>();
     public static ArrayList<String> NAVIGATION_POSITION = new ArrayList<>();
-
+    public static ArrayList<String> IMAGES = new ArrayList<>();
 
     public ArrayList<CameraPosition> POSITIONS = new ArrayList<>();
 
@@ -40,6 +40,7 @@ public class MapsAdapterTrans extends MapViewPager.Adapter {
             TEXT_WEB.add(mapsModels.get(i).getText_web());
             TEXT_PHONE.add(mapsModels.get(i).getText_phone());
             NAVIGATION_POSITION.add(mapsModels.get(i).getNavigation_position());
+            IMAGES.add(mapsModels.get(i).getImage());
 
             POSITIONS.add(CameraPosition.fromLatLngZoom(new LatLng(mapsModels.get(i).getLat(),
                     mapsModels.get(i).getLng()), 14f));
@@ -80,7 +81,10 @@ public class MapsAdapterTrans extends MapViewPager.Adapter {
     }
 
     public static String getNavigationPosition(int position) {
-        return NAVIGATION_POSITION.get(position);
+        return NAVIGATION_POSITION.get(position);  }
+
+    public static String getImage(int position){
+        return IMAGES.get(position);
     }
 
     @Override

@@ -15,16 +15,20 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/specific_gravity_juice"
             style="@style/MyTableTextRowStyle"
+
+            android:gravity="center"
             tools:text="@string/specific_gravity_juice" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/sugar_content_juice"
             style="@style/MyTableTextRowStyle"
+            android:gravity="center"
             tools:text="@string/sugar_content_juice" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/fortress_future_wine"
             style="@style/MyTableTextRowStyle"
+            android:gravity="center"
             tools:text="@string/fortress_future_wine" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

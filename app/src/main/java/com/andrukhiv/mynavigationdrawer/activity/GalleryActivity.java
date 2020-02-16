@@ -4,7 +4,6 @@ import android.os.Bundle;
 import androidx.fragment.app.FragmentManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
-
 import com.andrukhiv.mynavigationdrawer.fragments.GalleryGridFragment;
 import com.andrukhiv.mynavigationdrawer.R;
 

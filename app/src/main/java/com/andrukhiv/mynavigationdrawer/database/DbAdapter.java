@@ -14,6 +14,7 @@ import com.andrukhiv.mynavigationdrawer.models.LaboratoryModel;
 import com.andrukhiv.mynavigationdrawer.models.LaboratoryTableModel;
 import com.andrukhiv.mynavigationdrawer.models.LibraryModel;
 import com.andrukhiv.mynavigationdrawer.models.MapsModel;
+import com.andrukhiv.mynavigationdrawer.models.PreparationDialogModel;
 import com.andrukhiv.mynavigationdrawer.models.PreparatyModel;
 import com.andrukhiv.mynavigationdrawer.models.ReproductionModel;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
@@ -23,6 +24,7 @@ import com.andrukhiv.mynavigationdrawer.tables.LaboratoryInstruction;
 import com.andrukhiv.mynavigationdrawer.tables.LaboratoryTable;
 import com.andrukhiv.mynavigationdrawer.tables.LibraryTable;
 import com.andrukhiv.mynavigationdrawer.tables.MapsTable;
+import com.andrukhiv.mynavigationdrawer.tables.PreparationDialogTable;
 import com.andrukhiv.mynavigationdrawer.tables.PreparatyTable;
 import com.andrukhiv.mynavigationdrawer.tables.ReproductionTable;
 import com.andrukhiv.mynavigationdrawer.tables.SpecificationsTable;
@@ -99,7 +101,7 @@ public class DbAdapter {
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 result.add(new SpecificationsModel(
-                        cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT)),
                         cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT_INT)),
@@ -132,7 +134,7 @@ public class DbAdapter {
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 result.add(new SpecificationsModel(
-                        cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT)),
                         cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT_INT)),
@@ -166,7 +168,7 @@ public class DbAdapter {
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 result.add(new SpecificationsModel(
-                        cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT)),
                         cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT_INT)),
@@ -199,7 +201,7 @@ public class DbAdapter {
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 result.add(new SpecificationsModel(
-                        cursor.getLong(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
+                        cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT)),
                         cursor.getInt(cursor.getColumnIndex(SpecificationsTable.SPECIFICATIONS_COLUMN_SORT_INT)),
@@ -312,7 +314,8 @@ public class DbAdapter {
                         cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_PHONE)),
                         cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LAT)),
                         cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LNG)),
-                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_NAVIGATION_POSITION))
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_NAVIGATION_POSITION)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_IMAGE))
                 ));
             }
             cursor.close();
@@ -341,7 +344,8 @@ public class DbAdapter {
                         cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_PHONE)),
                         cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LAT)),
                         cursor.getDouble(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_LNG)),
-                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_NAVIGATION_POSITION))
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_NAVIGATION_POSITION)),
+                        cursor.getString(cursor.getColumnIndex(MapsTable.MAPS_COLUMN_IMAGE))
                 ));
             }
             cursor.close();
@@ -473,6 +477,26 @@ public class DbAdapter {
         }
         assert cursor != null;
         cursor.close();
+        return result;
+    }
+
+
+    public static ArrayList<PreparationDialogModel> getPreparationDialogTable() {
+
+        ArrayList<PreparationDialogModel> result = new ArrayList<>();
+        String sql = "SELECT * FROM " +
+                PreparationDialogTable.PREPARATION_DIALOG_NAME_TABLE;
+        Cursor cursor = mDb.rawQuery(sql, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                result.add(new PreparationDialogModel(
+                        cursor.getInt(cursor.getColumnIndex(PreparationDialogTable.PREPARATION_DIALOG_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(PreparationDialogTable.PREPARATION_DIALOG_COLUMN_SHORTER)),
+                        cursor.getString(cursor.getColumnIndex(PreparationDialogTable.PREPARATION_DIALOG_COLUMN_LONGER))
+                ));
+            }
+            cursor.close();
+        }
         return result;
     }
 

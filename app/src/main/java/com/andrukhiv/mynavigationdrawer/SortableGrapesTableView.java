@@ -68,20 +68,6 @@ public class SortableGrapesTableView extends SortableTableView<SpecificationsMod
 
         setColumnModel(tableColumnWeightModel);
 
-
-        /*final TableColumnDpWidthModel tableColumnDpWidthModel = new TableColumnDpWidthModel(context, 7, 600);
-
-        tableColumnDpWidthModel.setColumnWidth(0, 115);
-        tableColumnDpWidthModel.setColumnWidth(1, 85);
-        tableColumnDpWidthModel.setColumnWidth(2, 100);
-        tableColumnDpWidthModel.setColumnWidth(3, 95);
-        tableColumnDpWidthModel.setColumnWidth(4, 90);
-        tableColumnDpWidthModel.setColumnWidth(5, 80);
-        tableColumnDpWidthModel.setColumnWidth(6, 80);
-
-        setColumnModel(tableColumnDpWidthModel);*/
-
-
         setColumnComparator(0, SortableComparators.getGrapesNameComparator());
         setColumnComparator(1, SortableComparators.getGrapesSortyComparator());
         setColumnComparator(2, SortableComparators.getGrapesTermComparator());

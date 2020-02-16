@@ -1,21 +1,20 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.SortableGrapesTableView;
 import com.andrukhiv.mynavigationdrawer.adapters.SortableTableDataAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.SpecificationsModel;
-
 import java.util.ArrayList;
-
 import de.codecrafters.tableview.SortState;
+import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.providers.SortStateViewProvider;
 
-public class SortableActivity extends AppCompatActivity {
 
+public class SortableActivity extends AppCompatActivity {
 
     DbAdapter mDbHelper;
     ArrayList<SpecificationsModel> sortable;
@@ -29,7 +28,7 @@ public class SortableActivity extends AppCompatActivity {
         if (grapesTableView != null) {
             final SortableTableDataAdapter grapesTableDataAdapter =
                     new SortableTableDataAdapter(this, DbAdapter.getAllGrapes(), grapesTableView);
-
+            grapesTableView.addDataClickListener(new GrapesClickListener());
             grapesTableView.setDataAdapter(grapesTableDataAdapter);
             grapesTableView.setHeaderElevation(10);
 
@@ -42,6 +41,7 @@ public class SortableActivity extends AppCompatActivity {
         mDbHelper = DbAdapter.getInstance(getApplicationContext());
         sortable = DbAdapter.getAllGrapes();
     }
+
 
     private static class MySortStateViewProvider implements SortStateViewProvider {
 
@@ -59,6 +59,18 @@ public class SortableActivity extends AppCompatActivity {
                 default:
                     return NO_IMAGE_RES;
             }
+        }
+    }
+
+
+    private class GrapesClickListener implements TableDataClickListener<SpecificationsModel> {
+
+        @Override
+        public void onDataClicked(final int rowIndex, final SpecificationsModel clickedData) {
+
+            Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
+            intent.putExtra(DetailsActivity.EXTRA_GRAPES_ID, sortable.get(clickedData.getId()));
+            startActivity(intent);
         }
     }
 }

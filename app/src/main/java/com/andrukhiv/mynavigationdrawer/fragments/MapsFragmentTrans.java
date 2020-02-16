@@ -5,42 +5,48 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.MapsAdapterTrans;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 import java.util.Objects;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MapsFragmentTrans extends Fragment implements View.OnClickListener, EasyPermissions.PermissionCallbacks {
 
-    private TextView mTitle, mDescription, mAddress;
-    // ImageView mImage;
+    private TextView mTitle;
+    private ImageView mImage;
     private int index;
 
     private static final String TAG = "MapsFragmentZakarpattya";
@@ -51,6 +57,8 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
     private static final String[] CALL = {Manifest.permission.CALL_PHONE};
     private static final String[] LOCATION = {Manifest.permission.ACCESS_FINE_LOCATION};
 
+    private CardView mCardView;
+    static BottomSheetDialogFragment myBottomSheet;
 
     public MapsFragmentTrans() {
     }
@@ -71,9 +79,12 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_maps_pager, container, false);
+
+        mCardView = rootView.findViewById(R.id.card_academy);
+        mCardView.setOnClickListener(this);
+
         mTitle = rootView.findViewById(R.id.location_title);
-        mDescription = rootView.findViewById(R.id.location_description);
-        mAddress = rootView.findViewById(R.id.text_address);
+        mImage = rootView.findViewById(R.id.location_image);
 
         Button mLink = rootView.findViewById(R.id.web);
         mLink.setOnClickListener(this);
@@ -83,7 +94,6 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
 
         Button mCall = rootView.findViewById(R.id.call);
         mCall.setOnClickListener(this);
-
 
         return rootView;
     }
@@ -109,8 +119,23 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
         if (args != null) index = args.getInt("INDEX", 0);
 
         mTitle.setText(MapsAdapterTrans.TITLES.get(index));
-        mDescription.setText(MapsAdapterTrans.getDescripion(index));
-        mAddress.setText(MapsAdapterTrans.getAddress(index));
+        // mDescription.setText(MapsAdapterTrans.getDescripion(index));
+        // mAddress.setText(MapsAdapterTrans.getAddress(index));
+
+        Glide
+                .with(getContext())
+                .load(MapsAdapterTrans.getImage(index))
+                .apply(new RequestOptions()
+//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                        .skipMemoryCache(true)
+                                .transform(new BlurTransformation(1, 1))
+                )
+                .thumbnail(0.5f)
+                //.signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+                // .transition(GenericTransitionOptions.with(animationObject))
+                .into(mImage);
+
+
     }
 
     public void onClick(View v) {
@@ -126,6 +151,13 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
 
             case R.id.directions:
                 locationTask();
+                break;
+
+            case R.id.card_academy:
+                openBottomSheetDialog();
+
+                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                }
                 break;
         }
     }
@@ -192,7 +224,7 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-         startActivity(locationIntent);
+        startActivity(locationIntent);
     }
 
 
@@ -257,6 +289,13 @@ public class MapsFragmentTrans extends Fragment implements View.OnClickListener,
 
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(getContext(), Uri.parse("http://" + MapsAdapterTrans.getTextWeb(index)));
+    }
+
+
+    private void openBottomSheetDialog() {
+        FragmentManager fm = getChildFragmentManager();
+        myBottomSheet = MapBottomSheetDialogFragment.newInstance(index);
+        myBottomSheet.show(fm, myBottomSheet.getTag());
     }
 
 }

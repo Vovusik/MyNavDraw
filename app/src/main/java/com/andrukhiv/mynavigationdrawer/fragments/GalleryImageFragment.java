@@ -13,7 +13,6 @@ import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
-import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;

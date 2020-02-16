@@ -13,6 +13,13 @@
             app:title="@string/title_theme"
             app:useSimpleSummaryProvider="true" />
 
+
+        <Preference
+            app:icon="@drawable/ic_not"
+            app:key="notifications"
+            app:summary="Керування сповіщеннями"
+            app:title="Сповіщення" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -49,7 +56,7 @@
 
         <Preference
             app:key="license"
-            app:icon="@drawable/settings_ic_license"
+            app:icon="@drawable/ic_license"
             app:summary="@string/summary_licenses"
             app:title="@string/title_licenses" />
 

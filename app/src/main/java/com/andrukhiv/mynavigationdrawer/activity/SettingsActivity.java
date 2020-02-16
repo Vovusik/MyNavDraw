@@ -1,19 +1,11 @@
 package com.andrukhiv.mynavigationdrawer.activity;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.andrukhiv.mynavigationdrawer.LocaleHelper;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.fragments.SettingsFragment;
 
-import java.util.Objects;
 
 public class SettingsActivity extends AppCompatActivity {
 

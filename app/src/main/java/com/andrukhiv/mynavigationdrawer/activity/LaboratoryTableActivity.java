@@ -2,17 +2,15 @@ package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.LaboratoryTableAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.LaboratoryTableModel;
-
 import java.util.ArrayList;
+
 
 public class LaboratoryTableActivity extends AppCompatActivity {
 

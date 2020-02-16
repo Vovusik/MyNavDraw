@@ -3,12 +3,10 @@ package com.andrukhiv.mynavigationdrawer.activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,10 +14,9 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
 import com.andrukhiv.mynavigationdrawer.R;
-import com.andrukhiv.mynavigationdrawer.utils.MapsUtils;
 import com.andrukhiv.mynavigationdrawer.adapters.MapsAdapterOdesa;
+import com.andrukhiv.mynavigationdrawer.utils.MapsUtils;
 import com.andrukhiv.mynavigationdrawer.adapters.MapsAdapterTrans;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
 import com.andrukhiv.mynavigationdrawer.models.MapsModel;
@@ -30,9 +27,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
-
 import java.util.ArrayList;
 import java.util.Objects;
+
 
 public class MapsActivity extends AppCompatActivity implements MapViewPager.Callback, OnMapReadyCallback {
 

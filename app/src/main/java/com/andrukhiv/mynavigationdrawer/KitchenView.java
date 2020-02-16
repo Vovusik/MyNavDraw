@@ -13,10 +13,8 @@ import android.widget.LinearLayout;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
-import com.bumptech.glide.signature.ObjectKey;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
@@ -51,11 +49,11 @@ public class KitchenView extends LinearLayout {
                 .placeholder(R.drawable.kitchen_gradient_placeholder)
                 .apply(new RequestOptions()
                         //.diskCacheStrategy(DiskCacheStrategy.ALL)
-                      //  .skipMemoryCache(true)
+                        //  .skipMemoryCache(true)
                         .transform(new BlurTransformation(1, 1))
                 )
                 .thumbnail(0.5f)
-               // .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
+                // .signature(new ObjectKey(System.currentTimeMillis() / (10 * 60 * 1000)))
                 .transition(GenericTransitionOptions.with(animationObject))
                 .into(backgroundImage);
         invalidate();

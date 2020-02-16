@@ -11,22 +11,17 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
-import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
-
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 

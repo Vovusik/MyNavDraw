@@ -4,17 +4,9 @@
 
 
 
-<!--    <string name="google_maps_key" templateMergeStrategy="preserve"-->
-<!--        translatable="false">AIzaSyDGtkAY4so2YQh4I2PIy29WDftaA9zifx0</string>-->
-
-
-
-
-
-
-
+    <!--Section: Notification-->
     <string name="default_notification_channel_id" translatable="false">Message</string>
-    <string name="default_notification_channel_name" translatable="false">title</string>
+    <string name="default_notification_channel_name" translatable="false">Масові заходи</string>
 
     <string name="reply_label" translatable="false">Reply</string>
 
@@ -103,13 +95,9 @@
     <string name="category_title_about">Про додаток</string>
     <string name="category_title_notifications">Налаштування сповіщень</string>
 
-    <string name="title_language">Мова додатку</string>
     <string name="title_theme">Вибрати тему</string>
     <string name="title_licenses">Ліцензії відкритого коду</string>
     <string name="title_version">Версія</string>
-    <string name="title_notifications_new_message_ringtone">Виберіть мелодію сповіщення</string>
-    <string name="title_notifications_new_message">Нове сповіщення про повідомлення</string>
-    <string name="title_vibrate">Вібрація</string>
 
     <string name="summary_description">Lorem ipsum dolor sit amet, dolor at ligula faucibus imperdiet libero, phasellus nulla sollicitudin in, libero nec venenatis, luctus pretium imperdiet volutpat sit atque. Porttitor ligula vitae ultrices eleifend, felis suscipit iaculis turpis, pellentesque magna sem non. Vehicula quis commodo, tincidunt eu id morbi ut nullam. Enim ipsum vestibulum, semper etiam, amet vivamus mauris, aliquam at maecenas phasellus in aliquet, suspendisse varius. Eros sapien, vulputate porta, elit suspendisse, magna a ante wisi, ligula feugiat vel vel suspendisse lacus ipsum. At varius vestibulum volutpat fringilla consectetuer. Vulputate cursus mollis senectus dapibus amet, mauris sapien diam sed sodales, velit neque justo sit et. Vehicula diam sit pellentesque blandit dolore semper, a proin mi quisque eget vitae, tempus nisl, cum varius gravida urna condimentum nunc. Dignissimos adipiscing bibendum eget pretium bibendum justo, sit orci eros erat ligula litora. Id volutpat lacus urna aperiam porttitor aptent, metus auctor montes ut, lectus sed. Ut enim fringilla nec elementum, tortor vestibulum erat. Pede volutpat.
     Lorem ipsum dolor sit amet, dolor at ligula faucibus imperdiet libero, phasellus nulla sollicitudin in, libero nec venenatis, luctus pretium imperdiet volutpat sit atque. Porttitor ligula vitae ultrices eleifend, felis suscipit iaculis turpis, pellentesque magna sem non. Vehicula quis commodo, tincidunt eu id morbi ut nullam. Enim ipsum vestibulum, semper etiam, amet vivamus mauris, aliquam at maecenas phasellus in aliquet, suspendisse varius. Eros sapien, vulputate porta, elit suspendisse, magna a ante wisi, ligula feugiat vel vel suspendisse lacus ipsum. At varius vestibulum volutpat fringilla consectetuer. Vulputate cursus mollis senectus dapibus amet, mauris sapien diam sed sodales, velit neque justo sit et. Vehicula diam sit pellentesque blandit dolore semper, a proin mi quisque eget vitae, tempus nisl, cum varius gravida urna condimentum nunc. Dignissimos adipiscing bibendum eget pretium bibendum justo, sit orci eros erat ligula litora. Id volutpat lacus urna aperiam porttitor aptent, metus auctor montes ut, lectus sed. Ut enim fringilla nec elementum, tortor vestibulum erat. Pede volutpat.
@@ -121,6 +109,8 @@
     <string name="button_licenses">Закрити</string>
     <string name="pref_ringtone_silent">Без звуку</string>
 
+    <string name="copy_right" translatable="false">Copyrights © %1$d</string>
+
     <!-- Section: Maps Dialog-->
     <string-array name="region">
         <item>Закарпаття</item>
@@ -128,11 +118,11 @@
     </string-array>
 
     <!-- Section: Permissions-->
-    <string name="hasPermissions" translatable="false">Разрешение было успешно выполнено</string>
-    <string name="rationale_call" translatable="false">Разрешение на вызов отклонено</string>
-    <string name="rationale_location" translatable="false">Это приложение нуждается в доступе к вашему местоположению, чтобы узнать, где вы.</string>
+    <string name="hasPermissions" translatable="false">Дозвіл успішно надано</string>
+    <string name="rationale_call" translatable="false">Дозвіл на виклик відхилено</string>
+    <string name="rationale_location" translatable="false">Цей додаток потребує доступу до вашого місцезнаходженнявашему, щоб узнати, де ви.</string>
     <string name="returned_from_app_settings_to_activity" translatable="false">
-        Возврат из настроек приложения в MainActivity со следующими разрешениями:
+        Повернення з налаштувань додатку в MainActivity з наступними дозволами:
         \n\nPhone: %s
         \nLocation: %s
     </string>
@@ -195,12 +185,6 @@
     <string name="label_sugar" translatable="false">Визначення цукру</string>
 
 
-
-
-
-
-
-
     <!-- Section: Search-->
     <string name="search_query_hint" translatable="false">Пошук сорту винограда</string>
 
@@ -212,157 +196,8 @@
     <string name="diucha_rechovina" translatable="false">Діюча речовина</string>
     <string name="nazva_preparatu" translatable="false">Назва препарату</string>
 
-
-
-
-
     <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur
         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ...
     </string>
-    <!--<string name="name_kitchen">Алкокухня</string>-->
-    <!--<string name="name_reproduction">Розмноження</string>-->
-    <!--<string name="name_formation">Будова і формування</string>-->
-    <!--<string name="name_region">Сума активних температур</string>-->
-    <!--<string name="name_library">Бібліотека</string>-->
-    <!--<string name="name_specification">Характеристики</string>-->
-
-    <!--<string name="navigation_drawer_open">Open navigation drawer</string>-->
-    <!--<string name="navigation_drawer_close">Close navigation drawer</string>-->
-
-    <!--&lt;!&ndash;Заповнення меню NavigationDrawer&ndash;&gt;-->
-    <!--<string name="drawer_item_home">Головна</string>-->
-    <!--<string name="drawer_item_wine_tour">Винний тур</string>-->
-    <!--<string name="drawer_item_academy">Академія вина</string>-->
-    <!--<string name="drawer_item_alco_kitchen">АлкоКухня</string>-->
-    <!--<string name="drawer_item_library">Бібліотека</string>-->
-    <!--<string name="drawer_item_favorite_varieties">Улюблені сорти</string>-->
-    <!--<string name="drawer_item_speсifications">Характеристики</string>-->
-    <!--<string name="drawer_item_care_protection">Догляд та захист</string>-->
-    <!--<string name="drawer_item_structure_formation">Будова і формування</string>-->
-    <!--<string name="drawer_item_reproduction">Розмноження</string>-->
-    <!--<string name="drawer_item_diseases_pests">Хвороби і шкідники</string>-->
-    <!--<string name="drawer_item_calendar">Календар робіт і подій</string>-->
-    <!--<string name="drawer_item_temperature">Термін дозрівання</string>-->
-    <!--<string name="drawer_item_summ_temperature">Сума активних температур</string>-->
-    <!--<string name="drawer_item_preparaty">Засоби захисту</string>-->
-    <!--<string name="drawer_item_miscellaneous">Різне</string>-->
-    <!--<string name="drawer_item_rating">Оцінити в Google Play</string>-->
-    <!--<string name="drawer_item_share">Поширити застосунок</string>-->
-    <!--<string name="drawer_item_communication">Написати листа</string>-->
-    <!--<string name="drawer_item_gallery">Галерея</string>-->
-    <!--<string name="drawer_item_settings">Налаштування</string>-->
-    <!--<string name="drawer_item_about">Про застосунок</string>-->
-    <!--<string name="drawer_item_section_header_security">Догляд і захист</string>-->
-    <!--<string name="drawer_item_call_in_call">Зворотній зв’язок</string>-->
-
-
-    <!--<string name="drawer_item_section_header_about">Про застосунок</string>-->
-    <!--<string name="drawer_item_licence">Ліцензії відкритого коду</string>-->
-    <!--<string name="drawer_item_change_theme">Змінити тему</string>-->
-
-
-    <!--&lt;!&ndash;Найменування табів&ndash;&gt;-->
-    <!--<string name="tab_item_home">Усі сорти</string>-->
-    <!--<string name="tab_item_table">Столові</string>-->
-    <!--<string name="tab_item_seedless">Киш миш</string>-->
-    <!--<string name="tab_item_wine">Технічні</string>-->
-
-
-    <!--<string name="shortcut_long_label_hvoroby">Хвороби і шкідники</string>-->
-    <!--<string name="shortcut_short_label_hvoroby">Хвороби</string>-->
-    <!--<string name="shortcut_long_label_formuvannya">Будова і формування</string>-->
-    <!--<string name="shortcut_short_label_formuvannya">Формування</string>-->
-    <!--<string name="shortcut_long_label_calendar">Календар робіт і подій</string>-->
-    <!--<string name="shortcut_short_label_calendar">Календар</string>-->
-    <!--<string name="shortcut_long_label_maps">Винний тур</string>-->
-    <!--<string name="shortcut_short_label_maps">Винний тур</string>-->
-
-
-    <!--<string name="message_subject">Стосовно додатку GRAPES.</string>-->
-    <!--<string name="message_text">Привіт,</string>-->
-
-
-    <!--&lt;!&ndash;Найменування табів AlcoKitchen&ndash;&gt;-->
-    <!--<string name="tab_kitchen_vermut">Вермут</string>-->
-    <!--<string name="tab_kitchen_wine">Вино</string>-->
-    <!--<string name="tab_kitchen_wine_white">Вино Біле</string>-->
-    <!--<string name="tab_kitchen_kagor">Вино Кагор</string>-->
-    <!--<string name="tab_kitchen_wine_suhe">Вино Сухе</string>-->
-    <!--<string name="tab_kitchen_izabella">Вино Ізабелла</string>-->
-    <!--<string name="tab_kitchen_glintvein">Глінтвейн</string>-->
-    <!--<string name="tab_kitchen_grappa">Граппа</string>-->
-    <!--<string name="tab_kitchen_kizlyarka">Кізлярка</string>-->
-    <!--<string name="tab_kitchen_konyak">Коньяк</string>-->
-    <!--<string name="tab_kitchen_liker">Лікер</string>-->
-    <!--<string name="tab_kitchen_martini">Мартіні</string>-->
-    <!--<string name="tab_kitchen_oruho">Орухо</string>-->
-    <!--<string name="tab_kitchen_pisko">Піско</string>-->
-    <!--<string name="tab_kitchen_portvein">Портвейн</string>-->
-    <!--<string name="tab_kitchen_sangriya">Сангрія</string>-->
-    <!--<string name="tab_kitchen_juice">Сік</string>-->
-    <!--<string name="tab_kitchen_chacha">Чача</string>-->
-    <!--<string name="tab_kitchen_shampanske">Шампанське</string>-->
-    <!--<string name="tab_kitchen_izum">Ізюм</string>-->
-    <!--<string name="tab_kitchen_churchhela">Чурчхела</string>-->
-    <!--<string name="tab_kitchen_otset">Оцет</string>-->
-    <!--<string name="tab_kitchen_bochka">Бочка</string>-->
-    <!--<string name="tab_kitchen_kislotnist">Кислотність</string>-->
-    <!--<string name="tab_kitchen_osvitlennya">Освітлення</string>-->
-    <!--<string name="tab_kitchen_girkota">Гіркота</string>-->
-
-
-    <!--&lt;!&ndash;Найменування табів AlcoKitchen&ndash;&gt;-->
-    <!--<string name="tab_reproduction_chubuk">Чубук</string>-->
-    <!--<string name="tab_reproduction_desktop_vaccine">Настільне щеплення</string>-->
-
-    <!--<string name="tab_formuvannya_budova">Будова</string>-->
-    <!--<string name="tab_formuvannya_posadka">Посадка</string>-->
-    <!--<string name="tab_formuvannya_guyot">Гюйо</string>-->
-    <!--<string name="tab_formuvannya_stelag">Стелаж</string>-->
-    <!--<string name="tab_formuvannya_viyalo">Віяло</string>-->
-    <!--<string name="tab_formuvannya_cordon">Кордон</string>-->
-
-    <!--&lt;!&ndash;Найзви колонок у таблиці&ndash;&gt;-->
-    <!--<string name="name">Назва</string>-->
-    <!--<string name="sort">Група</string>-->
-    <!--<string name="term">Строк</string>-->
-    <!--<string name="frost">Мороз</string>-->
-    <!--<string name="color">Колір</string>-->
-    <!--<string name="growth">Ріст</string>-->
-    <!--<string name="weight">Вага</string>-->
-
-
-    <!--   // <string name="favorite" translatable="false">Favorite</string>-->
-
-
-
-    <!--    &lt;!&ndash;Найменування табів AlcoKitchen&ndash;&gt;-->
-    <!--    <string name="tab_kitchen_vermut" translatable="false">Вермут</string>-->
-    <!--    <string name="tab_kitchen_wine" translatable="false">Вино</string>-->
-    <!--    <string name="tab_kitchen_wine_white" translatable="false">Вино Біле</string>-->
-    <!--    <string name="tab_kitchen_kagor" translatable="false">Вино Кагор</string>-->
-    <!--    <string name="tab_kitchen_wine_suhe" translatable="false">Вино Сухе</string>-->
-    <!--    <string name="tab_kitchen_izabella" translatable="false">Вино Ізабелла</string>-->
-    <!--    <string name="tab_kitchen_glintvein" translatable="false">Глінтвейн</string>-->
-    <!--    <string name="tab_kitchen_grappa" translatable="false">Граппа</string>-->
-    <!--    <string name="tab_kitchen_kizlyarka" translatable="false">Кізлярка</string>-->
-    <!--    <string name="tab_kitchen_konyak" translatable="false">Коньяк</string>-->
-    <!--    <string name="tab_kitchen_liker" translatable="false">Лікер</string>-->
-    <!--    <string name="tab_kitchen_martini" translatable="false">Мартіні</string>-->
-    <!--    <string name="tab_kitchen_oruho" translatable="false">Орухо</string>-->
-    <!--    <string name="tab_kitchen_pisko" translatable="false">Піско</string>-->
-    <!--    <string name="tab_kitchen_portvein" translatable="false">Портвейн</string>-->
-    <!--    <string name="tab_kitchen_sangriya" translatable="false">Сангрія</string>-->
-    <!--    <string name="tab_kitchen_juice" translatable="false">Сік</string>-->
-    <!--    <string name="tab_kitchen_chacha" translatable="false">Чача</string>-->
-    <!--    <string name="tab_kitchen_shampanske" translatable="false">Шампанське</string>-->
-    <!--    <string name="tab_kitchen_izum" translatable="false">Ізюм</string>-->
-    <!--    <string name="tab_kitchen_churchhela" translatable="false">Чурчхела</string>-->
-    <!--    <string name="tab_kitchen_otset" translatable="false">Оцет</string>-->
-    <!--    <string name="tab_kitchen_bochka" translatable="false">Бочка</string>-->
-    <!--    <string name="tab_kitchen_kislotnist" translatable="false">Кислотність</string>-->
-    <!--    <string name="tab_kitchen_osvitlennya" translatable="false">Освітлення</string>-->
-    <!--    <string name="tab_kitchen_girkota" translatable="false">Гіркота</string>-->
-
 
 </resources>

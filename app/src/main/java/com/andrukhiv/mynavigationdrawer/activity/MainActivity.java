@@ -4,7 +4,8 @@ import android.animation.ObjectAnimator;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,33 +13,31 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.bumptech.glide.GenericTransitionOptions;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
-import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.andrukhiv.mynavigationdrawer.AppRating;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.MainPagerAdapter;
 import com.bumptech.glide.Glide;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
@@ -50,8 +49,7 @@ public class MainActivity extends AppCompatActivity
 
     public static DrawerLayout mDrawer;
     private ImageView imgNavHeaderBg;
-//    public static final int NOTIFICATION_ID = 888;
-//    private static final String TAG = "MainActivity";
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -83,47 +81,12 @@ public class MainActivity extends AppCompatActivity
         // завантажити фонового зображення навігаційного меню
         loadNavHeader();
 
+        // Підключення бібліотеки появи діалогового вікна «Оцінити цей додаток» - RateThisApp
         // Todo - діалогове вікно «Оцінити цей додаток» - не слухається
         AppRating.app_launched(this);
 
-        // Підключення бібліотеки появи діалогового вікна «Оцінити цей додаток» - RateThisApp
-
-        // Отслеживать время запуска и интервал от установки
-//        RateThisApp.onCreate(this);
-//        RateThisApp.Config config = new RateThisApp.Config();
-//        // Вказання  URL на сторінку програми в Google Play
-//        config.setUrl("market://details?id=" + APP_PACKAGE_NAME);
-//        RateThisApp.init(config);
-//        // Если условие выполнено, будет показано диалоговое окно «Оценить это приложение»
-//        RateThisApp.showRateDialogIfNeeded(this, R.style.MyAlertDialogStyle);
-
         createChannel(); // Створюю канал для Notification
-
-//        if (getIntent().getExtras() != null) {
-//            for (String key : getIntent().getExtras().keySet()) {
-//                String value = getIntent().getExtras().getString(key);
-//                Log.d(TAG, "Key: " + key + " Value: " + value);
-//            }
-//        }
-
-        //subscribeToPushService();
     }
-
-//    private void subscribeToPushService() {
-//        FirebaseMessaging.getInstance().subscribeToTopic("news");
-//
-//        Log.d("AndroidBash", "Subscribed");
-//        Toast.makeText(MainActivity.this, "Subscribed", Toast.LENGTH_SHORT).show();
-//
-//        String token = FirebaseInstanceId.getInstance().getToken();
-//
-//        // Log and toast
-//        assert token != null;
-//        Log.d("AndroidBash", token);
-//        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-//    }
-
-
 
     private void loadNavHeader() {
         Glide.with(this)
@@ -136,7 +99,6 @@ public class MainActivity extends AppCompatActivity
 
                         //.skipMemoryCache(true)
                         .transform(new BlurTransformation(1, 1)
-
 
 
                         )
@@ -176,12 +138,6 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        return super.onOptionsItemSelected(item);
-//    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
@@ -190,6 +146,12 @@ public class MainActivity extends AppCompatActivity
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Ви знаходитесь на головній сторінці", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
+                View view = toast.getView();
+                view.getBackground().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+                TextView toastMessage = toast.getView().findViewById(android.R.id.message);
+                toastMessage.setTextColor(Color.WHITE);
+
+
                 toast.show();
                 break;
 
@@ -238,11 +200,6 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
-//            case R.id.nav_settings:
-//                intent = new Intent(MainActivity.this, SettingActivity.class);
-//                startActivity(intent);
-//                break;
-
             case R.id.nav_settingss:
                 intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
@@ -256,79 +213,22 @@ public class MainActivity extends AppCompatActivity
                 intent = new Intent(MainActivity.this, BugActivity.class);
                 startActivity(intent);
                 break;
-
-//            case R.id.nav_star:
-//                rate();
-//                break;
-//
-//            case R.id.nav_share:
-//                share();
-//                break;
-//
-//            case R.id.nav_email:
-//                email();
-//                break;
+            case R.id.nav_calendar:
+                Toast toast_calendar;
+                toast_calendar = Toast.makeText(this,
+                        "Розділ у розробці", Toast.LENGTH_LONG);
+                toast_calendar.setGravity(Gravity.CENTER, 0, 0);
+                View viewCalendar = toast_calendar.getView();
+                viewCalendar.getBackground().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+                TextView toastCalendar = toast_calendar.getView().findViewById(android.R.id.message);
+                toastCalendar.setTextColor(Color.WHITE);
+                toast_calendar.show();
+                break;
         }
 
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-//    public void rate() {
-//        try {
-//            startActivity(new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
-//        } catch (android.content.ActivityNotFoundException anfe) {
-//            startActivity(new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
-//        }
-//    }
-//
-//
-//    public void share() {
-//        intent = new Intent(Intent.ACTION_SEND);
-//        intent.putExtra(Intent.EXTRA_TEXT, Constant.SHARE_CONTENT);
-//        intent.setType("text/plain");
-//        startActivity(intent);
-//    }
-//
-//
-//    public void email() {
-//        String to = Constant.EMAIL;// Адресат повідомлення
-//        String subject = getString(R.string.message_subject); // Тема повідомлення
-//        String body = getString(R.string.message_text); // Текст повідомлення
-//
-//        intent = new Intent(Intent.ACTION_SEND);
-//        intent.setType("message/rfc822");
-//        String[] toArr = new String[]{to};
-//        intent.putExtra(Intent.EXTRA_EMAIL, toArr);
-//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-//        intent.putExtra(Intent.EXTRA_TEXT, body);
-//        startActivity(intent);
-//    }
-
-
-//    @Override
-//    public void onBackPressed() {
-//        // Поява діалогового вікна для підтвердження виходу з додатку
-//        new androidx.appcompat.app.AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
-//                //.setIcon(R.drawable.dialog_icon_logo)
-//                //.setIcon(android.R.drawable.ic_dialog_alert)
-//                .setTitle("Ви хочете вийти ?")
-//                .setMessage("Ви впевнені, що хочете вийти з цього додатку ?")
-//                .setPositiveButton("Так", (dialog, which) -> {
-//                    Intent startMain = new Intent(Intent.ACTION_MAIN);
-//                    startMain.addCategory(Intent.CATEGORY_HOME);
-//                    startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(startMain);
-//
-//                   // or finish();
-//                })
-//                .setNegativeButton("Ні", null)
-//                .show();
-//    }
-
 
     // Анімація завантаження картинки Glide
     private ViewPropertyTransition.Animator animationObject = view -> {
@@ -340,7 +240,7 @@ public class MainActivity extends AppCompatActivity
 
     private void createChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // Create channel to show notifications.
+            // Создать канал для показа уведомлений.
             String channelId = getString(R.string.default_notification_channel_id);
             String channelName = getString(R.string.default_notification_channel_name);
             NotificationManager notificationManager =
@@ -353,7 +253,4 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
-
-
-
 }

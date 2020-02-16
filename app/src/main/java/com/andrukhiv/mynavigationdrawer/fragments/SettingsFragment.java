@@ -25,11 +25,14 @@ import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.ThemeHelper;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.util.Calendar;
+
 import static com.andrukhiv.mynavigationdrawer.Constant.APP_PACKAGE_NAME;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_ANDROID;
 import static com.andrukhiv.mynavigationdrawer.Constant.GOOGLE_PLAY_MARKET_WEB;
 
-public class  SettingsFragment extends PreferenceFragmentCompat {
+
+public class SettingsFragment extends PreferenceFragmentCompat {
 
     private Intent intent;
     public static BottomSheetDialogFragment myBottomSheet;
@@ -51,6 +54,12 @@ public class  SettingsFragment extends PreferenceFragmentCompat {
                     });
         }
 
+        findPreference("notifications").setOnPreferenceClickListener(preference -> {
+            notifications(getActivity());
+            return true;
+        });
+
+
         findPreference("rate").setOnPreferenceClickListener(preference -> {
             rate(getActivity());
             return true;
@@ -68,6 +77,10 @@ public class  SettingsFragment extends PreferenceFragmentCompat {
 
         findPreference("license").setOnPreferenceClickListener(preference -> {
             license(getActivity());
+
+            final String copyrights;
+            copyrights = String.format(getString(R.string.copy_right), Calendar.getInstance().get(Calendar.YEAR));
+            findPreference("license").setTitle(copyrights);
             return true;
         });
 
@@ -79,25 +92,30 @@ public class  SettingsFragment extends PreferenceFragmentCompat {
         findPreference("version").setSummary("v" + BuildConfig.VERSION_NAME);
     }
 
+    private void notifications(FragmentActivity activity) {
+
+        Intent intent = new Intent();
+        intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+
+        // для Android 5-7
+        intent.putExtra("app_package", activity.getPackageName());
+        intent.putExtra("app_uid", activity.getApplicationInfo().uid);
+
+        // для Android 8 и выше
+        intent.putExtra("android.provider.extra.APP_PACKAGE", activity.getPackageName());
+
+        startActivity(intent);
+    }
+
 
     private void rate(FragmentActivity activity) {
-//        try {
-//            startActivity(new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
-//        } catch (android.content.ActivityNotFoundException anfe) {
-//            startActivity(new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
-//        }
-
-        Toast toast;
-        toast = Toast.makeText(activity,
-                "Перехід на сторінку у Google Play", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        View view = toast.getView();
-        view.getBackground().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
-        TextView toastMessage = toast.getView().findViewById(android.R.id.message);
-        toastMessage.setTextColor(Color.WHITE);
-        toast.show();
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(GOOGLE_PLAY_MARKET_ANDROID + APP_PACKAGE_NAME)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(GOOGLE_PLAY_MARKET_WEB + APP_PACKAGE_NAME + "&hl")));
+        }
     }
 
     private void share(FragmentActivity activity) {
@@ -131,6 +149,7 @@ public class  SettingsFragment extends PreferenceFragmentCompat {
     public void license(Context context) {
 
         final Dialog dialog = new Dialog(context, R.style.DialogFullscreenWithTitle);
+
         dialog.setTitle(getString(R.string.title_licenses));
         dialog.setContentView(R.layout.licenses_dialog);
 

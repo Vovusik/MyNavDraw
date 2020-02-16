@@ -154,20 +154,20 @@
 
 
     <!-- Стиль для "Кнопок у MapsActivity" -->
-    <style name="MapsButtonStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">6dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:background">@drawable/selector_background</item>
-        <item name="android:drawablePadding">6dp</item>
-        <item name="android:drawableTint" tools:ignore="NewApi">@color/textColorPrimary</item>
-        <item name="android:gravity">center</item>
-        <item name="android:includeFontPadding">true</item>
-        <item name="android:paddingTop">6dp</item>
-        <item name="android:paddingBottom">6dp</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
-    </style>
+<!--    <style name="MapsButtonStyle">-->
+<!--        <item name="android:layout_width">wrap_content</item>-->
+<!--        <item name="android:layout_height">wrap_content</item>-->
+<!--        <item name="android:layout_margin">6dp</item>-->
+<!--        <item name="android:layout_weight">1</item>-->
+<!--        <item name="android:background">@drawable/selector_background</item>-->
+<!--        <item name="android:drawablePadding">6dp</item>-->
+<!--        <item name="android:drawableTint" tools:ignore="NewApi">@color/textColorPrimary</item>-->
+<!--        <item name="android:gravity">center</item>-->
+<!--        <item name="android:includeFontPadding">true</item>-->
+<!--        <item name="android:paddingTop">6dp</item>-->
+<!--        <item name="android:paddingBottom">6dp</item>-->
+<!--        <item name="android:textColor">@color/textColorPrimary</item>-->
+<!--    </style>-->
 
 
     <!-- Стиль для "NavigationDrawer" -->
@@ -249,13 +249,13 @@
     <style name="MyTableTextRowStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:gravity">center</item>
+
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/textColorSecondary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:layout_weight">1</item>
     </style>
-
+<!--    <item name="android:gravity">center</item>-->
 
     <!--Тема для заголовку таблиці розділу LABORATORY-->
     <style name="MyTableTextHeaderStyle">
@@ -271,7 +271,7 @@
     <!--<item name="android:singleLine">true</item>-->
 
         <!--Стиль для BottomSheetDialog-->
-    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="SheetDialog" parent="Theme.Design.BottomSheetDialog">
         <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -281,5 +281,76 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+
+    <!--Стиль для Table BottomSheetDialog розділу Preparation-->
+    <style name="MyTableDialogTextRowStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textSize">14sp</item>
+
+    </style>
+
+
+
+
+
+
+
+    <!-- Стиль для "Кнопок у MapsActivity" -->
+    <style name="MapsButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_background</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="android:drawableTint" tools:ignore="NewApi">@color/textColorPrimary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <!-- Стиль для "Іконок у MapsBottomSheet" -->
+    <style name="MapsIconBottomSheetStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:tint">@color/textColorSecondary</item>
+    </style>
+
+    <!-- Стиль для "Рядків у MapsBottomSheet" -->
+    <style name="MapsTextBottomSheetStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:paddingStart">16dp</item>
+    </style>
+
+    <style name="AboutPage.Header.ToolbarTitleExpanded"
+        parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </resources>

@@ -16,9 +16,9 @@ public class MapsModel implements Serializable {
     private Double lat;
     private Double lng;
     private String navigation_position;
+    private String image;
 
-
-    public MapsModel(long id, String region, int region_int, String title, String description, String address, String text_web, String text_phone, Double lat, Double lng, String navigation_position) {
+    public MapsModel(long id, String region, int region_int, String title, String description, String address, String text_web, String text_phone, Double lat, Double lng, String navigation_position, String image) {
         this.id = id;
         this.region = region;
         this.region_int = region_int;
@@ -30,6 +30,7 @@ public class MapsModel implements Serializable {
         this.lat = lat;
         this.lng = lng;
         this.navigation_position = navigation_position;
+        this.image = image;
     }
 
     public long getId() {
@@ -119,5 +120,14 @@ public class MapsModel implements Serializable {
     public void setNavigation_position(String navigation_position) {
         this.navigation_position = navigation_position;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 }
 

@@ -12,14 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.LibraryAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbAdapter;
@@ -29,8 +27,8 @@ import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
-
 import java.util.List;
+
 
 public class LibraryActivity extends AppCompatActivity
         implements DiscreteScrollView.OnItemChangedListener,
@@ -64,12 +62,8 @@ public class LibraryActivity extends AppCompatActivity
         buttonRead = findViewById(R.id.button_read);
         itemPicker = findViewById(R.id.item_picker);
 
-//        DB shop = DB.get();
-//        data = shop.getLibrary();
-
         mDbHelper = DbAdapter.getInstance(getApplicationContext());
         data = DbAdapter.getLibrary();
-
 
         infiniteAdapter = InfiniteScrollAdapter.wrap(new LibraryAdapter(data));
         itemPicker.setOrientation(DSVOrientation.HORIZONTAL);

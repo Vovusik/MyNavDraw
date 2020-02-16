@@ -35,7 +35,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static String TAG = "DbHelper"; // Тег только для окна LogCat
     protected static String DB_PATH = ""; //путь назначения (местоположения) нашей базы данных на устройстве
-    protected static String DB_NAME = "som_v2.db";// Название базы данных
+    protected static String DB_NAME = "som_v5.db";// Название базы данных
     private static final int DB_VERSION = 1;// Версия базы данных
     private SQLiteDatabase mDataBase;
     private final Context mContext;
@@ -127,8 +127,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public final void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-                db.execSQL(  "DROP TABLE IF EXISTS " + SPECIFICATIONS_TABLE);
-        //db.execSQL(  "DROP TABLE IF EXISTS " + MATCH_TABLE);
-        onCreate(db);
+//                db.execSQL(  "DROP TABLE IF EXISTS " + SPECIFICATIONS_TABLE);
+//        //db.execSQL(  "DROP TABLE IF EXISTS " + MATCH_TABLE);
+//        onCreate(db);
     }
 }

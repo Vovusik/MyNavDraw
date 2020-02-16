@@ -4,4 +4,15 @@
     <dimen name="action_bar_size">0dp</dimen>
 
     <integer name="grid_span_count">3</integer>
+
+
+
+    <dimen name="map_card_height">285dp</dimen>
+
+
+
+
+
+
+
 </resources>

@@ -2,12 +2,10 @@ package com.andrukhiv.mynavigationdrawer.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.andrukhiv.mynavigationdrawer.KitchenView;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.KitchenAdapter;
@@ -16,8 +14,8 @@ import com.andrukhiv.mynavigationdrawer.models.KitchenModel;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
-
 import java.util.List;
+
 
 public class KitchenActivity extends AppCompatActivity implements
         DiscreteScrollView.ScrollStateChangeListener<KitchenAdapter.ViewHolder>,
@@ -46,8 +44,6 @@ public class KitchenActivity extends AppCompatActivity implements
 
         mDbHelper = DbAdapter.getInstance(getApplicationContext());
         recipe = DbAdapter.getKitchen();
-
-        //recipe = KitchenData.get().getKitchen();
 
         DiscreteScrollView glassPicker = findViewById(R.id.forecast_city_picker);
         glassPicker.setSlideOnFling(false);

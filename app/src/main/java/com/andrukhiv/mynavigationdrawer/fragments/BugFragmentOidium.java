@@ -15,15 +15,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+
 import com.andrukhiv.mynavigationdrawer.BugParallaxPageTransformer;
 import com.andrukhiv.mynavigationdrawer.R;
 import com.andrukhiv.mynavigationdrawer.adapters.BugPagerAdapter;
 import com.andrukhiv.mynavigationdrawer.database.DbHelper;
 import com.andrukhiv.mynavigationdrawer.tables.BugTable;
+
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;

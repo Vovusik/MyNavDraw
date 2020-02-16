@@ -6,7 +6,7 @@ android {
         applicationId "com.andrukhiv.mynavigationdrawer"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 4
+        versionCode 6
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //Если вы используете SupportRSBlurTransformation
@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha03'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha03'
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -49,7 +49,7 @@ dependencies {
 
 
     // Бібліотека підтримки появи діалогового вікна «Оцінити цей додаток» - RateThisApp - 3
-    implementation 'io.github.kobakei:ratethisapp:1.2.0'
+    //implementation 'io.github.kobakei:ratethisapp:1.2.0'
     // Бібліотека повернення до попереднього актівіті слайдом донизу VarietiesDetailsActivity
     implementation 'com.r0adkll:slidableactivity:2.1.0'
     // Бібліотека для підвантаження фото
@@ -58,14 +58,14 @@ dependencies {
     // Бібліотека сортування
     implementation 'de.codecrafters.tableview:tableview:2.8.0'
     // Бібліотеки для використання у додатку сповіщень FirebaseNotifications
-    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-core:17.2.2'
     implementation 'com.google.firebase:firebase-messaging:20.1.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     // Бібліотеки для застосування карт
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.github.nitrico.mapviewpager:mapviewpager:1.0.0'
     // Бібліотека роботи з дозволами
-    implementation 'pub.devrel:easypermissions:1.2.0'
+    implementation 'pub.devrel:easypermissions:2.0.1'
     // Бібліотека прокручуваного списку елементів у розділах "Бібліотека" і "Кухня"
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
     // Бібліотека для використання таблиці у розділі "Препарати захисту"
